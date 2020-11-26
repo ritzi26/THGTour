@@ -13,6 +13,9 @@
    var Video360Url = 'video360.mp4';
    var Video360Urrrrrrl = 'http://thiago.me/demo-360/cool.mp4';
    var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
+   var Video360Url = '/res/VIDEO_1199.mp4';
+   var Vid = 'https://s3.amazonaws.com/downloads.vuze.camera/videos/DumboTimelapese.mp4'
+   //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
    var p = new Clappr.Player({
       source: Video360Urrrrrrl,
       width: window.innerWidth,
@@ -27,8 +30,16 @@
     });
     p.getPlugin('click_to_pause').disable();
 
-    p.play();
-    setInterval(function(){ p.pause(); }, 3000);
+    document.onkeydown = function (e) {
+      if (e.code == "ArrowUp" || e.code == "ArrowRight") {p.play();}
+      else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {p.play();}
+    }
+
+    document.onkeyup = function (e) {
+      if (e.code == "ArrowUp" || e.code == "ArrowRight") {p.pause();}
+      else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {p.pause();}
+    }
+
    </script>
 </body>
 </html>
