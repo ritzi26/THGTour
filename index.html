@@ -10,14 +10,15 @@
 <body>
   <div id="player"></div>
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-playback-rate-plugin@latest/lib/clappr-playback-rate-plugin.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
     var testUrl = 'http://thiago.me/demo-360/cool.mp4';
     //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
     //var Vid = 'https://s3.amazonaws.com/downloads.vuze.camera/videos/DumboTimelapese.mp4'
     //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
-    var source1Url = 'http://93.90.200.83/res/THG/VID_3OG.mp4'
+    var source1Url = 'http://93.90.200.83/res/THG/VID_3OG.mp4';
+    var source2Url = 'http://93.90.200.83/res/THG/VID_TrepOst.mp4';
+    var currentSourceUrl = source1Url;
 
     var p = new Clappr.Player({
       source: source1Url,
@@ -26,12 +27,12 @@
       preload: 'auto',
       chromeless: true,
       mute: true,
-      plugins: [Video360, PlaybackRatePlugin],
+      plugins: [Video360],
       parentId: '#player',
     });
     p.getPlugin('click_to_pause').disable();
 
-    p.setPlaybackRate(1);
+    //p.core.activePlayback.el.playbackRate = 1;
 
     p.play();
     setTimeout( () => {p.pause();}, 1000);
@@ -41,6 +42,12 @@
         p.play();
       } else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {
         p.play();
+      } else if (e.code == "KeyG") {
+        p.load(source1Url);
+      } else if (e.code == "KeyH") {
+        p.load(source2Url);
+      //} else if (e.code == "KeyR") {
+      //  p.core.activePlayback.el.playbackRate = -1;
       }
     }
 
