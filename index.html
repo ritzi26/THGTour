@@ -1,14 +1,53 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
+
 <head>
-	<meta charset="utf-8" />
-	<title>THG Tour</title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="style.css" type="text/css"/>
+  <meta charset="utf-8">
+  <title>clappr-video360</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
 </head>
+
 <body>
-	<h1 id="mainTitle">THG</h1>
-	<video id="video_background" preload="auto" autoplay="true" loop="loop" muted="mute"><source src="res/vid1.mp4" type="video/mp4"></video>
-	<span class="material-icons icon">pan_tool</span>
+  <div id="player"></div>
+  <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
+  <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"> </script>
+  <script type="text/javascript" charset="utf-8">
+    var testUrl = 'http://thiago.me/demo-360/cool.mp4';
+    //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
+    //var Vid = 'https://s3.amazonaws.com/downloads.vuze.camera/videos/DumboTimelapese.mp4'
+    //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
+    var source1Url = 'Hier muss n link rein'
+
+    var p = new Clappr.Player({
+      source: testUrl,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      preload: 'auto',
+      chromeless: true,
+      mute: true,
+      plugins: {
+        container: [Video360]
+      },
+      parentId: '#player',
+    });
+    p.getPlugin('click_to_pause').disable();
+
+    document.onkeydown = function(e) {
+      if (e.code == "ArrowUp" || e.code == "ArrowRight") {
+        p.play();
+      } else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {
+        p.play();
+      }
+    }
+
+    document.onkeyup = function(e) {
+      if (e.code == "ArrowUp" || e.code == "ArrowRight") {
+        p.pause();
+      } else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {
+        p.pause();
+      }
+    }
+  </script>
 </body>
+
 </html>
