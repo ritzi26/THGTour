@@ -10,7 +10,8 @@
 <body>
   <div id="player"></div>
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
-  <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"> </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-playback-rate-plugin@latest/lib/clappr-playback-rate-plugin.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
     var testUrl = 'http://thiago.me/demo-360/cool.mp4';
     //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
@@ -25,12 +26,15 @@
       preload: 'auto',
       chromeless: true,
       mute: true,
-      plugins: {
-        container: [Video360]
-      },
+      plugins: [Video360, PlaybackRatePlugin],
       parentId: '#player',
     });
     p.getPlugin('click_to_pause').disable();
+
+    p.setPlaybackRate(1);
+
+    p.play();
+    setTimeout( () => {p.pause();}, 1000);
 
     document.onkeydown = function(e) {
       if (e.code == "ArrowUp" || e.code == "ArrowRight") {
