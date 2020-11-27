@@ -1,5 +1,5 @@
 # THGTour
-Tour durch das THG
+Tour durch das THG Aalen
 
 Clappr Quellen:
 https://github.com/clappr
