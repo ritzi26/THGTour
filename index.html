@@ -54,7 +54,11 @@
 
     setInterval(() => {
       if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-1)) {p.pause();
-      console.log("ich bin ein if");}
+      forwardAllowed = false;
+      console.log("ich bin ein if");
+    }else {
+      forwardAllowed = true;
+      }
     }, 1);
 
     document.onkeydown = function(e) {
