@@ -6,7 +6,8 @@
   <title>THG Tour</title>
   <link rel="stylesheet" href="style.css" type="text/css">
 </head>
-<body id="main">​
+
+<body>
   <div id="player"></div>
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
@@ -33,9 +34,6 @@
       mute: true,
       plugins: [Video360],
       parentId: '#player',
-      /*watermark: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Frextheme.com%2Fwp-content%2Fuploads%2F2019%2F09%2FGuide-To-Create-A-Virtual-Tour-Feature_Image.jpg&sp=1606515547T99a0dd79ed985ffbdf36c5651e2b61217ab77fcd3ae9ff4c5f17f3b24407c0f3",
-      position: "",
-      watermarkLink: "http://google.com/",*/
     });
     p.getPlugin('click_to_pause').disable();
 
@@ -82,7 +80,6 @@
         p.pause();
       }
     }
-  </script>
   </script>
 </body>
 </html>
