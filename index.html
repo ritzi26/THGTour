@@ -23,6 +23,7 @@
     var dir = true;
     var forwardAllowed = true;
     var backwardAllowed = false;
+    var barrier = 0.5;
 
     var p = new Clappr.Player({
       source: source3Url,
@@ -39,7 +40,7 @@
     });
     p.getPlugin('click_to_pause').disable();
 
-    p.core.activePlayback.el.playbackRate = 3;
+    p.core.activePlayback.el.playbackRate = 1;
 
     p.play();
     setTimeout(() => {p.pause();}, 1000);
@@ -53,11 +54,15 @@
     // }, 1);
 
     setInterval(() => {
-      if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-1)) {p.pause();
-      forwardAllowed = false;
-      console.log("ich bin ein if");
-    }else {
-      forwardAllowed = true;
+      if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-barrier)) {
+        p.pause();
+        forwardAllowed = false;
+      } else if (!dir && (p.getCurrentTime() > p.getDuration()-barrier)) {
+        p.pause();
+        backwardAllowed = false;
+      } else {
+        forwardAllowed = true;
+        backwardAllowed = true;
       }
     }, 1);
 
