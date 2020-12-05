@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
-<body>
+<body id= "main">​
   <div id="player"></div>
+
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
@@ -29,6 +30,9 @@
       mute: true,
       plugins: [Video360],
       parentId: '#player',
+      /*watermark: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Frextheme.com%2Fwp-content%2Fuploads%2F2019%2F09%2FGuide-To-Create-A-Virtual-Tour-Feature_Image.jpg&sp=1606515547T99a0dd79ed985ffbdf36c5651e2b61217ab77fcd3ae9ff4c5f17f3b24407c0f3",
+      position: "",
+      watermarkLink: "http://google.com/",*/
     });
     p.getPlugin('click_to_pause').disable();
 
@@ -41,13 +45,7 @@
       if (e.code == "ArrowUp" || e.code == "ArrowRight") {
         p.play();
       } else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {
-        p.play();
-      } else if (e.code == "KeyG") {
-        p.load(source1Url);
-      } else if (e.code == "KeyH") {
-        p.load(source2Url);
-      //} else if (e.code == "KeyR") {
-      //  p.core.activePlayback.el.playbackRate = -1;
+        p.seek(10);
       }
     }
 
@@ -59,6 +57,49 @@
       }
     }
   </script>
+
+  <script type="text/javascript" charset="utf-8">
+      /*document.addEventListener('mousemove', Koordinaten);
+
+      funktion Koordinaten(e){
+      }*/
+  document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('main')
+        .addEventListener('mousedown', Tastendruck);
+      document.getElementById('main')
+        .addEventListener('mouseup', Tastenlos);
+
+
+      var Flag_pusleft = false;
+      var movx = 0;
+      var movy = 0;
+      var movbegx = 0;
+      var movbegy = 0;
+      var movendx = 0;
+      var movendy = 0;
+
+      function Tastendruck (Ergebnis){
+          Flag_pusleft = true;
+          movbegx = Ergebnis.clientX;
+          movbegy = Ergebnis.clientY;
+          console.log(movbegx);
+      }
+
+      function Tastenlos (Ergebnis){
+          Flag_pusleft = false;
+          movendx = Ergebnis.clientX;
+          movendy = Ergebnis.clientY;
+          movx = (movbegx - movendx) + movx;
+          movy = (movbegy - movendy) + movy;
+          console.log(movy);
+          console.log(movx);
+      }
+
+    });
+
+
+  </script>
+</script>
 </body>
 
 </html>
