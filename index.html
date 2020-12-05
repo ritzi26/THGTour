@@ -13,9 +13,6 @@
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
     var testUrl = 'http://thiago.me/demo-360/cool.mp4';
-    //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
-    //var Vid = 'https://s3.amazonaws.com/downloads.vuze.camera/videos/DumboTimelapese.mp4'
-    //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
     var source1Url = 'http://93.90.200.83/res/THG/VID_3OG.mp4';
     var source2Url = 'http://93.90.200.83/res/THG/VID_TrepOst.mp4';
     var source3Url = 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4';
@@ -24,6 +21,7 @@
     var dir = true;
     var forwardAllowed = true;
     var backwardAllowed = false;
+    var barrier = 0.5;
 
     var p = new Clappr.Player({
       source: source3Url,
@@ -37,25 +35,21 @@
     });
     p.getPlugin('click_to_pause').disable();
 
-    p.core.activePlayback.el.playbackRate = 3;
+    p.core.activePlayback.el.playbackRate = 1;
 
     p.play();
     setTimeout(() => {p.pause();}, 1000);
 
-    // setInterval(() => {
-    //   if ((p.getCurrentTime() > (p.getDuration()/2)-1 || p.getCurrentTime() < (p.getDuration()/2)) && dir) {
-    //     p.pause();
-    //   } else if ((p.getCurrentTime() > (p.getDuration())-1 || p.getCurrentTime() < 1) && !dir) {
-    //     p.pause();
-    //   }
-    // }, 1);
-
     setInterval(() => {
-      if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-1)) {p.pause();
-      forwardAllowed = false;
-      console.log("ich bin ein if");
-    }else {
-      forwardAllowed = true;
+      if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-barrier)) {
+        p.pause();
+        forwardAllowed = false;
+      } else if (!dir && (p.getCurrentTime() > p.getDuration()-barrier)) {
+        p.pause();
+        backwardAllowed = false;
+      } else {
+        forwardAllowed = true;
+        backwardAllowed = true;
       }
     }, 1);
 
