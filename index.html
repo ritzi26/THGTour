@@ -12,9 +12,6 @@
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
     var testUrl = 'http://thiago.me/demo-360/cool.mp4';
-    //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
-    //var Vid = 'https://s3.amazonaws.com/downloads.vuze.camera/videos/DumboTimelapese.mp4'
-    //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
     var source1Url = 'http://93.90.200.83/res/THG/VID_3OG.mp4';
     var source2Url = 'http://93.90.200.83/res/THG/VID_TrepOst.mp4';
     var source3Url = 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4';
@@ -34,9 +31,6 @@
       mute: true,
       plugins: [Video360],
       parentId: '#player',
-      /*watermark: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Frextheme.com%2Fwp-content%2Fuploads%2F2019%2F09%2FGuide-To-Create-A-Virtual-Tour-Feature_Image.jpg&sp=1606515547T99a0dd79ed985ffbdf36c5651e2b61217ab77fcd3ae9ff4c5f17f3b24407c0f3",
-      position: "",
-      watermarkLink: "http://google.com/",*/
     });
     p.getPlugin('click_to_pause').disable();
 
@@ -44,14 +38,6 @@
 
     p.play();
     setTimeout(() => {p.pause();}, 1000);
-
-    // setInterval(() => {
-    //   if ((p.getCurrentTime() > (p.getDuration()/2)-1 || p.getCurrentTime() < (p.getDuration()/2)) && dir) {
-    //     p.pause();
-    //   } else if ((p.getCurrentTime() > (p.getDuration())-1 || p.getCurrentTime() < 1) && !dir) {
-    //     p.pause();
-    //   }
-    // }, 1);
 
     setInterval(() => {
       if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-barrier)) {
