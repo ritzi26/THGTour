@@ -1,15 +1,13 @@
+
 <!DOCTYPE HTML>
 <html>
-
 <head>
   <meta charset="utf-8">
-  <title>clappr-video360</title>
+  <title>THG Tour</title>
   <link rel="stylesheet" href="style.css" type="text/css">
 </head>
-
-<body id= "main">​
+<body id="main">​
   <div id="player"></div>
-
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
@@ -19,10 +17,15 @@
     //var Video360Url = 'https://github.com/ritzi26/THGTour/blob/main/Test%20360-1_injected.mp4';
     var source1Url = 'http://93.90.200.83/res/THG/VID_3OG.mp4';
     var source2Url = 'http://93.90.200.83/res/THG/VID_TrepOst.mp4';
+    var source3Url = 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4';
     var currentSourceUrl = source1Url;
 
+    var dir = true;
+    var forwardAllowed = true;
+    var backwardAllowed = false;
+
     var p = new Clappr.Player({
-      source: source1Url,
+      source: source3Url,
       width: window.innerWidth,
       height: window.innerHeight,
       preload: 'auto',
@@ -36,16 +39,35 @@
     });
     p.getPlugin('click_to_pause').disable();
 
-    //p.core.activePlayback.el.playbackRate = 1;
+    p.core.activePlayback.el.playbackRate = 3;
 
     p.play();
-    setTimeout( () => {p.pause();}, 1000);
+    setTimeout(() => {p.pause();}, 1000);
+
+    // setInterval(() => {
+    //   if ((p.getCurrentTime() > (p.getDuration()/2)-1 || p.getCurrentTime() < (p.getDuration()/2)) && dir) {
+    //     p.pause();
+    //   } else if ((p.getCurrentTime() > (p.getDuration())-1 || p.getCurrentTime() < 1) && !dir) {
+    //     p.pause();
+    //   }
+    // }, 1);
+
+    setInterval(() => {
+      if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-1)) {p.pause();
+      console.log("ich bin ein if");}
+    }, 1);
 
     document.onkeydown = function(e) {
-      if (e.code == "ArrowUp" || e.code == "ArrowRight") {
+      if ((e.code == "ArrowUp" || e.code == "ArrowRight") && forwardAllowed) {
+        if (!dir) {p.seek(p.getDuration()-p.getCurrentTime());}
+        dir = true;
+        backwardAllowed = true;
         p.play();
-      } else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {
-        p.seek(10);
+      } else if ((e.code == "ArrowDown" || e.code == "ArrowLeft") && backwardAllowed) {
+        if (dir) {p.seek(p.getDuration()-p.getCurrentTime());}
+        dir = false;
+        forwardAllowed = true;
+        p.play();
       }
     }
 
@@ -57,49 +79,6 @@
       }
     }
   </script>
-
-  <script type="text/javascript" charset="utf-8">
-      /*document.addEventListener('mousemove', Koordinaten);
-
-      funktion Koordinaten(e){
-      }*/
-  document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('main')
-        .addEventListener('mousedown', Tastendruck);
-      document.getElementById('main')
-        .addEventListener('mouseup', Tastenlos);
-
-
-      var Flag_pusleft = false;
-      var movx = 0;
-      var movy = 0;
-      var movbegx = 0;
-      var movbegy = 0;
-      var movendx = 0;
-      var movendy = 0;
-
-      function Tastendruck (Ergebnis){
-          Flag_pusleft = true;
-          movbegx = Ergebnis.clientX;
-          movbegy = Ergebnis.clientY;
-          console.log(movbegx);
-      }
-
-      function Tastenlos (Ergebnis){
-          Flag_pusleft = false;
-          movendx = Ergebnis.clientX;
-          movendy = Ergebnis.clientY;
-          movx = (movbegx - movendx) + movx;
-          movy = (movbegy - movendy) + movy;
-          console.log(movy);
-          console.log(movx);
-      }
-
-    });
-
-
   </script>
-</script>
 </body>
-
 </html>
