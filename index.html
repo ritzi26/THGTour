@@ -81,6 +81,8 @@
       }
     }, 1);
 
+    setInterval(() => {p.resize({height: window.innerHeight, width: window.innerWidth});}, 1000)
+
     document.onkeydown = function(e) {
       if ((e.code == "ArrowUp" || e.code == "ArrowRight") && forwardAllowed) {
         if (!dir) {p.seek(p.getDuration()-p.getCurrentTime());}
