@@ -48,7 +48,7 @@
       []
     ];
 
-    console.log(array[0][1][1]);
+    console.log(array[0][0][0]);
 
     var p = new Clappr.Player({
       source: source3Url,
@@ -81,7 +81,16 @@
       }
     }, 1);
 
-    setInterval(() => {p.resize({height: window.innerHeight, width: window.innerWidth});}, 1000)
+    setInterval(() => {p.resize({height: window.innerHeight, width: window.innerWidth});}, 1000);
+
+    function setLable() {
+      document.querySelector(".buttonDiv h1").innerHTML = "Weiter";
+      document.querySelector(".buttonDiv").style.visibility = "visible"
+    };
+
+    function hideLable() {
+      document.querySelector(".buttonDiv").style.visibility = "collapse"
+    };
 
     document.onkeydown = function(e) {
       if ((e.code == "ArrowUp" || e.code == "ArrowRight") && forwardAllowed) {
@@ -94,6 +103,10 @@
         dir = false;
         forwardAllowed = true;
         p.play();
+      } else if (e.code == "KeyL") { //Zum Ausprobieren von setLable()
+        setLable();
+      } else if (e.code == "KeyH") { //Zum Ausprobieren von hideLable()
+        hideLable();
       }
     };
 
