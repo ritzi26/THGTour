@@ -29,6 +29,8 @@
     var backwardAllowed = false;
     var barrier = 0.5;
 
+    var justStarted = true;
+
     var videoId = 0;
     /*
     [Videos
@@ -57,13 +59,14 @@
       mute: true,
       plugins: [Video360],
       parentId: '#player',
+      events: {onPlay: function () {if (justStarted) {p.pause(); justStarted = false;}},}
     });
     p.getPlugin('click_to_pause').disable();
 
     p.core.activePlayback.el.playbackRate = 1;
 
     p.play();
-    setTimeout(() => {p.pause();}, 1000);
+    //var startTimer = setTimeout(() => {p.pause();}, 1000);
 
     setInterval(() => {
       if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-barrier)) {
@@ -102,6 +105,8 @@
 
     document.querySelector(".buttonDiv").addEventListener("click", (e) => {
       p.load(source2Url);
+      justStarted = true;
+      p.play();
     });
   </script>
 </body>
