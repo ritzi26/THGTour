@@ -9,6 +9,12 @@
 
 <body>
   <div id="player"></div>
+  <div class="wrapper">
+    <div class="buttonDiv">
+      <h1>Wechseln</h1>
+    </div>
+  </div>
+
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
@@ -22,6 +28,25 @@
     var forwardAllowed = true;
     var backwardAllowed = false;
     var barrier = 0.5;
+
+    var videoId = 0;
+    /*
+    [Videos
+      [Stellen
+        [ButtonName, SourceLink, StartTime, EndTime, NewVideoId, NewTime, Walkable]
+      ]
+    ]
+    */
+    let array = [
+      [
+        ['Chemie', sourceUrlChemie, 10, 15, 1, 0, false],
+        []
+      ],
+      [],
+      []
+    ];
+
+    console.log(array[0][1][1]);
 
     var p = new Clappr.Player({
       source: source3Url,
@@ -65,7 +90,7 @@
         forwardAllowed = true;
         p.play();
       }
-    }
+    };
 
     document.onkeyup = function(e) {
       if (e.code == "ArrowUp" || e.code == "ArrowRight") {
@@ -73,7 +98,11 @@
       } else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {
         p.pause();
       }
-    }
+    };
+
+    document.querySelector(".buttonDiv").addEventListener("click", (e) => {
+      p.load(source2Url);
+    });
   </script>
 </body>
 </html>
