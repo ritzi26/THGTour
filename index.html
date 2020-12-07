@@ -37,8 +37,13 @@
 
     var justStarted = true;
 
-    var videoId = 0;
-    var currentLable = 0; // 0 kein Lable ist gesetzt zahl entspricht array
+    var videoId_old;
+    var videoId = 2;
+    var currentLable_old;
+    var currentLable = 0; // 0 =kein Lable ist gesetzt, zahl entspricht sonst array
+    var Walkabel = true;
+    var changed = false;
+
     /*
     [Videos
       [Stellen
@@ -48,16 +53,16 @@
     */
     let array = [
       [
-        ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 14, 16, 1, 0, false, false],
-        ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4', 3, 5, 2, 0, false, false]
+        ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 8, 12, 1, 0, false, false],
+        ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4', 15, 17, 2, 0, false, false]
       ],
       [
-        ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4', 8, 11, 1, 0, false, false],
-        ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4', 7, 6, 2, 0, false, false]
+        ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4', 8, 11, 2, 10, false, false],
+        ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4', 2, 3, 0, 8, false, false]
       ],
       [
-        ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 10, 15, 1, 0, false, false],
-        ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4', 2, 5, 2, 0, false, false]
+        ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 10, 15, 1, 10, false, false],
+        ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4', 2, 5, 0, 15, false, false]
       ]
     ];
 
@@ -67,12 +72,12 @@
       source: source3Url,
       width: window.innerWidth,
       height: window.innerHeight,
-      preload: 'true',
+      preload: 'auto',
       chromeless: true,
       mute: true,
       plugins: [Video360],
       parentId: '#player',
-      events: {onPlay: function () {if (justStarted) {p.pause(); justStarted = false;}},}
+      events: {onPlay: function () {if (justStarted) {if (changed){p.seek(array[videoId_old][currentLable_old][5]); changed = false;} p.pause(); justStarted = false;}},}
     });
     p.getPlugin('click_to_pause').disable();
 
@@ -102,11 +107,11 @@
           var LabelStart = array[videoId][i][2];
           var LabelEnd = array[videoId][i][3];
           var LabelSet = array[videoId][i][7];
-          console.log("Start" + LabelStart);
+          /*console.log("Start" + LabelStart);
           var control = p.getDuration() - p.getCurrentTime();
           console.log("currentTime_reverse" + control);
           console.log("currentTime" + p.getCurrentTime());
-          console.log("Ende" + LabelEnd);
+          console.log("Ende" + LabelEnd);*/
           if (p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd ){
             currentLable = i;
             setLable(currentLable);
@@ -165,12 +170,16 @@
 
     document.querySelector(".buttonDiv").addEventListener("click", (e) => {
       array[videoId][currentLable][7] = false;
+      changed = true;
       hideLable();
       p.load(array[videoId][currentLable][1]);
+      p.play();
+      var NewTime = array[videoId][currentLable][5];
+      videoId_old = videoId;
+      currentLable_old = currentLable;
       videoId = array[videoId][currentLable][4];
       currentLable = 0;
       justStarted = true;
-      p.play();
       forwardAllowed = true;
     });
   </script>
