@@ -19,17 +19,15 @@
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
 
+  var local = false;
 
-    /*var source1Url = './res/THG/VID_1OG_backfront.mp4';
-    var source2Url = './res/THG/VID_TrepOst_backfront.mp4';
-    var source3Url = './res/THG/VID_3OG_backfront.mp4';*/
+  var testUrl;
+  var source1Url ; // ID 1
+  var source2Url ;// ID 0
+  var source3Url ; // ID 2
+  var source4Url ; //ID 3
 
-    var testUrl = 'http://thiago.me/demo-360/cool.mp4';
-    var source1Url = 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4'; // ID 1
-    var source2Url = 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4';// ID 0
-    var source3Url = 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4'; // ID 2
-    var source4Url = 'http://93.90.200.83/res/THG/img_Oberstufe.mp4' //ID 3
-    var currentSourceUrl = source1Url;
+  let array ;
 
     var dir = true;
     var forwardAllowed = true;
@@ -52,33 +50,69 @@
       ]
     ]
     */
-    let array = [
-      [
-        ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 8, 12, 1, 0, true, false], //Video Treppe ost
-        ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4', 15, 17, 2, 0, true, false]
-      ],
-      [
-        ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4', 8, 11, 2, 10, true, false],
-        ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4', 2, 3, 0, 8, true, false], // Video OG1
-        ['Oberstufe', 'http://93.90.200.83/res/THG/img_Oberstufe.mp4', 20, 25, 3, 1, false, false]
-      ],
-      [
-        ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 10, 15, 1, 10, true, false],      //Video OG 3
-        ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4', 0, 3, 0, 15, true, false]
-      ],
-      [
-        ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 0, 3, 1, 20, true, false],
-      ]
+    if (!local){
+      var testUrl = 'http://thiago.me/demo-360/cool.mp4';
+      var source1Url = 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4'; // ID 1
+      var source2Url = 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4';// ID 0
+      var source3Url = 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4'; // ID 2
+      var source4Url = 'http://93.90.200.83/res/THG/img_Oberstufe.mp4' //ID 3
 
-    ];
+      array = [
+        [
+          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 8, 12, 1, 0, true, false], //Video Treppe ost
+          ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4', 15, 17, 2, 0, true, false]
+        ],
+        [
+          ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG_backfront.mp4', 8, 11, 2, 10, true, false],
+          ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4', 2, 3, 0, 8, true, false], // Video OG1
+          ['Oberstufe', 'http://93.90.200.83/res/THG/img_Oberstufe.mp4', 20, 25, 3, 1, false, false]
+        ],
+        [
+          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 10, 15, 1, 10, true, false],      //Video OG 3
+          ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst_backfront.mp4', 0, 3, 0, 15, true, false]
+        ],
+        [
+          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG_backfront.mp4', 0, 3, 1, 20, true, false],
+        ]
+
+      ];
+    }else{
+      var testUrl = 'http://thiago.me/demo-360/cool.mp4';
+      var source1Url = './res/THG/VID_1OG_backfront.mp4'; // ID 1
+      var source2Url = './res/THG/VID_TrepOst_backfront.mp4';// ID 0
+      var source3Url = './res/THG/VID_3OG_backfront.mp4'; // ID 2
+      var source4Url = './res/THG/img_Oberstufe.mp4' //ID 3
+
+      array = [
+        [
+          ['1.OG', './res/THG/VID_1OG_backfront.mp4', 8, 12, 1, 0, true, false], //Video Treppe ost
+          ['3.OG', './res/THG/VID_3OG_backfront.mp4', 15, 17, 2, 0, true, false]
+        ],
+        [
+          ['3.OG', './res/THG/VID_3OG_backfront.mp4', 8, 11, 2, 10, true, false],
+          ['Treppe', './res/THG/VID_TrepOst_backfront.mp4', 2, 3, 0, 8, true, false], // Video OG1
+          ['Oberstufe', './res/THG/img_Oberstufe.mp4', 20, 25, 3, 1, false, false]
+        ],
+        [
+          ['1.OG', './res/THG/VID_1OG_backfront.mp4', 10, 15, 1, 10, true, false],      //Video OG 3
+          ['Treppe', './res/THG/VID_TrepOst_backfront.mp4', 0, 3, 0, 15, true, false]
+        ],
+        [
+          ['1.OG', './res/THG/VID_1OG_backfront.mp4', 0, 3, 1, 20, true, false],
+        ]
+
+      ];
+
+    }
 
     console.log(array[0][0][0]);
 
     var p = new Clappr.Player({
+      //poster: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcRb9IzUh-vm4fdTEQ3oSRtigKgB1YTMh-dECbH7ZutLQMQUGnae%26s&sp=1607379300T0c8dd138c42daef5c0219376c5aef4aff7c9debf296b133c1b30ec9e787b8abc",
       source: source3Url,
       width: window.innerWidth,
       height: window.innerHeight,
-      preload: 'true',
+      preload: 'auto',
       chromeless: true,
       mute: true,
       plugins: [Video360],
@@ -105,17 +139,18 @@
     //var startTimer = setTimeout(() => {p.pause();}, 1000);
 
     setInterval(() => {
-      if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-barrier)) {
-        p.pause();
-        forwardAllowed = false;
-      } else if (!dir && (p.getCurrentTime() > p.getDuration()-barrier)) {
-        p.pause();
-        backwardAllowed = false;
-      } else {
-        forwardAllowed = true;
-        backwardAllowed = true;
+      if (Walkable){
+        if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-barrier)) {
+          p.pause();
+          forwardAllowed = false;
+        } else if (!dir && (p.getCurrentTime() > p.getDuration()-barrier)) {
+          p.pause();
+          backwardAllowed = false;
+        } else {
+          forwardAllowed = true;
+          backwardAllowed = true;
+        }
       }
-
     }, 100);
 
     // controll Intervall für Labels
