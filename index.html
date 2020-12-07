@@ -38,17 +38,18 @@
     var justStarted = true;
 
     var videoId = 0;
+    var currentLable = 0; // 0 kein Lable ist gesetzt zahl entspricht array
     /*
     [Videos
       [Stellen
-        [ButtonName, SourceLink, StartTime, EndTime, NewVideoId, NewTime, Walkable]
+        [ButtonName, SourceLink, StartTime, EndTime, NewVideoId, NewTime, Walkable, LabelSet]
       ]
     ]
     */
     let array = [
       [
-        ['Chemie', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 10, 15, 1, 0, false],
-        []
+        ['Chemie', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 10, 15, 1, 0, false, false],
+        ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 2, 5, 2, 0, false]
       ],
       [],
       []
@@ -85,12 +86,39 @@
         forwardAllowed = true;
         backwardAllowed = true;
       }
+
     }, 1);
+
+    setInterval(() => {
+      for(var i =0; i< array[videoId].length; i++ ){
+        var LabelStart = array[videoId][i][2];
+        var LabelEnd = array[videoId][i][3];
+        var LabelSet = array[videoId][i][7];
+        console.log("Start" + LabelStart);
+        var control = p.getDuration() - p.getCurrentTime();
+        console.log("currentTime_reverse" + control);
+        console.log("currentTime" + p.getCurrentTime());
+        console.log("Ende" + LabelEnd);
+        if (p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd ){
+          currentLable = i;
+          setLable(currentLable);
+          array[videoId][i][7] = true;
+        }else if ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) {
+          currentLable = i;
+          setLable(currentLable);
+          array[videoId][i][7] = true;
+        }else if (LabelSet){
+          array[videoId][i][7] = false;
+          hideLable();
+          currentLable = 0;
+        }
+      }
+    },100);
 
     setInterval(() => {p.resize({height: window.innerHeight, width: window.innerWidth});}, 1000);
 
-    function setLable() {
-      document.querySelector(".buttonDiv h1").innerHTML = "Weiter";
+    function setLable(label) {
+      document.querySelector(".buttonDiv h1").innerHTML = array[videoId][label][0];
       document.querySelector(".buttonDiv").style.visibility = "visible"
     };
 
