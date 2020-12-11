@@ -34,3 +34,30 @@ h1 {
 	visibility: collapse;
 	pointer-events: all;
 }
+
+.controls {
+	position: absolute;
+	width: auto;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	pointer-events: none;
+	right: 0;
+	top: 0;
+	flex-direction: column;
+	visibility: collapse;
+}
+
+.icon {
+	color: white;
+	pointer-events: all;
+	cursor: pointer;
+	font-size: 6em !important;
+	margin: 0.1em;
+}
+
+@media (pointer: coarse) {
+	.icon {
+		visibility: visible;
+	}
+}

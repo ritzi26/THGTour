@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>THG Tour</title>
   <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -13,6 +14,10 @@
     <div class="buttonDiv">
       <h1>Wechseln</h1>
     </div>
+  </div>
+  <div class="controls">
+    <span class="material-icons icon">keyboard_arrow_up</span>
+    <span class="material-icons icon">keyboard_arrow_down</span>
   </div>
 
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
@@ -199,28 +204,24 @@
 
     document.onkeydown = function(e) {
       if (Walkable){
-        if ((e.code == "ArrowUp" || e.code == "ArrowRight") && forwardAllowed) {
+        if ((e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") && forwardAllowed) {
           if (!dir) {p.seek(p.getDuration()-p.getCurrentTime());}
           dir = true;
           backwardAllowed = true;
           p.play();
-        } else if ((e.code == "ArrowDown" || e.code == "ArrowLeft") && backwardAllowed) {
+        } else if ((e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") && backwardAllowed) {
           if (dir) {p.seek(p.getDuration()-p.getCurrentTime());}
           dir = false;
           forwardAllowed = true;
           p.play();
         }
-      } else if (e.code == "KeyL") { //Zum Ausprobieren von setLable()
-        setLable(1);
-      } else if (e.code == "KeyH") { //Zum Ausprobieren von hideLable()
-        hideLable();
       }
     };
 
     document.onkeyup = function(e) {
-      if (e.code == "ArrowUp" || e.code == "ArrowRight") {
+      if (e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") {
         p.pause();
-      } else if (e.code == "ArrowDown" || e.code == "ArrowLeft") {
+      } else if (e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") {
         p.pause();
       }
     };
