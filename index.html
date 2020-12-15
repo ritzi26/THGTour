@@ -16,8 +16,8 @@
     </div>
   </div>
   <div class="controls">
-    <span class="material-icons icon">keyboard_arrow_up</span>
-    <span class="material-icons icon">keyboard_arrow_down</span>
+    <span class="material-icons icon forward">keyboard_arrow_up</span>
+    <span class="material-icons icon backward">keyboard_arrow_down</span>
   </div>
 
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
@@ -127,7 +127,7 @@
           if (changed){
             p.seek(array[videoId_old][currentLable_old][5]);
             changed = false;
-              Walkable = array[videoId_old][currentLable_old][6];
+            Walkable = array[videoId_old][currentLable_old][6];
           }
           p.pause();
         }else {
@@ -202,18 +202,26 @@
       document.querySelector(".buttonDiv").style.visibility = "collapse"
     };
 
+    function walkForward() {
+      if (!dir) {p.seek(p.getDuration()-p.getCurrentTime());}
+      dir = true;
+      backwardAllowed = true;
+      p.play();
+    }
+
+    function walkBackward() {
+      if (dir) {p.seek(p.getDuration()-p.getCurrentTime());}
+      dir = false;
+      forwardAllowed = true;
+      p.play();
+    }
+
     document.onkeydown = function(e) {
       if (Walkable){
         if ((e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") && forwardAllowed) {
-          if (!dir) {p.seek(p.getDuration()-p.getCurrentTime());}
-          dir = true;
-          backwardAllowed = true;
-          p.play();
+          walkForward();
         } else if ((e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") && backwardAllowed) {
-          if (dir) {p.seek(p.getDuration()-p.getCurrentTime());}
-          dir = false;
-          forwardAllowed = true;
-          p.play();
+          walkBackward();
         }
       }
     };
@@ -242,6 +250,12 @@
       justStarted = true;
       forwardAllowed = true;
     });
+
+    window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+
+    document.querySelector(".forward").addEventListener("touchstart", (e) => {walkForward();console.log("Start");});
+    document.querySelector(".forward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
+    document.querySelector(".backward").addEventListener("click", (e) => {});
   </script>
 </body>
 </html>

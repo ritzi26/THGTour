@@ -48,6 +48,13 @@ h1 {
 	visibility: collapse;
 }
 
+.controls span {
+	-webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .icon {
 	color: white;
 	pointer-events: all;
