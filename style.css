@@ -89,6 +89,28 @@ h1 {
 	padding-left: 0.1em;
 }
 
+#floorWrapper {
+	position: fixed;
+	top: 0;
+	left: -30em;
+	transition: all 0.4s;
+}
+
+#videoWrapper {
+	position: fixed;
+	top: 0;
+	left: -30em;
+	transition: all 0.4s;
+}
+
+#closeIconFloor {
+	background-color: green;
+}
+
+#closeIconVideo {
+	background-color: red;
+}
+
 @media (pointer: coarse) {
 	.icon {
 		visibility: visible;

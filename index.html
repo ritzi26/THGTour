@@ -23,9 +23,17 @@
     <span class="material-icons icon menu-icon" id="openIcon">menu</span>
     <div id="menuIconWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIcon">close</span>
-      <span class="material-icons icon menu-icon hiddenIcon">home</span>
-      <span class="material-icons icon menu-icon hiddenIcon">room</span>
-      <span class="material-icons icon menu-icon hiddenIcon">movie</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon">home</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon">room</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon">movie</span>
+    </div>
+    <div class="secondLayer" id="floorWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
+      <h1>Stockwerke</h1>
+    </div>
+    <div class="secondLayer" id="videoWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIconVideo">close</span>
+      <h1>Infomationsvideos</h1>
     </div>
   </div>
 
@@ -293,6 +301,26 @@
 
     document.querySelector("#closeIcon").addEventListener("click", (e) => {
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    });
+
+    document.querySelector("#homeIcon").addEventListener("click", (e) => {
+      window.location.href = "http://www.thgaalen.de";
+    });
+
+    document.querySelector("#floorIcon").addEventListener("click", (e) => {
+      document.querySelector("#floorWrapper").style.transform = "translate(30em, 0)";
+    });
+
+    document.querySelector("#closeIconFloor").addEventListener("click", (e) => {
+      document.querySelector("#floorWrapper").style.transform = "translate(-30em, 0)"
+    });
+
+    document.querySelector("#videosIcon").addEventListener("click", (e) => {
+      document.querySelector("#videoWrapper").style.transform = "translate(30em, 0)";
+    });
+
+    document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
+      document.querySelector("#videoWrapper").style.transform = "translate(-30em, 0)"
     });
   </script>
 </body>
