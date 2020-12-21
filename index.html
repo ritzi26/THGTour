@@ -31,20 +31,20 @@
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
       <div class="navSecContainer">
         <h1>Stockwerke</h1><br>
-        <p>Ergeschoss</p><br>
-        <p>1. Stock</p><br>
-        <p>2. Stock</p><br>
-        <p>3. Stock</p>
+        <p id="EG">Ergeschoss</p><br>
+        <p id="S1">1. Stock</p><br>
+        <p id="S2">2. Stock</p><br>
+        <p id="S3">3. Stock</p>
       </div>
     </div>
     <div class="secondLayer" id="videoWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconVideo">close</span>
       <div class="navSecContainer">
         <h1>Videos</h1><br>
-        <p>Chemie</p><br>
-        <p>Physik</p><br>
-        <p>Deutsch</p><br>
-        <p>Erdkunde</p>
+        <p id="V1">Chemie</p><br>
+        <p id="V2">Physik</p><br>
+        <p id="V3">Deutsch</p><br>
+        <p id="V4">Erdkunde</p>
       </div>
     </div>
   </div>
@@ -355,6 +355,16 @@
     document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
       document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
     });
+
+    document.querySelector("#EG").addEventListener("click", (e) => {console.log("EG");});
+    document.querySelector("#S1").addEventListener("click", (e) => {console.log("S1");});
+    document.querySelector("#S2").addEventListener("click", (e) => {console.log("S2");});
+    document.querySelector("#S3").addEventListener("click", (e) => {console.log("S3");});
+
+    document.querySelector("#V1").addEventListener("click", (e) => {console.log("V1");});
+    document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
+    document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");});
+    document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");});
   </script>
 </body>
 </html>
