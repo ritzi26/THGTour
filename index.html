@@ -339,7 +339,7 @@
       forwardAllowed = true;
       p.core.activePlayback.el.playbackRate = 1;
     }
-    
+
 
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
 
@@ -376,10 +376,10 @@
       document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
     });
 
-    document.querySelector("#EG").addEventListener("click", (e) => {console.log("EG");});
-    document.querySelector("#S1").addEventListener("click", (e) => {console.log("S1");});
-    document.querySelector("#S2").addEventListener("click", (e) => {console.log("S2");});
-    document.querySelector("#S3").addEventListener("click", (e) => {console.log("S3");});
+    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_EG_1.mp4", 0, IdEG1);});
+    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_1OG.mp4", 0, Id1OG);});
+    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_2OG.mp4", 0, Id2OG);});
+    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_3OG.mp4", 0, Id3OG);});
 
     document.querySelector("#V1").addEventListener("click", (e) => {console.log("V1");});
     document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
