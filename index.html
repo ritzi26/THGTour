@@ -80,6 +80,7 @@
 
     var justStarted = true;
 
+    var NewTime;
     var videoId_old;
     var videoId = 0;
     var currentLable_old;
@@ -188,7 +189,7 @@
       events: {onPlay: function (){
         if (justStarted){
           if (changed){
-            p.seek(array[videoId_old][currentLable_old][5]);
+            p.seek(NewTime);
             changed = false;
             Walkable = array[videoId_old][currentLable_old][6];
           }
@@ -330,7 +331,7 @@
       hideLable();
       p.load(new_source);
       p.play();
-      var NewTime = time; //
+      NewTime = time; //
       videoId_old = videoId;
       currentLable_old = currentLable;
       videoId = nVideoId;
@@ -376,10 +377,10 @@
       document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
     });
 
-    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_EG_1.mp4", 0, IdEG1);});
-    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_1OG.mp4", 0, Id1OG);});
-    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_2OG.mp4", 0, Id2OG);});
-    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_3OG.mp4", 0, Id3OG);});
+    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_EG_1.mp4", 1, IdEG1);});
+    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_1OG.mp4", 1, Id1OG);});
+    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_2OG.mp4", 1, Id2OG);});
+    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_3OG.mp4", 1, Id3OG);});
 
     document.querySelector("#V1").addEventListener("click", (e) => {console.log("V1");});
     document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
