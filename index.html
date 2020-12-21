@@ -19,6 +19,15 @@
     <span class="material-icons icon forward">keyboard_arrow_up</span>
     <span class="material-icons icon backward">keyboard_arrow_down</span>
   </div>
+  <div class="nav">
+    <span class="material-icons icon menu-icon" id="openIcon">menu</span>
+    <div id="menuIconWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIcon">close</span>
+      <span class="material-icons icon menu-icon hiddenIcon">home</span>
+      <span class="material-icons icon menu-icon hiddenIcon">room</span>
+      <span class="material-icons icon menu-icon hiddenIcon">movie</span>
+    </div>
+  </div>
 
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
@@ -277,6 +286,14 @@
     document.querySelector(".forward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
     document.querySelector(".backward").addEventListener("touchstart", (e) => {walkBackward();console.log("Start");});
     document.querySelector(".backward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
+
+    document.querySelector("#openIcon").addEventListener("click", (e) => {
+      document.querySelector("#menuIconWrapper").style.transform = "translate(4.4em, 0)";
+    });
+
+    document.querySelector("#closeIcon").addEventListener("click", (e) => {
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    });
   </script>
 </body>
 </html>

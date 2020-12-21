@@ -63,6 +63,32 @@ h1 {
 	margin: 0.1em;
 }
 
+.nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.menu-icon {
+	font-size: 4em !important;
+}
+
+#menuIconWrapper {
+	position: fixed;
+	top: 0;
+	left: -4.4em;
+	transition: all 0.4s;
+	display: flex;
+	flex-direction: column;
+}
+
+.hiddenIcon {
+	background-color: grey;
+	margin-left: 0;
+	padding-left: 0.1em;
+}
+
 @media (pointer: coarse) {
 	.icon {
 		visibility: visible;
