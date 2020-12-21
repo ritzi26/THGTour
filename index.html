@@ -209,14 +209,14 @@
     };
 
     function walkForward() {
-      if (!dir) {p.seek(p.getDuration()-p.getCurrentTime());}
+      if (p.getCurrentTime() > (p.getDuration()/2)) {p.seek(p.getDuration()-p.getCurrentTime());}
       dir = true;
       backwardAllowed = true;
-      p.play();
+        p.play();
     }
 
     function walkBackward() {
-      if (dir) {p.seek(p.getDuration()-p.getCurrentTime());}
+      if (p.getCurrentTime() < (p.getDuration()/2)) {p.seek(p.getDuration()-p.getCurrentTime());}
       dir = false;
       forwardAllowed = true;
       p.play();
@@ -225,9 +225,13 @@
     document.onkeydown = function(e) {
       if (Walkable){
         if ((e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") && forwardAllowed) {
-          walkForward();
+          if(Walkable){
+            walkForward();
+          }
         } else if ((e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") && backwardAllowed) {
-          walkBackward();
+          if(Walkable){
+            walkBackward();
+          }
         }
       }
     };
