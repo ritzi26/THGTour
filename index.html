@@ -24,15 +24,21 @@
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
   <script type="text/javascript" charset="utf-8">
 
-  var local = false;
+    var local = false; // true -> nur wenn index auf Server laufen soll
 
-  var testUrl;
-  var source1Url ; // ID 1
-  var source2Url ;// ID 0
-  var source3Url ; // ID 2
-  var source4Url ; //ID 3
+    var beginVideoUrl ; // das erste Video das geladen wird
+    var testUrl = 'http://thiago.me/demo-360/cool.mp4';
 
-  let array ;
+    var IdTrepOst = 0;
+    var IdEG1 = 1;          //Video Id's
+    var IdEG2 = 2;          // bestimmt durch die Reinfolge der array
+    var Id1OG = 3;
+    var Id2OG = 4;
+    var Id3OG = 5;
+
+    var IdObers = 6;
+
+    let array ;
 
     var dir = true;
     var forwardAllowed = true;
@@ -42,9 +48,9 @@
     var justStarted = true;
 
     var videoId_old;
-    var videoId = 2;
+    var videoId = 0;
     var currentLable_old;
-    var currentLable = 0; // 0 =kein Lable ist gesetzt, zahl entspricht sonst array
+    var currentLable = 0; // 0 = kein Lable ist gesetzt, zahl entspricht sonst array
     var Walkable = true;
     var changed = false;
 
@@ -56,43 +62,46 @@
     ]
     */
     if (!local){
-      var testUrl = 'http://thiago.me/demo-360/cool.mp4';
-      var source2Url = 'http://93.90.200.83/res/THG/VID_TrepOst.mp4';// ID 0
-      var source2Url = 'http://93.90.200.83/res/THG/VID_EG_1.mp4';
-      var source2Url = 'http://93.90.200.83/res/THG/VID_EG_2.mp4';
-      var source1Url = 'http://93.90.200.83/res/THG/VID_1OG.mp4'; // ID 1
-      var source5Url = 'http://93.90.200.83/res/THG/VID_2OG.mp4';
-      var source3Url = 'http://93.90.200.83/res/THG/VID_3OG.mp4'; // ID 2
-      var source4Url = 'http://93.90.200.83/res/THG/img_Oberstufe.mp4' //ID 3
+
+      beginVideoUrl = 'http://93.90.200.83/res/THG/VID_TrepOst.mp4' ;
 
       array = [
         [
-          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG.mp4', 8, 12, 1, 0, true, false], //Video Treppe ost
-          ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG.mp4', 15, 17, 2, 0, true, false]
+          ['EG', 'http://93.90.200.83/res/THG/VID_EG_1.mp4', 0, 2, IdEG1, 0, true, false],
+          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG.mp4', 15, 17, Id1OG, 0, true, false],    //Video Treppe ost
+          ['2.OG', 'http://93.90.200.83/res/THG/VID_2OG.mp4', 25, 30, Id2OG, 0, true, false],
+          ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG.mp4', 40, 45, Id2OG, 0, true, false]
         ],
         [
-          ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG.mp4', 8, 11, 2, 10, true, false],
-          ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 2, 3, 0, 8, true, false], // Video OG1
-          ['Oberstufe', 'http://93.90.200.83/res/THG/img_Oberstufe.mp4', 20, 25, 3, 1, false, false]
+          ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 0, true, false],
+          ['2-EG', 'http://93.90.200.83/res/THG/VID_EG_2.mp4', 15, 20, IdEG2, 0, true, false],
+          ['2-EG', 'http://93.90.200.83/res/THG/VID_EG_2.mp4', 25, 27, IdEG2, 5, true, false],    //Video EG-1 (rechts)
+          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG.mp4', 35, 37, Id1OG, 20, true, false]
         ],
         [
-          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG.mp4', 10, 15, 1, 10, true, false],      //Video OG 3
-          ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 0, 3, 0, 15, true, false]
+          ['1-EG', 'http://93.90.200.83/res/THG/VID_EG_1.mp4', 0, 3, IdEG1, 16, true, false],     //Video EG-2 (links)
+          ['1-EG', 'http://93.90.200.83/res/THG/VID_EG_1.mp4', 5, 7, IdEG1, 26, true, false]
         ],
         [
-          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG.mp4', 0, 3, 1, 20, true, false],
+          ['2.OG', 'http://93.90.200.83/res/THG/VID_2OG.mp4', 40, 44, Id2OG, 0, true, false],
+          ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 2, 3, IdTrepOst, 15, true, false], // Video OG1
+          ['Oberstufe', 'http://93.90.200.83/res/THG/Vid_Oberstufe.mp4', 35, 37, IdObers , 1, false, false]
+        ],
+        [
+          ['3.OG', 'http://93.90.200.83/res/THG/VID_3OG.mp4', 40, 45, Id3OG, 20, true, false],      //Video OG 2
+          ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 30, true, false]
+        ],
+        [
+          ['Treppe', 'http://93.90.200.83/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 45, true, false] //Video OG 3
+        ],
+        [
+          ['1.OG', 'http://93.90.200.83/res/THG/VID_1OG.mp4', 0, 5, Id1OG, 36, true, false]   //BILD Oberstufenzimmer
         ]
 
       ];
     }else{
-      var testUrl = 'http://thiago.me/demo-360/cool.mp4';
-      var source2Url = './res/THG/VID_TrepOst.mp4';// ID 0
-      var source2Url = './res/THG/VID_EG_1.mp4';
-      var source2Url = './res/THG/VID_EG_2.mp4';
-      var source1Url = './res/THG/VID_1OG.mp4'; // ID 1
-      var source5Url = './res/THG/VID_2OG.mp4';
-      var source3Url = './res/THG/VID_3OG.mp4'; // ID 2
-      var source4Url = './res/THG/img_Oberstufe.mp4' //ID 3
+
+      beginVideoUrl = './res/THG/VID_TrepOst.mp4' ;
 
       array = [
         [
@@ -102,7 +111,7 @@
         [
           ['3.OG', './res/THG/VID_3OG.mp4', 8, 11, 2, 10, true, false],
           ['Treppe', './res/THG/VID_TrepOst.mp4', 2, 3, 0, 8, true, false], // Video OG1
-          ['Oberstufe', './res/THG/img_Oberstufe.mp4', 20, 25, 3, 1, false, false]
+          ['Oberstufe', './res/THG/Vid_Oberstufe.mp4', 20, 25, 3, 1, false, false]
         ],
         [
           ['1.OG', './res/THG/VID_1OG.mp4', 10, 15, 1, 10, true, false],      //Video OG 3
@@ -120,7 +129,7 @@
 
     var p = new Clappr.Player({
       //poster: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcRb9IzUh-vm4fdTEQ3oSRtigKgB1YTMh-dECbH7ZutLQMQUGnae%26s&sp=1607379300T0c8dd138c42daef5c0219376c5aef4aff7c9debf296b133c1b30ec9e787b8abc",
-      source: source3Url,
+      source: beginVideoUrl,
       width: window.innerWidth,
       height: window.innerHeight,
       preload: 'auto',
