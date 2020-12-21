@@ -6,6 +6,7 @@
 
 h1, p {
 	color: white;
+	cursor: pointer;
 }
 
 h1 {
