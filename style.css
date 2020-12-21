@@ -4,8 +4,11 @@
 	overflow: hidden;
 }
 
-h1 {
+h1, p {
 	color: white;
+}
+
+h1 {
 	font-size: 2.5em;
 }
 
@@ -18,7 +21,7 @@ h1 {
 	position: absolute;
 	height: auto;
 	width: 100%;
-	bottom: 10vh;
+	bottom: 7vh;
 	display: flex;
 	justify-content: center;
 	pointer-events: none;
@@ -92,23 +95,30 @@ h1 {
 #floorWrapper {
 	position: fixed;
 	top: 0;
-	left: -30em;
+	left: -15em;
 	transition: all 0.4s;
+	pointer-events: all;
 }
 
 #videoWrapper {
 	position: fixed;
 	top: 0;
-	left: -30em;
+	left: -15em;
 	transition: all 0.4s;
+	pointer-events: all;
 }
 
 #closeIconFloor {
-	background-color: green;
+	background-color: grey;
 }
 
 #closeIconVideo {
-	background-color: red;
+	background-color: grey;
+}
+
+.navSecContainer {
+	background-color: grey;
+	padding: 1em;
 }
 
 @media (pointer: coarse) {

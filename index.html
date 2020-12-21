@@ -29,11 +29,23 @@
     </div>
     <div class="secondLayer" id="floorWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
-      <h1>Stockwerke</h1>
+      <div class="navSecContainer">
+        <h1>Stockwerke</h1><br>
+        <p>Ergeschoss</p><br>
+        <p>1. Stock</p><br>
+        <p>2. Stock</p><br>
+        <p>3. Stock</p>
+      </div>
     </div>
     <div class="secondLayer" id="videoWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconVideo">close</span>
-      <h1>Infomationsvideos</h1>
+      <div class="navSecContainer">
+        <h1>Videos</h1><br>
+        <p>Chemie</p><br>
+        <p>Physik</p><br>
+        <p>Deutsch</p><br>
+        <p>Erdkunde</p>
+      </div>
     </div>
   </div>
 
@@ -308,19 +320,19 @@
     });
 
     document.querySelector("#floorIcon").addEventListener("click", (e) => {
-      document.querySelector("#floorWrapper").style.transform = "translate(30em, 0)";
+      document.querySelector("#floorWrapper").style.transform = "translate(15em, 0)";
     });
 
     document.querySelector("#closeIconFloor").addEventListener("click", (e) => {
-      document.querySelector("#floorWrapper").style.transform = "translate(-30em, 0)"
+      document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)"
     });
 
     document.querySelector("#videosIcon").addEventListener("click", (e) => {
-      document.querySelector("#videoWrapper").style.transform = "translate(30em, 0)";
+      document.querySelector("#videoWrapper").style.transform = "translate(15em, 0)";
     });
 
     document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
-      document.querySelector("#videoWrapper").style.transform = "translate(-30em, 0)"
+      document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
     });
   </script>
 </body>
