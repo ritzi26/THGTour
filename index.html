@@ -304,12 +304,13 @@
 
     document.querySelector(".buttonDiv").addEventListener("click", (e) => {
 
-      Walkable = false;
+      changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+      /*Walkable = false;
       array[videoId][currentLable][7] = false;
       var new_source = array[videoId][currentLable][1];
       changed = true;
       hideLable();
-      p.load(array[videoId][currentLable][1]);
+      p.load(new_source);
       p.play();
       var NewTime = array[videoId][currentLable][5];
       videoId_old = videoId;
@@ -318,8 +319,27 @@
       currentLable = 0;
       justStarted = true;
       forwardAllowed = true;
-      p.core.activePlayback.el.playbackRate = 1;
+      p.core.activePlayback.el.playbackRate = 1;*/
     });
+
+    function changeVideo(source, time, nVideoId ){
+      Walkable = false;
+      array[videoId][currentLable][7] = false;
+      var new_source = source; //
+      changed = true;
+      hideLable();
+      p.load(new_source);
+      p.play();
+      var NewTime = time; //
+      videoId_old = videoId;
+      currentLable_old = currentLable;
+      videoId = nVideoId;
+      currentLable = 0;
+      justStarted = true;
+      forwardAllowed = true;
+      p.core.activePlayback.el.playbackRate = 1;
+    }
+    
 
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
 
