@@ -275,7 +275,8 @@
 
     document.querySelector(".forward").addEventListener("touchstart", (e) => {walkForward();console.log("Start");});
     document.querySelector(".forward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
-    document.querySelector(".backward").addEventListener("click", (e) => {});
+    document.querySelector(".backward").addEventListener("touchstart", (e) => {walkBackward();console.log("Start");});
+    document.querySelector(".backward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
   </script>
 </body>
 </html>
