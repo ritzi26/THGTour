@@ -154,20 +154,50 @@
 
       array = [
         [
-          ['1.OG', './res/THG/VID_1OG.mp4', 8, 12, 1, 0, true, false], //Video Treppe ost
-          ['3.OG', './res/THG/VID_3OG.mp4', 15, 17, 2, 0, true, false]
+          ['EG', './res/THG/VID_EG_1.mp4', 0, 2, IdEG1, 0, true, false],
+          ['1.OG', './res/THG/VID_1OG.mp4', 17, 19, Id1OG, 0, true, false],    //Video Treppe ost
+          ['2.OG', './res/THG/VID_2OG.mp4', 33, 38, Id2OG, 0, true, false],
+          ['3.OG', './res/THG/VID_3OG.mp4', 50, 54, Id3OG, 0, true, false]
         ],
         [
-          ['3.OG', './res/THG/VID_3OG.mp4', 8, 11, 2, 10, true, false],
-          ['Treppe', './res/THG/VID_TrepOst.mp4', 2, 3, 0, 8, true, false], // Video OG1
-          ['Oberstufe', './res/THG/Vid_Oberstufe.mp4', 20, 25, 3, 1, false, false]
+          ['Treppe', './res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 0, true, false],
+          ['2-EG', './res/THG/VID_EG_2.mp4', 17, 20, IdEG2, 15, true, false],
+          ['2-EG', './res/THG/VID_EG_2.mp4', 35, 37, IdEG2, 0, true, false],    //Video EG-1 (rechts)
+          ['1.OG', './res/THG/VID_1OG.mp4', 47, 50, Id1OG, 24, true, false]
         ],
         [
-          ['1.OG', './res/THG/VID_1OG.mp4', 10, 15, 1, 10, true, false],      //Video OG 3
-          ['Treppe', './res/THG/VID_TrepOst.mp4', 0, 3, 0, 15, true, false]
+          ['1-EG', './res/THG/VID_EG_1.mp4', 0, 3, IdEG1, 19, true, false],     //Video EG-2 (links)
+          ['1-EG', './res/THG/VID_EG_1.mp4', 13, 16, IdEG1, 36, true, false]
         ],
         [
-          ['1.OG', './res/THG/VID_1OG.mp4', 0, 3, 1, 20, true, false],
+          ['2.OG', './res/THG/VID_2OG.mp4', 44, 50, Id2OG, 31, true, false],
+          ['Treppe', './res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 18, true, false], // Video OG1
+          ['Oberstufe', './res/THG/Vid_Oberstufe.mp4', 35, 37, IdObers , 1, false, false],
+          ['Treppe', './res/THG/VID_EG_1.mp4', 23, 25, IdEG1, 49, true, false]
+        ],
+        [
+          ['3.OG', './res/THG/VID_3OG.mp4', 66, 67, Id3OG, 23, true, false],      //Video OG 2
+          ['Treppe', './res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 30, true, false],
+          ['Treppe', './res/THG/VID_1OG.mp4', 30, 32, Id1OG, 48, true, false],
+          ['Erdkunde 227', './res/THG/VID_227.mp4', 39, 41, Id227 , 1, false, false],
+          ['Englisch 229', './res/THG/VID_229.mp4', 21, 23, Id229 , 1, false, false],
+        ],
+        [
+          ['Treppe', './res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 45, true, false],
+          ['Treppe', './res/THG/VID_2OG.mp4', 22, 24, Id2OG, 66, true, false], //Video OG 3
+          ['Physik 339', './res/THG/VID_339.mp4', 36, 38, Id339 , 1, false, false],
+        ],
+        [
+          ['1.OG', './res/THG/VID_1OG.mp4', 0, 5, Id1OG, 36, true, false]   //BILD Oberstufenzimmer
+        ],
+        [
+          ['2.OG', './res/THG/VID_2OG.mp4', 0, 5, Id2OG, 40, true, false]   //BILD Erdkunde 227
+        ],
+        [
+          ['2.OG', './res/THG/VID_2OG.mp4', 0, 5, Id2OG, 21, true, false]   //BILD Erdkunde 229
+        ],
+        [
+          ['3.OG', './res/THG/VID_3OG.mp4', 0, 5, Id3OG, 37, true, false]   //BILD Physik 339
         ]
 
       ];
@@ -377,10 +407,10 @@
       document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
     });
 
-    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_EG_1.mp4", 1, IdEG1);document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)";document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)";});
-    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_1OG.mp4", 1, Id1OG);document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)";document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)";});
-    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_2OG.mp4", 1, Id2OG);document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)";document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)";});
-    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo("http://93.90.200.83/res/THG/VID_3OG.mp4", 1, Id3OG);document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)";document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)";});
+    document.querySelector("#EG").addEventListener("click", (e) => {if(!local){changeVideo("http://93.90.200.83/res/THG/VID_EG_1.mp4", 0, IdEG1);}else{changeVideo("./res/THG/VID_EG_1.mp4", 0, IdEG1);}});
+    document.querySelector("#S1").addEventListener("click", (e) => {if(!local){changeVideo("http://93.90.200.83/res/THG/VID_1OG.mp4", 0, Id1OG);}else{changeVideo("./res/THG/VID_1OG.mp4", 0, Id1OG);}});
+    document.querySelector("#S2").addEventListener("click", (e) => {if(!local){changeVideo("http://93.90.200.83/res/THG/VID_2OG.mp4", 0, Id2OG);}else{changeVideo("./res/THG/VID_2OG.mp4", 0, Id2OG);}});
+    document.querySelector("#S3").addEventListener("click", (e) => {if(!local){changeVideo("http://93.90.200.83/res/THG/VID_3OG.mp4", 0, Id3OG);}else{changeVideo("./res/THG/VID_3OG.mp4", 0, Id3OG);}});
 
     document.querySelector("#V1").addEventListener("click", (e) => {console.log("V1");});
     document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
