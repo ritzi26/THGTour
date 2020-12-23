@@ -58,6 +58,8 @@
     let server = ['http://93.90.200.83','http://192.168.0.89','.'];   //neu Art den res Server zu wählen
     var serverwahl = 1;       //diese Zahl ändern um Manuel anderen Server zu wählen
 
+    var playbackRate = 2;
+
     var beginVideoUrl ; // das erste Video das geladen wird
 
     var IdTrepOst = 0;  //108
@@ -117,13 +119,13 @@
           ['1-EG', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 13, 16, IdEG1, 36, true, false]
         ],
         [
-          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 44, 50, Id2OG, 31, true, false],
+          [true, server[serverwahl]+'/res/THG/VID_2OG.mp4', 44, 50, Id2OG, 31, true, false],
           ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 18, true, false], // Video OG1
           ['Oberstufe', server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4', 35, 37, IdObers , 1, false, false],
-          ['Treppe', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 23, 25, IdEG1, 45, true, false]
+          ['Treppe', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 25, 27, IdEG1, 45, true, false]
         ],
         [
-          ['3.OG', server[serverwahl]+'/res/THG/VID_3OG.mp4', 66, 67, Id3OG, 23, true, false],      //Video OG 2
+          [true, server[serverwahl]+'/res/THG/VID_3OG.mp4', 65, 67, Id3OG, 23, true, false],      //Video OG 2
           ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 30, true, false],
           ['Treppe', server[serverwahl]+'/res/THG/VID_1OG.mp4', 30, 32, Id1OG, 48, true, false],
           ['Erdkunde 227', server[serverwahl]+'/res/THG/VID_227.mp4', 39, 41, Id227 , 1, false, false],
@@ -131,7 +133,7 @@
         ],
         [
           ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 45, true, false],
-          ['Treppe', server[serverwahl]+'/res/THG/VID_2OG.mp4', 22, 24, Id2OG, 66, true, false], //Video OG 3
+          ['Treppe', server[serverwahl]+'/res/THG/VID_2OG.mp4', 22, 24, Id2OG, 65, true, false], //Video OG 3
           ['Physik 339', server[serverwahl]+'/res/THG/VID_339.mp4', 36, 38, Id339 , 1, false, false],
         ],
         [
@@ -162,11 +164,8 @@
       plugins: [Video360],
       parentId: '#player',
       events: {onPlay: function (){
-        console.log("00");
         if (justStarted){
-          console.log("1");
           if (changed){
-            console.log("2");
             p.seek(NewTime);
             p.play();
             changed = false;
@@ -182,7 +181,7 @@
   });
     p.getPlugin('click_to_pause').disable();
 
-    p.core.activePlayback.el.playbackRate = 1;
+    p.core.activePlayback.el.playbackRate = playbackRate;
 
     p.play();
     //var startTimer = setTimeout(() => {p.pause();}, 1000);
@@ -224,15 +223,29 @@
             if (p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd ){
               currentLable = i;
               if (array[videoId][currentLable][0] == true){
-                changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+                console.log("set Lable");
+                setLableText("nächstes Geschoss");
+                array[videoId][i][7] = true;
+                if(p.getCurrentTime() > (LabelStart+1) && p.getCurrentTime() < LabelEnd){
+                  changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+                }
               }else{
               setLable(currentLable);
               array[videoId][i][7] = true;
             }
             }else if ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) {
               currentLable = i;
-              setLable(currentLable);
-              array[videoId][i][7] = true;
+              if (array[videoId][currentLable][0] == true){
+                console.log("set Lable");
+                setLableText("nächstes Geschoss");
+                array[videoId][i][7] = true;
+                if(p.getDuration()-p.getCurrentTime() > (LabelStart+1) && (p.getDuration() - p.getCurrentTime()) < LabelEnd){
+                  changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+                }
+              }else{
+                setLable(currentLable);
+                array[videoId][i][7] = true;
+              }
             }else if (LabelSet){
               array[videoId][i][7] = false;
               hideLable();
@@ -250,6 +263,11 @@
 
     function setLable(label) {
       document.querySelector(".buttonDiv h1").innerHTML = array[videoId][label][0];
+      document.querySelector(".buttonDiv").style.visibility = "visible"
+    };
+
+    function setLableText(Textset) {
+      document.querySelector(".buttonDiv h1").innerHTML = Textset;
       document.querySelector(".buttonDiv").style.visibility = "visible"
     };
 
@@ -319,7 +337,6 @@
       var new_source = source; //
       changed = true;
       hideLable();
-      p.load(new_source);
       NewTime = time; //
       videoId_old = videoId;
       currentLable_old = currentLable;
@@ -327,7 +344,8 @@
       currentLable = 0;
       justStarted = true;
       forwardAllowed = true;
-      p.core.activePlayback.el.playbackRate = 1;
+      p.load(new_source);
+      p.core.activePlayback.el.playbackRate = playbackRate;
     }
 
 
