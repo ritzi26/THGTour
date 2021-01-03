@@ -9,7 +9,10 @@
 </head>
 
 <body>
-  <div id="player"></div>
+  <div id="playerParent">
+    <div id="player"></div>
+    <div id="InfoPlayer"></div>
+  </div>
   <div class="wrapper">
     <div class="buttonDiv">
       <h1>Wechseln</h1>
@@ -77,7 +80,10 @@
     var Id229 = 8;
     var Id339 = 9;
 
+    var InfoRunning = false;
+
     let array ;
+    let InfoVideos;
 
     var dir = true;
     var forwardAllowed = true;
@@ -102,6 +108,7 @@
     ]
     */
       beginVideoUrl = server[serverwahl]+'/res/THG/VID_TrepOst.mp4' ;
+      //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
 
       array = [
         [
@@ -142,16 +149,19 @@
           ['1.OG', server[serverwahl]+'/res/THG/VID_1OG.mp4', 0, 5, Id1OG, 36, true, false, false, 0]   //BILD Oberstufenzimmer; autoJump disabled pos 8 = false; infovideo ID = pos 9
         ],
         [
-          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, 5, Id2OG, 40, true, false]   //BILD Erdkunde 227
+          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, 5, Id2OG, 40, true, false, false, 1]   //BILD Erdkunde 227
         ],
         [
-          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, 5, Id2OG, 21, true, false]   //BILD Erdkunde 229
+          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, 5, Id2OG, 21, true, false, false, 1]   //BILD Erdkunde 229
         ],
         [
-          ['3.OG', server[serverwahl]+'/res/THG/VID_3OG.mp4', 0, 5, Id3OG, 37, true, false]   //BILD Physik 339
+          ['3.OG', server[serverwahl]+'/res/THG/VID_3OG.mp4', 0, 5, Id3OG, 37, true, false, false, 1]   //BILD Physik 339
         ]
 
       ];
+
+      InfoVideos = [server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4'];
+        // sources der Infovideos abhängig von dem Aktiven 360 Zimmer bild 
 
     console.log(array[0][0][0]);
 
@@ -289,13 +299,32 @@
           if(Walkable){
             walkForward();
           }
-        } else if ((e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") && backwardAllowed) {
+        }else if ((e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") && backwardAllowed) {
           if(Walkable){
             walkBackward();
           }
         }
+      }else if (e.code == "KeyI"){
+        startInfo(InfoVideos[array[videoId][0][9]]);
       }
     };
+
+    function startInfo (source){
+      if(!InfoRunning){
+        InfoRunning = true;
+        console.log("i pressed");
+        console.log("video hinterlegt");
+        var c = document.getElementById("InfoPlayer");
+        var v = document.createElement("video");
+        v.Type = "video/mp4";
+        v.src = source;
+        v.controls = true;
+        v.requestFullscreen();
+        c.appendChild(v);
+        v.play();
+        v.addEventListener('fullscreenchange', (event) => {if (!document.fullscreenElement){v.remove(); InfoRunning = false;}})
+      }
+    }
 
     document.onkeyup = function(e) {
       if (e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") {
@@ -383,7 +412,7 @@
     document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, Id2OG);});
     document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+'/res/THG/VID_3OG.mp4', 0, Id3OG);});
 
-    document.querySelector("#V1").addEventListener("click", (e) => {console.log("V1");});
+    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4')});
     document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
     document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");});
     document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");});
