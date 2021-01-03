@@ -58,6 +58,8 @@
     let server = ['http://93.90.200.83','http://192.168.0.89','.'];   //neu Art den res Server zu wählen
     var serverwahl = 0;       //diese Zahl ändern um Manuel anderen Server zu wählen
 
+    var autoJump = true; //möglichkeit um global autoJump zu aktivieren
+
     var playbackRate = 2;
 
     var beginVideoUrl ; // das erste Video das geladen wird
@@ -95,7 +97,7 @@
     /*
     [Videos
       [Stellen
-        [ButtonName, SourceLink, StartTime, EndTime, NewVideoId, NewTime, Walkable, LabelSet]
+        [ButtonName, SourceLink, StartTime, EndTime, NewVideoId, NewTime, Walkable, LabelSet, autoJump, infovideo ID]
       ]
     ]
     */
@@ -111,22 +113,22 @@
         [
           ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 0, true, false],
           ['2-EG', server[serverwahl]+'/res/THG/VID_EG_2.mp4', 17, 20, IdEG2, 15, true, false],
-          ['2-EG', server[serverwahl]+'/res/THG/VID_EG_2.mp4', 35, 37, IdEG2, 0, true, false],    //Video EG-1 (rechts)
-          [true, server[serverwahl]+'/res/THG/VID_1OG.mp4', 47, 50, Id1OG, 24, true, false]
+          ['2-EG', server[serverwahl]+'/res/THG/VID_EG_2.mp4', 35, 37, IdEG2, 0, true, false],      //Video EG-1 (rechts)
+          ['1.OG', server[serverwahl]+'/res/THG/VID_1OG.mp4', 47, 50, Id1OG, 24, true, false, true]  //autoJump enable pos 8
         ],
         [
-          ['1-EG', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 0, 3, IdEG1, 19, true, false],     //Video EG-2 (links)
+          ['1-EG', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 0, 3, IdEG1, 19, true, false],       //Video EG-2 (links)
           ['1-EG', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 13, 16, IdEG1, 36, true, false]
         ],
         [
-          [true, server[serverwahl]+'/res/THG/VID_2OG.mp4', 44, 50, Id2OG, 31, true, false],
+          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 44, 50, Id2OG, 31, true, false, true],  //autoJump enable pos 8 = true
           ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 18, true, false], // Video OG1
           ['Oberstufe', server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4', 35, 37, IdObers , 1, false, false],
           ['Treppe', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 25, 27, IdEG1, 45, true, false]
         ],
         [
-          [true, server[serverwahl]+'/res/THG/VID_3OG.mp4', 65, 67, Id3OG, 23, true, false],      //Video OG 2
-          ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 30, true, false],
+          ['3.OG', server[serverwahl]+'/res/THG/VID_3OG.mp4', 65, 67, Id3OG, 23, true, false, true],    //autoJump enable pos 8
+          ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 30, true, false],  //Video OG 2
           ['Treppe', server[serverwahl]+'/res/THG/VID_1OG.mp4', 30, 32, Id1OG, 48, true, false],
           ['Erdkunde 227', server[serverwahl]+'/res/THG/VID_227.mp4', 39, 41, Id227 , 1, false, false],
           ['Englisch 229', server[serverwahl]+'/res/THG/VID_229.mp4', 21, 23, Id229 , 1, false, false],
@@ -137,7 +139,7 @@
           ['Physik 339', server[serverwahl]+'/res/THG/VID_339.mp4', 36, 38, Id339 , 1, false, false],
         ],
         [
-          ['1.OG', server[serverwahl]+'/res/THG/VID_1OG.mp4', 0, 5, Id1OG, 36, true, false]   //BILD Oberstufenzimmer
+          ['1.OG', server[serverwahl]+'/res/THG/VID_1OG.mp4', 0, 5, Id1OG, 36, true, false, false, 0]   //BILD Oberstufenzimmer; autoJump disabled pos 8 = false; infovideo ID = pos 9
         ],
         [
           ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, 5, Id2OG, 40, true, false]   //BILD Erdkunde 227
@@ -220,29 +222,23 @@
             console.log("Ende" + LabelEnd);*/
             if (p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd ){
               currentLable = i;
-              if (array[videoId][currentLable][0] == true){
-                console.log("set Lable");
-                setLableText("nächstes Geschoss");
-                array[videoId][i][7] = true;
+              setLableText(array[videoId][currentLable][0]);
+              array[videoId][i][7] = true;
+
+              if (array[videoId][currentLable][8] == true && autoJump){
                 if(p.getCurrentTime() > (LabelStart+1) && p.getCurrentTime() < LabelEnd){
                   changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
                 }
-              }else{
-              setLable(currentLable);
-              array[videoId][i][7] = true;
-            }
+              }
             }else if ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) {
               currentLable = i;
-              if (array[videoId][currentLable][0] == true){
-                console.log("set Lable");
-                setLableText("nächstes Geschoss");
-                array[videoId][i][7] = true;
+              setLable(currentLable);
+              array[videoId][i][7] = true;
+
+              if (array[videoId][currentLable][8] == true && autoJump){
                 if(p.getDuration()-p.getCurrentTime() > (LabelStart+1) && (p.getDuration() - p.getCurrentTime()) < LabelEnd){
                   changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
                 }
-              }else{
-                setLable(currentLable);
-                array[videoId][i][7] = true;
               }
             }else if (LabelSet){
               array[videoId][i][7] = false;
