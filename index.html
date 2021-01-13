@@ -61,7 +61,7 @@
 
     var autoJump = true; //möglichkeit um global autoJump zu aktivieren
 
-    var playbackRate = 2;
+    var playbackRate = 1;
 
     var beginVideoUrl ; // das erste Video das geladen wird
 
@@ -89,6 +89,7 @@
     var barrier = 0.5;
 
     var justStarted = true;
+    var firstWalk = true;
 
     var NewTime;
     var videoId_old;
@@ -164,7 +165,7 @@
     console.log(array[0][0][0]);
 
     var p = new Clappr.Player({
-      //poster: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcRb9IzUh-vm4fdTEQ3oSRtigKgB1YTMh-dECbH7ZutLQMQUGnae%26s&sp=1607379300T0c8dd138c42daef5c0219376c5aef4aff7c9debf296b133c1b30ec9e787b8abc",
+      poster: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcRb9IzUh-vm4fdTEQ3oSRtigKgB1YTMh-dECbH7ZutLQMQUGnae%26s&sp=1610557240T22d43907be45310dcfc5a8f51e42a6869dd3c1c268880b141e8e8f55d10e8120",
       source: beginVideoUrl,
       width: window.innerWidth,
       height: window.innerHeight,
@@ -194,12 +195,15 @@
     p.play();
     //var startTimer = setTimeout(() => {p.pause();}, 1000);
 
+    setInterval(()=> {if(firstWalk){p.play();p.pause(); console.log();}},100);
+
+
     setInterval(() =>{
       if(justStarted){
         p.play();
         console.log("starting");
       }
-    }, 10);
+    }, 100);
 
     setInterval(() => {
       if (Walkable){
@@ -281,6 +285,7 @@
     };
 
     function walkForward() {
+      firstWalk = false;
       if (p.getCurrentTime() > (p.getDuration()/2)) {p.seek(p.getDuration()-p.getCurrentTime());}
       dir = true;
       backwardAllowed = true;
@@ -288,6 +293,7 @@
     }
 
     function walkBackward() {
+      firstWalk = false;
       if (p.getCurrentTime() < (p.getDuration()/2)) {p.seek(p.getDuration()-p.getCurrentTime());}
       dir = false;
       forwardAllowed = true;
@@ -339,8 +345,6 @@
           document.getElementById("InfoPlayer").style.zIndex = -10;
           document.getElementById('player').style.zIndex = 6 ;
           InfoRunning = false;
-          p.play();
-          p.pause();
         }catch(e){
           console.log("kein 2D Player" + e);
         }
@@ -375,6 +379,7 @@
       justStarted = true;
       forwardAllowed = true;
       p.load(new_source);
+      firstWalk = true;
       p.core.activePlayback.el.playbackRate = playbackRate;
     }
 
