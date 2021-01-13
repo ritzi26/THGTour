@@ -9,10 +9,8 @@
 </head>
 
 <body>
-  <div id="playerParent">
     <div id="player"></div>
     <div id="InfoPlayer"></div>
-  </div>
   <div class="wrapper">
     <div class="buttonDiv">
       <h1>Wechseln</h1>
@@ -161,7 +159,7 @@
       ];
 
       InfoVideos = [server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4'];
-        // sources der Infovideos abhängig von dem Aktiven 360 Zimmer bild 
+        // sources der Infovideos abhängig von dem Aktiven 360 Zimmer bild
 
     console.log(array[0][0][0]);
 
@@ -263,7 +261,10 @@
       }
     },100);
 
-    setInterval(() => {p.resize({height: window.innerHeight, width: window.innerWidth});}, 1000);
+    setInterval(() => {p.resize({height: window.innerHeight, width: window.innerWidth});
+      //document.getElementById("InfoPlayer").style.height = window.innerHeight;
+      //document.getElementById("InfoPlayer").style.width = window.innerWidth;
+    }, 1000);
 
     function setLable(label) {
       document.querySelector(".buttonDiv h1").innerHTML = array[videoId][label][0];
@@ -307,22 +308,42 @@
       }else if (e.code == "KeyI"){
         startInfo(InfoVideos[array[videoId][0][9]]);
       }
+      if (e.code == "KeyO") {
+          endInfo();
+      }
     };
 
     function startInfo (source){
       if(!InfoRunning){
         InfoRunning = true;
-        console.log("i pressed");
-        console.log("video hinterlegt");
+        Walkable = false;
         var c = document.getElementById("InfoPlayer");
         var v = document.createElement("video");
+        v.setAttribute("id", "D2Player")
         v.Type = "video/mp4";
         v.src = source;
         v.controls = true;
-        v.requestFullscreen();
+        c.style.zIndex = 7;
+        document.getElementById('player').style.zIndex = -10 ;
         c.appendChild(v);
         v.play();
-        v.addEventListener('fullscreenchange', (event) => {if (!document.fullscreenElement){v.remove(); InfoRunning = false;}})
+      }
+    }
+
+    function endInfo(){
+      if(InfoRunning){
+        try{
+          Walkable = true;
+          var v = document.getElementById('D2Player');
+          v.remove();
+          document.getElementById("InfoPlayer").style.zIndex = -10;
+          document.getElementById('player').style.zIndex = 6 ;
+          InfoRunning = false;
+          p.play();
+          p.pause();
+        }catch(e){
+          console.log("kein 2D Player" + e);
+        }
       }
     }
 
@@ -337,21 +358,7 @@
     document.querySelector(".buttonDiv").addEventListener("click", (e) => {
 
       changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
-      /*Walkable = false;
-      array[videoId][currentLable][7] = false;
-      var new_source = array[videoId][currentLable][1];
-      changed = true;
-      hideLable();
-      p.load(new_source);
-      p.play();
-      var NewTime = array[videoId][currentLable][5];
-      videoId_old = videoId;
-      currentLable_old = currentLable;
-      videoId = array[videoId][currentLable][4];
-      currentLable = 0;
-      justStarted = true;
-      forwardAllowed = true;
-      p.core.activePlayback.el.playbackRate = 1;*/
+
     });
 
     function changeVideo(source, time, nVideoId ){
