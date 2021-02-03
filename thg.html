@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>THG Tour</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="player"></div>
+    <div id="InfoPlayer"></div>
+  <div class="wrapper">
+    <div class="buttonDiv">
+      <h1>Wechseln</h1>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="material-icons icon forward">keyboard_arrow_up</span>
+    <span class="material-icons icon backward">keyboard_arrow_down</span>
+  </div>
+  <div class="nav">
+    <span class="material-icons icon menu-icon" id="openIcon">menu</span>
+    <div id="menuIconWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIcon">close</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon" title="Startseite">home</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Stockwerke">room</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Videos">movie</span>
+    </div>
+    <div class="secondLayer" id="floorWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
+      <div class="navSecContainer">
+        <h1>Stockwerke</h1><br>
+        <p id="EG">Ergeschoss</p><br>
+        <p id="S1">1. Stock</p><br>
+        <p id="S2">2. Stock</p><br>
+        <p id="S3">3. Stock</p>
+      </div>
+    </div>
+    <div class="secondLayer" id="videoWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIconVideo">close</span>
+      <div class="navSecContainer">
+        <h1>Videos</h1><br>
+        <p id="V1">Chemie</p><br>
+        <p id="V2">Physik</p><br>
+        <p id="V3">Deutsch</p><br>
+        <p id="V4">Erdkunde</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
+  <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
+  <script type="text/javascript" charset="utf-8">
+
+
+                  // online ,           localer pi            , relative
+    let server = ['http://93.90.200.83','http://192.168.0.89','.'];   //neu Art den res Server zu wählen
+    var serverwahl = 0;       //diese Zahl ändern um Manuel anderen Server zu wählen
+
+    var autoJump = true; //möglichkeit um global autoJump zu aktivieren
+
+    var playbackRate = 1;
+
+    var beginVideoUrl ; // das erste Video das geladen wird
+
+    var IdTrepOst = 0;  //108
+    var IdEG1 = 1;    //100                 //Video Id's
+    var IdEG2 = 2;    //32s                 // bestimmt durch die Reinfolge der array
+    var Id1OG = 3;    //99s
+    var Id2OG = 4;    //134s
+    var Id3OG = 5;    //79s
+
+
+    var IdObers = 6;
+    var Id227 = 7;
+    var Id229 = 8;
+    var Id339 = 9;
+
+    var InfoRunning = false;
+
+    let array ;
+    let InfoVideos;
+
+    var dir = true;
+    var forwardAllowed = true;
+    var backwardAllowed = false;
+    var barrier = 0.5;
+
+    var justStarted = true;
+    var firstWalk = true;
+
+    var NewTime;
+    var videoId_old;
+    var videoId = 0;
+    var currentLable_old;
+    var currentLable = 0; // 0 = kein Lable ist gesetzt, zahl entspricht sonst array
+    var Walkable = true;
+    var changed = false;
+
+    /*
+    [Videos
+      [Stellen
+        [ButtonName, SourceLink, StartTime, EndTime, NewVideoId, NewTime, Walkable, LabelSet, autoJump, infovideo ID]
+      ]
+    ]
+    */
+      beginVideoUrl = server[serverwahl]+'/res/THG/VID_TrepOst.mp4' ;
+      //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
+
+      array = [
+        [
+          ['EG', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 0, 2, IdEG1, 0, true, false],
+          ['1.OG', server[serverwahl]+'/res/THG/VID_1OG.mp4', 17, 19, Id1OG, 0, true, false],    //Video Treppe ost
+          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 33, 38, Id2OG, 0, true, false],
+          ['3.OG', server[serverwahl]+'/res/THG/VID_3OG.mp4', 50, 54, Id3OG, 0, true, false]
+        ],
+        [
+          ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 0, true, false],
+          ['2-EG', server[serverwahl]+'/res/THG/VID_EG_2.mp4', 17, 20, IdEG2, 15, true, false],
+          ['2-EG', server[serverwahl]+'/res/THG/VID_EG_2.mp4', 35, 37, IdEG2, 0, true, false],      //Video EG-1 (rechts)
+          ['1.OG', server[serverwahl]+'/res/THG/VID_1OG.mp4', 47, 50, Id1OG, 24, true, false, true]  //autoJump enable pos 8
+        ],
+        [
+          ['1-EG', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 0, 3, IdEG1, 19, true, false],       //Video EG-2 (links)
+          ['1-EG', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 13, 16, IdEG1, 36, true, false]
+        ],
+        [
+          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 44, 50, Id2OG, 31, true, false, true],  //autoJump enable pos 8 = true
+          ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 18, true, false], // Video OG1
+          ['Oberstufe', server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4', 35, 37, IdObers , 1, false, false],
+          ['Treppe', server[serverwahl]+'/res/THG/VID_EG_1.mp4', 25, 27, IdEG1, 45, true, false]
+        ],
+        [
+          ['3.OG', server[serverwahl]+'/res/THG/VID_3OG.mp4', 65, 67, Id3OG, 23, true, false, true],    //autoJump enable pos 8
+          ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 30, true, false],  //Video OG 2
+          ['Treppe', server[serverwahl]+'/res/THG/VID_1OG.mp4', 30, 32, Id1OG, 48, true, false],
+          ['Erdkunde 227', server[serverwahl]+'/res/THG/VID_227.mp4', 39, 41, Id227 , 1, false, false],
+          ['Englisch 229', server[serverwahl]+'/res/THG/VID_229.mp4', 21, 23, Id229 , 1, false, false],
+        ],
+        [
+          ['Treppe', server[serverwahl]+'/res/THG/VID_TrepOst.mp4', 0, 3, IdTrepOst, 45, true, false],
+          ['Treppe', server[serverwahl]+'/res/THG/VID_2OG.mp4', 22, 24, Id2OG, 65, true, false], //Video OG 3
+          ['Physik 339', server[serverwahl]+'/res/THG/VID_339.mp4', 36, 38, Id339 , 1, false, false],
+        ],
+        [
+          ['1.OG', server[serverwahl]+'/res/THG/VID_1OG.mp4', 0, 5, Id1OG, 36, true, false, false, 0]   //BILD Oberstufenzimmer; autoJump disabled pos 8 = false; infovideo ID = pos 9
+        ],
+        [
+          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, 5, Id2OG, 40, true, false, false, 1]   //BILD Erdkunde 227
+        ],
+        [
+          ['2.OG', server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, 5, Id2OG, 21, true, false, false, 1]   //BILD Erdkunde 229
+        ],
+        [
+          ['3.OG', server[serverwahl]+'/res/THG/VID_3OG.mp4', 0, 5, Id3OG, 37, true, false, false, 1]   //BILD Physik 339
+        ]
+
+      ];
+
+      InfoVideos = [server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4'];
+        // sources der Infovideos abhängig von dem Aktiven 360 Zimmer bild
+
+    console.log(array[0][0][0]);
+
+    var p = new Clappr.Player({
+      poster: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcRb9IzUh-vm4fdTEQ3oSRtigKgB1YTMh-dECbH7ZutLQMQUGnae%26s&sp=1610557240T22d43907be45310dcfc5a8f51e42a6869dd3c1c268880b141e8e8f55d10e8120",
+      source: beginVideoUrl,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      preload: 'auto',
+      chromeless: true,
+      mute: true,
+      plugins: [Video360],
+      parentId: '#player',
+      events: {onPlay: function (){
+        if (justStarted){
+          if (changed){
+            p.seek(NewTime);
+            p.play();
+            changed = false;
+            Walkable = array[videoId_old][currentLable_old][6];
+          }
+          p.pause();
+          justStarted = false;
+        }
+      }
+    },
+  });
+    p.getPlugin('click_to_pause').disable();
+
+    p.core.activePlayback.el.playbackRate = playbackRate;
+
+    p.play();
+    //var startTimer = setTimeout(() => {p.pause();}, 1000);
+
+    setInterval(()=> {if(firstWalk){p.play();p.pause(); console.log();}},100);
+
+
+    setInterval(() =>{
+      if(justStarted){
+        p.play();
+        console.log("starting");
+      }
+    }, 100);
+
+    setInterval(() => {
+      if (Walkable){
+        if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-barrier)) {
+          p.pause();
+          forwardAllowed = false;
+        } else if (!dir && (p.getCurrentTime() > p.getDuration()-barrier)) {
+          p.pause();
+          backwardAllowed = false;
+        } else {
+          forwardAllowed = true;
+          backwardAllowed = true;
+        }
+      }
+    }, 100);
+
+    // controll Intervall für Labels
+    setInterval(() => {
+        for(var i =0; i< array[videoId].length; i++ ){
+          try {
+            var LabelStart = array[videoId][i][2];
+            var LabelEnd = array[videoId][i][3];
+            var LabelSet = array[videoId][i][7];
+            /*console.log("Start" + LabelStart);
+            var control = p.getDuration() - p.getCurrentTime();
+            console.log("currentTime_reverse" + control);
+            console.log("currentTime" + p.getCurrentTime());
+            console.log("Ende" + LabelEnd);*/
+            if (p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd ){
+              currentLable = i;
+              setLableText(array[videoId][currentLable][0]);
+              array[videoId][i][7] = true;
+
+              if (array[videoId][currentLable][8] == true && autoJump){
+                if(p.getCurrentTime() > (LabelStart+1) && p.getCurrentTime() < LabelEnd){
+                  changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+                }
+              }
+            }else if ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) {
+              currentLable = i;
+              setLable(currentLable);
+              array[videoId][i][7] = true;
+
+              if (array[videoId][currentLable][8] == true && autoJump){
+                if(p.getDuration()-p.getCurrentTime() > (LabelStart+1) && (p.getDuration() - p.getCurrentTime()) < LabelEnd){
+                  changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+                }
+              }
+            }else if (LabelSet){
+              array[videoId][i][7] = false;
+              hideLable();
+              currentLable = 0;
+            }
+        }catch (e) {
+          console.log("Video Id: " + videoId);
+          console.log("label check: " + i);
+          console.log(e);
+        }
+      }
+    },100);
+
+    setInterval(() => {p.resize({height: window.innerHeight, width: window.innerWidth});
+      //document.getElementById("InfoPlayer").style.height = window.innerHeight;
+      //document.getElementById("InfoPlayer").style.width = window.innerWidth;
+    }, 1000);
+
+    function setLable(label) {
+      document.querySelector(".buttonDiv h1").innerHTML = array[videoId][label][0];
+      document.querySelector(".buttonDiv").style.visibility = "visible"
+    };
+
+    function setLableText(Textset) {
+      document.querySelector(".buttonDiv h1").innerHTML = Textset;
+      document.querySelector(".buttonDiv").style.visibility = "visible"
+    };
+
+    function hideLable() {
+      document.querySelector(".buttonDiv").style.visibility = "collapse"
+    };
+
+    function walkForward() {
+      firstWalk = false;
+      if (p.getCurrentTime() > (p.getDuration()/2)) {p.seek(p.getDuration()-p.getCurrentTime());}
+      dir = true;
+      backwardAllowed = true;
+        p.play();
+    }
+
+    function walkBackward() {
+      firstWalk = false;
+      if (p.getCurrentTime() < (p.getDuration()/2)) {p.seek(p.getDuration()-p.getCurrentTime());}
+      dir = false;
+      forwardAllowed = true;
+      p.play();
+    }
+
+    document.onkeydown = function(e) {
+      if (Walkable){
+        if ((e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") && forwardAllowed) {
+          if(Walkable){
+            walkForward();
+          }
+        }else if ((e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") && backwardAllowed) {
+          if(Walkable){
+            walkBackward();
+          }
+        }
+      }else if (e.code == "KeyI"){
+        startInfo(InfoVideos[array[videoId][0][9]]);
+      }
+      if (e.code == "KeyO") {
+          endInfo();
+      }
+    };
+
+    function startInfo (source){
+      if(!InfoRunning){
+        InfoRunning = true;
+        Walkable = false;
+        var c = document.getElementById("InfoPlayer");
+        var v = document.createElement("video");
+        v.setAttribute("id", "D2Player")
+        v.Type = "video/mp4";
+        v.src = source;
+        v.controls = true;
+        c.style.zIndex = 7;
+        document.getElementById('player').style.zIndex = -10 ;
+        c.appendChild(v);
+        v.play();
+      }
+    }
+
+    function endInfo(){
+      if(InfoRunning){
+        try{
+          Walkable = true;
+          var v = document.getElementById('D2Player');
+          v.remove();
+          document.getElementById("InfoPlayer").style.zIndex = -10;
+          document.getElementById('player').style.zIndex = 6 ;
+          InfoRunning = false;
+        }catch(e){
+          console.log("kein 2D Player" + e);
+        }
+      }
+    }
+
+    document.onkeyup = function(e) {
+      if (e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") {
+        p.pause();
+      } else if (e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") {
+        p.pause();
+      }
+    };
+
+    document.querySelector(".buttonDiv").addEventListener("click", (e) => {
+
+      changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+
+    });
+
+    function changeVideo(source, time, nVideoId ){
+      Walkable = false;
+      array[videoId][currentLable][7] = false;
+      var new_source = source; //
+      changed = true;
+      hideLable();
+      NewTime = time; //
+      videoId_old = videoId;
+      currentLable_old = currentLable;
+      videoId = nVideoId;
+      currentLable = 0;
+      justStarted = true;
+      forwardAllowed = true;
+      p.load(new_source);
+      firstWalk = true;
+      p.core.activePlayback.el.playbackRate = playbackRate;
+    }
+
+
+    window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+
+    document.querySelector(".forward").addEventListener("touchstart", (e) => {walkForward();console.log("Start");});
+    document.querySelector(".forward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
+    document.querySelector(".backward").addEventListener("touchstart", (e) => {walkBackward();console.log("Start");});
+    document.querySelector(".backward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
+
+    document.querySelector("#openIcon").addEventListener("click", (e) => {
+      document.querySelector("#menuIconWrapper").style.transform = "translate(4.4em, 0)";
+    });
+
+    document.querySelector("#closeIcon").addEventListener("click", (e) => {
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    });
+
+    document.querySelector("#homeIcon").addEventListener("click", (e) => {
+      window.location.href = "http://www.thgaalen.de";
+    });
+
+    document.querySelector("#floorIcon").addEventListener("click", (e) => {
+      document.querySelector("#floorWrapper").style.transform = "translate(15em, 0)";
+    });
+
+    document.querySelector("#closeIconFloor").addEventListener("click", (e) => {
+      document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)"
+    });
+
+    document.querySelector("#videosIcon").addEventListener("click", (e) => {
+      document.querySelector("#videoWrapper").style.transform = "translate(15em, 0)";
+    });
+
+    document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
+      document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
+    });
+
+    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+'/res/THG/VID_EG_1.mp4', 0, IdEG1);});
+    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+'/res/THG/VID_1OG.mp4', 0, Id1OG);});
+    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+'/res/THG/VID_2OG.mp4', 0, Id2OG);});
+    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+'/res/THG/VID_3OG.mp4', 0, Id3OG);});
+
+    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4')});
+    document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
+    document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");});
+    document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");});
+  </script>
+</body>
+</html>
