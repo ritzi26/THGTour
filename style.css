@@ -40,7 +40,7 @@ h1 {
 #welcomeText {
 	margin: 0 10%;
 	padding: 3em 20px;
-	height: auto;
+	flex-grow: 1;
 	background-color: rgba(225, 225, 225, .5);
 	text-align: center;
 }
@@ -48,7 +48,7 @@ h1 {
 h2 {
 	font-size: 3em;
 	font-family: Roboto, Arial, sans-serif;
-	margin-bottom: 15px;
+	margin-bottom: 1em;
 }
 
 h3 {
