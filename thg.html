@@ -165,7 +165,7 @@
     console.log(array[0][0][0]);
 
     var p = new Clappr.Player({
-      poster: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcRb9IzUh-vm4fdTEQ3oSRtigKgB1YTMh-dECbH7ZutLQMQUGnae%26s&sp=1610557240T22d43907be45310dcfc5a8f51e42a6869dd3c1c268880b141e8e8f55d10e8120",
+      poster: "./res/THG-outside.png",
       source: beginVideoUrl,
       width: window.innerWidth,
       height: window.innerHeight,
@@ -189,13 +189,14 @@
     },
   });
     p.getPlugin('click_to_pause').disable();
+    p.core.activeContainer.on(Clappr.Events.CONTAINER_STATE_BUFFERING, function() {console.log("Buffered");if(firstWalk){setTimeout(function() {console.log("play");p.play();setTimeout(function() {p.pause();},100);}, 1000);}});
 
     p.core.activePlayback.el.playbackRate = playbackRate;
 
     p.play();
     //var startTimer = setTimeout(() => {p.pause();}, 1000);
 
-    setInterval(()=> {if(firstWalk){p.play();p.pause(); console.log();}},100);
+    //setInterval(()=> {if(firstWalk){p.play();p.pause(); console.log();}},100);
 
 
     setInterval(() =>{
@@ -378,8 +379,8 @@
       currentLable = 0;
       justStarted = true;
       forwardAllowed = true;
-      p.load(new_source);
       firstWalk = true;
+      p.load(new_source);
       p.core.activePlayback.el.playbackRate = playbackRate;
     }
 
