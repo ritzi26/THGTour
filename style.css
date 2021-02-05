@@ -41,7 +41,7 @@ h1 {
 	margin: 0 10%;
 	padding: 3em 20px;
 	flex-grow: 1;
-	background-color: rgba(225, 225, 225, .5);
+	background-color: rgba(225, 225, 225, .7);
 	text-align: center;
 }
 
@@ -77,12 +77,21 @@ h3 {
 
 #welcomeTriple {
 	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
 }
 
 #welcomeTriple div {
-	border: solid 1px red;
 	width: 1px;
 	flex-grow: 1;
+}
+
+#welcomeInfoImg {
+	height: 1em;
+}
+
+#welcomeDiv .material-icons {
+	font-size: 2em;
 }
 
 /* Wieder Main*/
