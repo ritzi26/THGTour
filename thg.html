@@ -108,6 +108,9 @@
     var Walkable = true;
     var changed = false;
 
+    var bannerSafe = true;
+    var bannerSafeLock = false;
+
 
 
     /*
@@ -371,11 +374,18 @@
     function startInfoBanner() {
       document.querySelector("#InfoBanner").style.zIndex = 8;
       document.querySelector("#player").style.zIndex = -10 ;
+      if (!bannerSafeLock) {
+        bannerSafe = Walkable;
+        bannerSafeLock = true;
+        Walkable = false;
+      }
     }
 
     function endInfoBanner() {
       document.querySelector("#InfoBanner").style.zIndex = -10;
       document.querySelector("#player").style.zIndex = 8;
+      Walkable = bannerSafe;
+      bannerSafeLock = false;
     }
 
     document.onkeyup = function(e) {
