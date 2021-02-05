@@ -11,6 +11,13 @@
 <body>
     <div id="player"></div>
     <div id="InfoPlayer"></div>
+    <div id="InfoBanner">
+      <div id="BannerWrapper">
+        <h5 id="bannerTitle">Banner</h5>
+        <p id="bannerText">Sample banner text. If you see this, something went wrong<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <span class="material-icons" id="bannerCloseIcon">close</span>
+      </div>
+    </div>
   <div class="wrapper">
     <div class="buttonDiv">
       <h1>Wechseln</h1>
@@ -321,6 +328,9 @@
       }else if (e.code == "KeyI"){
         startInfo(InfoVideos[array[videoId][0][9]]);
       }
+      if (e.code == "KeyT"){
+        startInfoBanner();
+      }
       if (e.code == "KeyO") {
           endInfo();
       }
@@ -356,6 +366,16 @@
           console.log("kein 2D Player" + e);
         }
       }
+    }
+
+    function startInfoBanner() {
+      document.querySelector("#InfoBanner").style.zIndex = 8;
+      document.querySelector("#player").style.zIndex = -10 ;
+    }
+
+    function endInfoBanner() {
+      document.querySelector("#InfoBanner").style.zIndex = -10;
+      document.querySelector("#player").style.zIndex = 8;
     }
 
     document.onkeyup = function(e) {
@@ -435,6 +455,8 @@
     document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
     document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");});
     document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");});
+
+    document.querySelector("#bannerCloseIcon").addEventListener("click", (e) => {endInfoBanner();});
   </script>
 </body>
 </html>
