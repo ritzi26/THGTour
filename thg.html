@@ -196,6 +196,7 @@
     p.play();
     //var startTimer = setTimeout(() => {p.pause();}, 1000);
     var isFirefox = typeof InstallTrigger !== 'undefined';
+
     if (isFirefox){
       setInterval(()=> {if(firstWalk){p.play();p.pause(); console.log();}},100);
     }
