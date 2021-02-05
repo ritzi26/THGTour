@@ -12,7 +12,7 @@ body{
 
 
 h1, p {
-	color: white;
+	color: #00afd7;
 	cursor: pointer;
 }
 
@@ -94,6 +94,12 @@ h3 {
 	font-size: 2em;
 }
 
+#welcomeWarning {
+	color: red;
+	margin-bottom: 1em;
+	display: none;
+}
+
 /* Wieder Main*/
 
 #player {
@@ -132,7 +138,7 @@ h3 {
 	height: auto;
 	width: auto;
 	color: green;
-	border: 4px solid white;
+	border: 4px solid #00afd7;
 	padding: 10px;
 	cursor: pointer;
 	visibility: collapse;
@@ -228,4 +234,12 @@ h3 {
 	.icon {
 		visibility: visible;
 	}
+}
+
+/* Wieder index */
+
+@media (pointer: coarse) {
+    #welcomeWarning {
+			display: block;
+		}
 }
