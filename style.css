@@ -10,7 +10,6 @@ body{
 	position: flex;
 }
 
-
 h1, p {
 	color: #00afd7;
 	cursor: pointer;
@@ -98,11 +97,6 @@ h3 {
 	color: red;
 	margin-bottom: 1em;
 	display: none;
-}
-
-#welcomeBtnInfo {
-	border: solid 4px black;
-	padding: 0 4px;
 }
 
 /* Wieder Main*/
