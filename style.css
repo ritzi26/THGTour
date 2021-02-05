@@ -75,6 +75,16 @@ h3 {
 	justify-content: space-evenly;
 }
 
+#welcomeTriple {
+	display: flex;
+}
+
+#welcomeTriple div {
+	border: solid 1px red;
+	width: 1px;
+	flex-grow: 1;
+}
+
 /* Wieder Main*/
 
 #player {
