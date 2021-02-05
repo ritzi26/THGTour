@@ -38,7 +38,7 @@ h1 {
 }
 
 #welcomeText {
-	margin: 0 10%;
+	margin: 0 8%;
 	padding: 3em 20px;
 	flex-grow: 1;
 	background-color: rgba(225, 225, 225, .7);
@@ -98,6 +98,10 @@ h3 {
 	color: red;
 	margin-bottom: 1em;
 	display: none;
+}
+
+#welcomeBtnInfo {
+	border: solid 4px black;
 }
 
 /* Wieder Main*/
