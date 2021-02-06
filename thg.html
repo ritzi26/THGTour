@@ -130,6 +130,9 @@
     var IdHausaufgaben = 31;
     var IdWerkstatt = 32;
 
+    var IdKWH = 33;
+    var IdTHGHalle = 34;
+
 
     var InfoRunning = false;
 
@@ -172,8 +175,8 @@
         [
           // Video draußen Rundgang
             ['Zum THG', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 3, Rundgang, 175, true, false, false],
-            ['KGW - Halle', server[serverwahl]+ Raum + 'KWH.mp4', 9, 14, "XXXXX", 1, false, false],
-            ['THG - Halle', server[serverwahl]+ Raum + 'THG-Halle.mp4', 38, 42, "XXXXX", 1, false, false],
+            ['KGW - Halle', server[serverwahl]+ Raum + 'KWH.mp4', 9, 14, IdKWH, 1, false, false],
+            ['THG - Halle', server[serverwahl]+ Raum + 'THG-Halle.mp4', 38, 42, IdTHGHalle, 1, false, false],
             ['Eingang', server[serverwahl]+ Gang + 'EG_1.mp4', 60, 65, IdEG1, 29, true, false],
             ['Zur Rosavilla', server[serverwahl]+ Gang + 'Rosavilla.mp4', 118, 121, IdRosaV, 0, true, false],
             ['Eingang', server[serverwahl]+ Gang + 'TrepOst.mp4', 125, 128, IdTrepOst, 0, true, false],
@@ -235,7 +238,7 @@
           ['Treppe', server[serverwahl]+ Gang + '2OG.mp4', 24, 26, Id2OG, 53, true, false], //Video OG 3
           ['Info', server[serverwahl]+ Raum + 'Info.mp4', 30, 32, IdInfo , 1, false, false],
           ['Physik 349', server[serverwahl]+ Raum + 'Physik-Obele.mp4', 33, 35, IdPhysikObel , 1, false, false],
-          ['Physik 339', server[serverwahl]+ Raum + '339.mp4', 36, 38, Id339 , 1, false, false],
+          ['Physik 339', server[serverwahl]+ Raum + 'VID_339.mp4', 36, 38, Id339 , 1, false, false],
         ],
 
         [//Video Egebäude
@@ -310,13 +313,13 @@
           ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 9, true, false, false, 1]
         ],
         [//Bild Raum Info / SIA
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 37, true, false, false, 1]
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 31, true, false, false, 1]
         ],
         [//Bild Raum Kunst
           ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 20, true, false, false, 1]
         ],
         [//Bild Raum Physik Obele ! schattenseite des THG's
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 37, true, false, false, 1]
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 34, true, false, false, 1]
         ],
         [
           ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 37, true, false, false, 1]   //BILD Physik 339 sonnen Seite!
@@ -337,6 +340,14 @@
         [//Bild Raum IdWerkstatt
             ['RosaVilla', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 22, true, false, false, 1]
         ],
+
+        [// Bild KWH - Halle
+          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 28, 30, Rundgang, 12, true, false],
+        ],
+        [
+          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 28, 30, Rundgang, 40, true, false],
+        ]
+
       ];
 
       InfoVideos = [server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',
