@@ -75,7 +75,12 @@
 
     var beginVideoUrl ; // das erste Video das geladen wird
 
+<<<<<<< HEAD
+    var Rundgang = 0; //352
+=======
     var Rundgang = 0;
+
+>>>>>>> ea3ba46bd73d431ad444bc5d984a0c5cf3032a75
     var IdTrepOst = 1;  //91
     var IdEG1 = 2;    //84                 //Video Id's
     var IdEG2 = 3;    //33s                 // bestimmt durch die Reinfolge der array
@@ -88,6 +93,12 @@
     var Id227 = 8;
     var Id229 = 9;
     var Id339 = 10;
+
+
+
+
+
+
 
     var InfoRunning = false;
 
@@ -104,7 +115,7 @@
 
     var NewTime;
     var videoId_old;
-    var videoId = 6;
+    var videoId = 0;
     var currentLable_old;
     var currentLable = 0; // 0 = kein Lable ist gesetzt, zahl entspricht sonst array
     var Walkable = true;
@@ -122,13 +133,21 @@
       ]
     ]
     */
-      beginVideoUrl = server[serverwahl]+ Gang + '3OG.mp4' ;
+      beginVideoUrl = server[serverwahl]+ Gang + 'Draussen.mp4' ;
       var beginZeit = 0; // noch nicht berücksichtigt
       //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
 
       array = [
         [
-          [] // Video draußen Rundgang
+          [// Video draußen Rundgang
+            ['KGW - Halle', server[serverwahl]+ Raum + 'XXXXX', 8, 10, "XXXXX", 1, false, false],
+            ['THG - Halle', server[serverwahl]+ Raum + 'XXXXX', 40, 30, "XXXXX", 1, false, false],
+            ['Eingang', server[serverwahl]+ Gang + 'XXXXX', 60, 65, "XXXXX", 0, true, false],
+            ['Zur Rosavilla', server[serverwahl]+ Gang + 'XXXXX', 70, 75, "XXXXX", 0, true, false],
+            ['Eingang', server[serverwahl]+ Gang + 'XXXXX', 130, 135, "XXXXX", 0, true, false],
+            ['Zum EG', server[serverwahl]+ Gang + 'XXXXX', 150, 153, "XXXXX", 0, true, false],
+            ['E-Gebäude', server[serverwahl]+ Gang + 'XXXXX', 155, 160, "XXXXX", 0, true, false],
+          ]
         ],
         [
           ['Rundgang Pausenhof', server[serverwahl]+ Gang + 'XXXXX', 0, 2, "XXXXX", 0, true, false],
@@ -153,7 +172,7 @@
           ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 13, 16, IdEG1, 14, true, false]
         ],
         [// Video OG1
-          ['Banner',  , 4, 5],
+          ['Banner',  , 4, 5,'Test','Beispieltext muss hier rein; \n If you see this something went horribly wrong!'],
           ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 21, true, false], // Video OG1
           ['Mathe', server[serverwahl]+ Raum + 'EG_1.mp4', 12, 14, "XXXXXX", 1, true, false],
           ['Zum E-Gebäude', server[serverwahl]+ Gang + 'XXXXXXX', 15, 17, "XXXXXX", 45, true, false],
@@ -172,6 +191,13 @@
           ['Latein', server[serverwahl]+ Raum + 'XXXXX', 38, 40, "XXXXXX" , 1, false, false],
           ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 51, 54, Id3OG, 24, true, false, autoJump],    //autoJump enable pos 8
         ],
+
+
+
+
+
+
+
         [ //Video OG 3
 
           ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 46, true, false],
@@ -182,6 +208,10 @@
           ['Treppe', server[serverwahl]+ Gang + '2OG.mp4', 24, 26, Id2OG, 53, true, false], //Video OG 3
           ['Physik 339', server[serverwahl]+ Raum + '339.mp4', 36, 38, Id339 , 1, false, false],
         ],
+
+
+
+
 
 
 
@@ -370,7 +400,7 @@
           var LabelStart = array[videoId][i][2];
           var LabelEnd = array[videoId][i][3];
           if(array[videoId][i][0]=="Banner" && array && ((p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd) || ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) )) {
-            startInfoBanner();
+            startInfoBanner(array[videoId][i][4], array[videoId][i][5]);
           }
         }
       }
@@ -411,7 +441,9 @@
       }
     }
 
-    function startInfoBanner() {
+    function startInfoBanner(Überschrift, Content) {
+      document.getElementById('bannerTitle').innerHTML = Überschrift;
+      document.getElementById('bannerText').innerHTML = Content;
       document.querySelector("#InfoBanner").style.zIndex = 8;
       document.querySelector("#player").style.zIndex = -10 ;
       if (!bannerSafeLock) {
