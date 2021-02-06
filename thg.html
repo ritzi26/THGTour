@@ -14,20 +14,6 @@
     <div id="InfoBanner">
       <div id="BannerWrapper">
         <h5 id="bannerTitle">Banner</h5>
-        <div id="normalBannerContent">
-          <p id="bannerText">Sample banner text. If you see this, something went wrong<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div id="creditBannerContent">
-          <div id="moritz">
-            <p>Moritz Eisert</p>
-          </div>
-          <div id="max">
-            <p>Max Balle</p>
-          </div>
-          <div id="jakob">
-            <p>Jakob Eichholz</p>
-          </div>
-        </div>
         <span class="material-icons" id="bannerCloseIcon">close</span>
       </div>
     </div>
@@ -47,6 +33,7 @@
       <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon" title="Startseite">logout</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Stockwerke">room</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Videos">movie</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="creditsIcon" title="Credits">supervisor_account</span>
     </div>
     <div class="secondLayer" id="floorWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
@@ -153,7 +140,6 @@
 
     var bannerSafe = true;
     var bannerSafeLock = false;
-    var creditBannerActive = false;
 
 
     /*
@@ -550,13 +536,6 @@
     function startInfoBanner(Überschrift, Content) {
       document.getElementById('bannerTitle').innerHTML = Überschrift;
       document.getElementById('bannerText').innerHTML = Content;
-      if (creditBannerActive) {
-        document.querySelector("#normalBannerContent").style.display = "none";
-        document.querySelector("#creditBannerContent").style.display = "flex";
-      } else {
-        document.querySelector("#normalBannerContent").style.display = "flex";
-        document.querySelector("#creditBannerContent").style.display = "none";
-      }
       document.querySelector("#InfoBanner").style.zIndex = 8;
       document.querySelector("#player").style.zIndex = -10 ;
       if (!bannerSafeLock) {
@@ -571,7 +550,6 @@
       document.querySelector("#player").style.zIndex = 6;
       Walkable = bannerSafe;
       bannerSafeLock = false;
-      creditBannerActive = false;
     }
 
     document.onkeyup = function(e) {
@@ -640,12 +618,6 @@
 
     document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
       document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)"
-    });
-
-    document.querySelector("#creditsIcon").addEventListener("click", (e) => {
-      creditBannerActive = true;
-      startInfoBanner("Credits", "Error");
-      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
     });
 
     document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 0, IdEG1);menuCollapseFromFloors();});
