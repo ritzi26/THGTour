@@ -42,9 +42,6 @@ p {
 #welcomeDiv {
 	width: 100%;
 	height: 100vh;
-	background-image: url("res/THG-outside.png");
-	background-position: center;
-	background-size: cover;
 	display: flex;
 	align-items: center;
 }
