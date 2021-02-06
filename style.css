@@ -37,6 +37,21 @@ p {
 	color: white;
 }
 
+#creditBannerContent {
+	display: none;
+}
+
+#creditBannerContent {
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#creditBannerContent div {
+	width: 108px;
+	text-align: center;
+	border: solid 1px red;
+}
+
 /* Einschub welcome.html*/
 
 #welcomeDiv {
