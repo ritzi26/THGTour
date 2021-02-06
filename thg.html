@@ -34,7 +34,6 @@
       <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon" title="Startseite">logout</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Stockwerke">room</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Videos">movie</span>
-      <span class="material-icons icon menu-icon hiddenIcon" id="creditsIcon" title="Credits">supervisor_account</span>
     </div>
     <div class="secondLayer" id="floorWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
@@ -87,7 +86,7 @@
     var IdEGB = 7;
     var IdGang = 8;
 
-    var IdRosaV = 9;
+    var IdRosaV = 9; //100s
 
     var IdAula = 10;
     var Id3 = 11;
@@ -133,7 +132,7 @@
 
     var NewTime;
     var videoId_old;
-    var videoId = 0;
+    var videoId = IdRosaV;
     var currentLable_old;
     var currentLable = 0; // 0 = kein Lable ist gesetzt, zahl entspricht sonst array
     var Walkable = true;
@@ -150,7 +149,7 @@
       ]
     ]
     */
-      beginVideoUrl = server[serverwahl]+ Gang + 'Draussen.mp4' ;
+      beginVideoUrl = server[serverwahl]+ Gang + 'Rosavilla.mp4' ;
       var beginZeit = 0; // noch nicht berücksichtigt
       //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
 
@@ -164,7 +163,7 @@
             ['Zur Rosavilla', server[serverwahl]+ Gang + 'Rosavilla.mp4', 118, 121, IdRosaV, 0, true, false],
             ['Eingang', server[serverwahl]+ Gang + 'TrepOst.mp4', 125, 128, IdTrepOst, 0, true, false],
             ['Zum EG', server[serverwahl]+ Gang + 'EG_1.mp4', 153, 156, IdEG1, 17, true, false],
-            ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude', 162, 165, IdEGB, 0, true, false],
+            ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 160, 164, IdEGB, 0, true, false],
             ['Zu den Sporhallen', server[serverwahl]+ Gang + 'Draussen.mp4', 174, 177, Rundgang, 3, true, false, false]
 
         ],
@@ -225,14 +224,26 @@
         ],
 
         [//Video Egebäude
-          ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 162, true, false],
-          ['Zum Hauptgebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 10, 12, IdGang, 62, true, false]
+          ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 3, Rundgang, 162, true, false],
+          ['Zum Hauptgebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 18, 20, IdGang, 32, true, false]
         ],
         [//Video Gang
-
+          ['OG 1', server[serverwahl]+ Gang + '1OG.mp4', 0, 2, Id1OG, 16, true, false],
+          ['Treppe', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 31, 33, IdGang, 11, true, false]
         ],
 
         [//Video  Rosavilla
+
+          ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 120, true, false],
+
+
+          [' Zur Werkstatt', server[serverwahl]+ Raum + 'Werkstatt.mp4', 21, 23, IdWerkstatt , 1, false, false],
+          ['Hausaufgabenbetreuung', server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 40, 42, IdHausaufgaben , 1, false, false],
+          ['Informatik', server[serverwahl]+ Raum + '3D-Druck.mp4', 42, 44, Id3D , 1, false, false],
+          ['Bibliotheks AG', server[serverwahl]+ Raum + 'BIB.mp4', 44, 46, IdBib , 1, false, false],
+          ['Computerraum', server[serverwahl]+ Raum + 'EDV.mp4', 48, 50, IdEDV , 1, false, false],
+
+
 
         ],
 
@@ -297,19 +308,19 @@
         ],
 
         [//Bild 3D- Druck AG
-          ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 37, true, false, false, 1]
+          ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 43, true, false, false, 1]
         ],
         [//Bild Bild Bibliothek
-            ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 37, true, false, false, 1]
+            ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 45, true, false, false, 1]
         ],
         [//Bild Raum EDV
-            ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 37, true, false, false, 1]
+            ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 49, true, false, false, 1]
         ],
         [//Bild Raum Hausaufgaben AG
-            ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 37, true, false, false, 1]
+            ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 41, true, false, false, 1]
         ],
         [//Bild Raum IdWerkstatt
-            ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 37, true, false, false, 1]
+            ['RosaVilla', server[serverwahl]+ Gang + 'RosaVilla.mp4', 0, 5, IdRosaV, 22, true, false, false, 1]
         ],
       ];
 
@@ -607,12 +618,6 @@
 
     document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
       document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)"
-    });
-
-    document.querySelector("#creditsIcon").addEventListener("click", (e) => {
-      startInfoBanner("Credits", "Entwickelt von:<br><br> Moritz Eisert<br>Max Balle <a href='https://maxballe.github.io'>Website</a><br>Jakob Eichholz");
-      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
-
     });
 
     document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 0, IdEG1);menuCollapseFromFloors();});
