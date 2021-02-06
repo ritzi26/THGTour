@@ -67,6 +67,7 @@
     var serverwahl = 0;       //diese Zahl ändern um Manuel anderen Server zu wählen
     var Gang = "/res/THG/Gang/";
     var Raum = "/res/THG/Raum/";
+    var Info = "/res/THG/info/"
 
     var autoJump = false; //möglichkeit um global autoJump zu aktivieren
 
@@ -74,7 +75,12 @@
 
     var beginVideoUrl ; // das erste Video das geladen wird
 
+<<<<<<< HEAD
     var Rundgang = 0; //352
+=======
+    var Rundgang = 0;
+
+>>>>>>> ea3ba46bd73d431ad444bc5d984a0c5cf3032a75
     var IdTrepOst = 1;  //91
     var IdEG1 = 2;    //84                 //Video Id's
     var IdEG2 = 3;    //33s                 // bestimmt durch die Reinfolge der array
@@ -166,7 +172,7 @@
           ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 13, 16, IdEG1, 14, true, false]
         ],
         [// Video OG1
-          ['Banner',  , 4, 5],
+          ['Banner',  , 4, 5,'Test','Beispieltext muss hier rein; \n If you see this something went horribly wrong!'],
           ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 21, true, false], // Video OG1
           ['Mathe', server[serverwahl]+ Raum + 'EG_1.mp4', 12, 14, "XXXXXX", 1, true, false],
           ['Zum E-Gebäude', server[serverwahl]+ Gang + 'XXXXXXX', 15, 17, "XXXXXX", 45, true, false],
@@ -394,11 +400,11 @@
           var LabelStart = array[videoId][i][2];
           var LabelEnd = array[videoId][i][3];
           if(array[videoId][i][0]=="Banner" && array && ((p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd) || ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) )) {
-            startInfoBanner();
+            startInfoBanner(array[videoId][i][4], array[videoId][i][5]);
           }
         }
       }
-      if (e.code == "KeyO") {
+      if (e.code == "Escape") {
           endInfo();
       }
     };
@@ -435,7 +441,9 @@
       }
     }
 
-    function startInfoBanner() {
+    function startInfoBanner(Überschrift, Content) {
+      document.getElementById('bannerTitle').innerHTML = Überschrift;
+      document.getElementById('bannerText').innerHTML = Content;
       document.querySelector("#InfoBanner").style.zIndex = 8;
       document.querySelector("#player").style.zIndex = -10 ;
       if (!bannerSafeLock) {
@@ -525,7 +533,7 @@
     document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);menuCollapseFromFloors();});
     document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);menuCollapseFromFloors();});
 
-    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4');menuCollapseFromVideos();});
+    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+ Info +'THG_Aalen_Eisenbahn.mp4');menuCollapseFromVideos();});
     document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");menuCollapseFromVideos();});
     document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");menuCollapseFromVideos();});
     document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");menuCollapseFromVideos();});
