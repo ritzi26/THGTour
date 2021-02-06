@@ -482,15 +482,25 @@
       document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
     });
 
-    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 0, IdEG1);});
-    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '1OG.mp4', 0, Id1OG);});
-    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);});
-    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);});
+    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 0, IdEG1);menuCollapseFromFloors();});
+    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '1OG.mp4', 0, Id1OG);menuCollapseFromFloors();});
+    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);menuCollapseFromFloors();});
+    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);menuCollapseFromFloors();});
 
-    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4')});
-    document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
-    document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");});
-    document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");});
+    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4');menuCollapseFromVideos();});
+    document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");menuCollapseFromVideos();});
+    document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");menuCollapseFromVideos();});
+    document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");menuCollapseFromVideos();});
+
+    function menuCollapseFromFloors() {
+      document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)"
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    }
+
+    function menuCollapseFromVideos() {
+      document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    }
 
     document.querySelector("#bannerCloseIcon").addEventListener("click", (e) => {endInfoBanner();});
   </script>
