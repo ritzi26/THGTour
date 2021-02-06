@@ -83,13 +83,39 @@
     var Id2OG = 5;    //134s
     var Id3OG = 6;    //79s
 
-    var IdEGB = 7 // 79
-    var IdGang = 7 // 65
+    var IdEGB = 7;
+    var IdGang = 8;
 
-    var IdObers = 8;
-    var Id227 = 9;
-    var Id229 = 10;
-    var Id339 = 11;
+    var IdRosaV = 9;
+
+    var IdAula = 10;
+    var Id3 = 11;
+    var Id6 = 12;
+
+    var Id10 = 13;
+    var Id117 = 14;
+    var IdObers = 15;
+
+    var Id228 = 16;
+    var IdBio1 = 17;
+    var IdBio2 = 18;
+    var IdEnglisch = 19;
+    var IdLatein = 20;
+    var Id227 = 21;
+    var Id229 = 22;
+
+    var IdChemie = 23;
+    var IdInfo = 24;
+    var IdKunst = 25;
+    var IdPhysikObel = 26;
+    var Id339 = 27;
+
+    var Id3D = 28;
+    var IdBib = 29;
+    var IdEDV = 30;
+    var IdHausaufgaben = 31;
+    var IdWerkstatt = 32;
+
 
     var InfoRunning = false;
 
@@ -137,7 +163,7 @@
             ['Zur Rosavilla', server[serverwahl]+ Gang + 'XXXXX', 118, 121, "XXXXX", 0, true, false],
             ['Eingang', server[serverwahl]+ Gang + 'TrepOst.mp4', 125, 128, IdTrepOst, 0, true, false],
             ['Zum EG', server[serverwahl]+ Gang + 'EG_1.mp4', 153, 156, IdEG1, 17, true, false],
-            ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 161, 164, IdEGB, 0, true, false],
+            ['E-Gebäude', server[serverwahl]+ Gang + 'XXXXX', 162, 165, "XXXXX", 0, true, false],
             ['Zu den Sporhallen', server[serverwahl]+ Gang + 'Draussen.mp4', 174, 177, Rundgang, 3, true, false, false]
 
         ],
@@ -152,7 +178,7 @@
           ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 8, true, false],
           ['Musik', server[serverwahl]+ Raum + 'XXXXX', 6, 8, "XXXXX", 1, false, false],
           ['2-EG', server[serverwahl]+ Gang + 'EG_2.mp4', 13, 15, IdEG2, 15, true, false],
-          ['Zum E-Gebäude', server[serverwahl]+ Gang + 'Draussen.mp4', 16, 18, Rundgang, 155, true, false],
+          ['Zum E-Gebäude', server[serverwahl]+ Gang + 'Draussen.mp4', 16, 18, Rundgang, 155, false, false],
           ['Aula', server[serverwahl]+ Raum + 'XXXXXX', 25, 27, "XXXXX", 1, false, false],
           ['Zum Haupteingang', server[serverwahl]+ Gang + 'Draussen.mp4', 28, 30, Rundgang, 62, true, false],
           ['2-EG', server[serverwahl]+ Gang + 'EG_2.mp4', 30, 32, IdEG2, 0, true, false],
@@ -183,38 +209,62 @@
           ['Latein', server[serverwahl]+ Raum + 'XXXXX', 38, 40, "XXXXXX" , 1, false, false],
           ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 51, 54, Id3OG, 24, true, false, false],    //autoJump enable pos 8
         ],
-
-
-
-
-
-
-
         [ //Video OG 3
 
           ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 46, true, false],
           ['Chemie', server[serverwahl]+ Raum + 'XXXXXX', 8, 10, "XXXXXX" , 1, false, false],
           ['Bildene Kunst', server[serverwahl]+ Raum + 'XXXXXX', 19, 21, "XXXXX" , 1, false, false],
+
+
           ['Treppe', server[serverwahl]+ Gang + '2OG.mp4', 24, 26, Id2OG, 53, true, false], //Video OG 3
           ['Physik 339', server[serverwahl]+ Raum + '339.mp4', 36, 38, Id339 , 1, false, false],
         ],
 
+        [//Video Egebäude
 
-        //Video E Gebäude
-[
-          ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 162, true, false],
-          ['Zum Hauptgebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 10, 12, IdGang, 62, true, false],
+        ],
+        [//Video Gang
 
-],
+        ],
 
+        [//Video  Rosavilla
 
+        ],
 
+        [// Bild Aula
 
+        ],
+        [//Biöd Raum3
 
+        ],
+        [//Bild Raum 6
 
+        ],
+        [//Bild Raum 10
 
+        ],
+
+        [//Raum 117
+
+        ]
         [
           ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 0, 5, Id1OG, 36, true, false, false, 0]   //BILD Oberstufenzimmer; autoJump disabled pos 8 = false; infovideo ID = pos 9
+        ],
+
+        [//Bild Raum Id228
+
+        ],
+        [//Bild Raum Bio1
+
+        ],
+        [//Bild Raum Bio2
+
+        ],
+        [//Bild Raum Englisch
+
+        ],
+        [//Bild Raum Latein
+
         ],
         [
           ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 40, true, false, false, 1]   //BILD Erdkunde 227
@@ -222,10 +272,37 @@
         [
           ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 21, true, false, false, 1]   //BILD Erdkunde 229
         ],
-        [
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 37, true, false, false, 1]   //BILD Physik 339
-        ]
+        [//Bild Raum Chemie
 
+        ],
+        [//Bild Raum Info / SIA
+
+        ],
+        [//Bild Raum Kunst
+
+        ],
+        [//Bild Raum Physik Obele ! schattenseite des THG's
+
+        ],
+        [
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 37, true, false, false, 1]   //BILD Physik 339 sonnen Seite!
+        ],
+
+        [//Bild 3D- Druck AG
+
+        ],
+        [//Bild Bild Bibliothek
+
+        ],
+        [//Bild Raum EDV
+
+        ],
+        [//Bild Raum Hausaufgaben AG
+
+        ],
+        [//Bild Raum IdWerkstatt
+
+        ],
       ];
 
       InfoVideos = [server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4',
