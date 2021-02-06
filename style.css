@@ -250,7 +250,7 @@ h5 {
 #floorWrapper {
 	position: fixed;
 	top: 0;
-	left: -15em;
+	left: -16em;
 	transition: all 0.4s;
 	pointer-events: all;
 }
@@ -258,7 +258,7 @@ h5 {
 #videoWrapper {
 	position: fixed;
 	top: 0;
-	left: -15em;
+	left: -16em;
 	transition: all 0.4s;
 	pointer-events: all;
 }
