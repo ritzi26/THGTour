@@ -481,19 +481,19 @@
     });
 
     document.querySelector("#floorIcon").addEventListener("click", (e) => {
-      document.querySelector("#floorWrapper").style.transform = "translate(15em, 0)";
+      document.querySelector("#floorWrapper").style.transform = "translate(16em, 0)";
     });
 
     document.querySelector("#closeIconFloor").addEventListener("click", (e) => {
-      document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)"
+      document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)"
     });
 
     document.querySelector("#videosIcon").addEventListener("click", (e) => {
-      document.querySelector("#videoWrapper").style.transform = "translate(15em, 0)";
+      document.querySelector("#videoWrapper").style.transform = "translate(16em, 0)";
     });
 
     document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
-      document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
+      document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)"
     });
 
     document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 0, IdEG1);menuCollapseFromFloors();});
@@ -507,12 +507,12 @@
     document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");menuCollapseFromVideos();});
 
     function menuCollapseFromFloors() {
-      document.querySelector("#floorWrapper").style.transform = "translate(-15em, 0)"
+      document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)"
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
     }
 
     function menuCollapseFromVideos() {
-      document.querySelector("#videoWrapper").style.transform = "translate(-15em, 0)"
+      document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)"
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
     }
 
