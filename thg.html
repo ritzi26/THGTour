@@ -76,6 +76,7 @@
     var beginVideoUrl ; // das erste Video das geladen wird
 
     var Rundgang = 0;
+
     var IdTrepOst = 1;  //91
     var IdEG1 = 2;    //84                 //Video Id's
     var IdEG2 = 3;    //33s                 // bestimmt durch die Reinfolge der array
@@ -153,7 +154,7 @@
           ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 13, 16, IdEG1, 14, true, false]
         ],
         [// Video OG1
-          ['Banner',  , 4, 5],
+          ['Banner',  , 4, 5,'Test','Beispieltext muss hier rein; \n If you see this something went horribly wrong!'],
           ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 21, true, false], // Video OG1
           ['Mathe', server[serverwahl]+ Raum + 'EG_1.mp4', 12, 14, "XXXXXX", 1, true, false],
           ['Zum E-Gebäude', server[serverwahl]+ Gang + 'XXXXXXX', 15, 17, "XXXXXX", 45, true, false],
@@ -370,7 +371,7 @@
           var LabelStart = array[videoId][i][2];
           var LabelEnd = array[videoId][i][3];
           if(array[videoId][i][0]=="Banner" && array && ((p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd) || ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) )) {
-            startInfoBanner();
+            startInfoBanner(array[videoId][i][4], array[videoId][i][5]);
           }
         }
       }
@@ -411,7 +412,9 @@
       }
     }
 
-    function startInfoBanner() {
+    function startInfoBanner(Überschrift, Content) {
+      document.getElementById('bannerTitle').innerHTML = Überschrift;
+      document.getElementById('bannerText').innerHTML = Content;
       document.querySelector("#InfoBanner").style.zIndex = 8;
       document.querySelector("#player").style.zIndex = -10 ;
       if (!bannerSafeLock) {
