@@ -67,6 +67,7 @@
     var serverwahl = 0;       //diese Zahl ändern um Manuel anderen Server zu wählen
     var Gang = "/res/THG/Gang/";
     var Raum = "/res/THG/Raum/";
+    var Info = "/res/THG/info/"
 
     var autoJump = false; //möglichkeit um global autoJump zu aktivieren
 
@@ -500,7 +501,7 @@
     document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);});
     document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);});
 
-    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+ Raum + 'THG_Aalen_Eisenbahn.mp4')});
+    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+ Info + 'THG_Aalen_Eisenbahn.mp4')});
     document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
     document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");});
     document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");});
