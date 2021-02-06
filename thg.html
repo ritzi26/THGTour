@@ -69,7 +69,6 @@
     var Raum = "/res/THG/Raum/";
     var Info = "/res/THG/info/"
 
-    var autoJump = false; //möglichkeit um global autoJump zu aktivieren
 
     var playbackRate = 1;
 
@@ -88,11 +87,6 @@
     var Id227 = 8;
     var Id229 = 9;
     var Id339 = 10;
-
-
-
-
-
 
 
     var InfoRunning = false;
@@ -134,15 +128,17 @@
 
       array = [
         [
-          [// Video draußen Rundgang
-            ['KGW - Halle', server[serverwahl]+ Raum + 'XXXXX', 8, 10, "XXXXX", 1, false, false],
-            ['THG - Halle', server[serverwahl]+ Raum + 'XXXXX', 40, 30, "XXXXX", 1, false, false],
+          // Video draußen Rundgang
+            ['Zum THG', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 174, true, false, true],
+            ['KGW - Halle', server[serverwahl]+ Raum + 'XXXXX', 9, 14, "XXXXX", 1, false, false],
+            ['THG - Halle', server[serverwahl]+ Raum + 'XXXXX', 38, 42, "XXXXX", 1, false, false],
             ['Eingang', server[serverwahl]+ Gang + 'XXXXX', 60, 65, "XXXXX", 0, true, false],
-            ['Zur Rosavilla', server[serverwahl]+ Gang + 'XXXXX', 70, 75, "XXXXX", 0, true, false],
-            ['Eingang', server[serverwahl]+ Gang + 'XXXXX', 130, 135, "XXXXX", 0, true, false],
-            ['Zum EG', server[serverwahl]+ Gang + 'XXXXX', 150, 153, "XXXXX", 0, true, false],
-            ['E-Gebäude', server[serverwahl]+ Gang + 'XXXXX', 155, 160, "XXXXX", 0, true, false],
-          ]
+            ['Zur Rosavilla', server[serverwahl]+ Gang + 'XXXXX', 118, 121, "XXXXX", 0, true, false],
+            ['Eingang', server[serverwahl]+ Gang + 'XXXXX', 125, 128, "XXXXX", 0, true, false],
+            ['Zum EG', server[serverwahl]+ Gang + 'XXXXX', 153, 156, "XXXXX", 0, true, false],
+            ['E-Gebäude', server[serverwahl]+ Gang + 'XXXXX', 159, 162, "XXXXX", 0, true, false],
+            ['Zu den Sporhallen', server[serverwahl]+ Gang + 'Draussen.mp4', 175, 177, Rundgang, 3, true, false, true]
+
         ],
         [
           ['Rundgang Pausenhof', server[serverwahl]+ Gang + 'XXXXX', 0, 2, "XXXXX", 0, true, false],
@@ -159,7 +155,7 @@
           ['Aula', server[serverwahl]+ Raum + 'XXXXXX', 25, 27, "XXXXX", 1, false, false],
           ['Zum Haupteingang', server[serverwahl]+ Gang + 'XXXXXX', 28, 30, "XXXXX", 0, true, false],
           ['2-EG', server[serverwahl]+ Gang + 'EG_2.mp4', 30, 32, IdEG2, 0, true, false],
-          ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 39, 42, Id1OG, 24, true, false, autoJump]  //autoJump enable pos 8
+          ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 39, 42, Id1OG, 24, true, false, false]  //autoJump enable pos 8
         ],
         [ //Video EG-2 (links)
           ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 0, 2, IdEG1, 31, true, false],
@@ -173,7 +169,7 @@
           ['Zum E-Gebäude', server[serverwahl]+ Gang + 'XXXXXXX', 15, 17, "XXXXXX", 45, true, false],
           ['Treppe', server[serverwahl]+ Gang + 'EG_1.mp4', 18, 20, IdEG1, 45, true, false],
           ['Oberstufe', server[serverwahl]+ Raum + 'Oberstufe.mp4', 35, 37, IdObers , 1, false, false],
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 44, 50, Id2OG, 24, true, false, autoJump],  //autoJump enable pos 8 = true
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 44, 50, Id2OG, 24, true, false, false],  //autoJump enable pos 8 = true
         ],
         [//Video OG 2
 
@@ -184,7 +180,7 @@
           ['Erdkunde 227', server[serverwahl]+ Raum + '227.mp4', 34, 36, Id227 , 1, false, false],
           ['Englisch 229', server[serverwahl]+ Raum + '229.mp4', 36, 38, Id229 , 1, false, false],
           ['Latein', server[serverwahl]+ Raum + 'XXXXX', 38, 40, "XXXXXX" , 1, false, false],
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 51, 54, Id3OG, 24, true, false, autoJump],    //autoJump enable pos 8
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 51, 54, Id3OG, 24, true, false, false],    //autoJump enable pos 8
         ],
 
 
@@ -312,7 +308,7 @@
               setLableText(array[videoId][currentLable][0]);
               array[videoId][i][7] = true;
 
-              if (array[videoId][currentLable][8] == true && autoJump){
+              if (array[videoId][currentLable][8] == true){
                 if(p.getCurrentTime() > (LabelStart+1) && p.getCurrentTime() < LabelEnd){
                   changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
                 }
@@ -322,7 +318,7 @@
               setLable(currentLable);
               array[videoId][i][7] = true;
 
-              if (array[videoId][currentLable][8] == true && autoJump){
+              if (array[videoId][currentLable][8] == true){
                 if(p.getDuration()-p.getCurrentTime() > (LabelStart+1) && (p.getDuration() - p.getCurrentTime()) < LabelEnd){
                   changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
                 }
