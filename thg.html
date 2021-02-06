@@ -74,18 +74,19 @@
 
     var beginVideoUrl ; // das erste Video das geladen wird
 
-    var IdTrepOst = 0;  //91
-    var IdEG1 = 1;    //84                 //Video Id's
-    var IdEG2 = 2;    //33s                 // bestimmt durch die Reinfolge der array
-    var Id1OG = 3;    //91s
-    var Id2OG = 4;    //134s
-    var Id3OG = 5;    //79s
+    var Rundgang = 0;
+    var IdTrepOst = 1;  //91
+    var IdEG1 = 2;    //84                 //Video Id's
+    var IdEG2 = 3;    //33s                 // bestimmt durch die Reinfolge der array
+    var Id1OG = 4;    //91s
+    var Id2OG = 5;    //134s
+    var Id3OG = 6;    //79s
 
 
-    var IdObers = 6;
-    var Id227 = 7;
-    var Id229 = 8;
-    var Id339 = 9;
+    var IdObers = 7;
+    var Id227 = 8;
+    var Id229 = 9;
+    var Id339 = 10;
 
     var InfoRunning = false;
 
@@ -102,7 +103,7 @@
 
     var NewTime;
     var videoId_old;
-    var videoId = 5;
+    var videoId = 6;
     var currentLable_old;
     var currentLable = 0; // 0 = kein Lable ist gesetzt, zahl entspricht sonst array
     var Walkable = true;
@@ -121,9 +122,13 @@
     ]
     */
       beginVideoUrl = server[serverwahl]+ Gang + '3OG.mp4' ;
+      var beginZeit = 0; // noch nicht berücksichtigt
       //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
 
       array = [
+        [
+          [] // Video draußen Rundgang
+        ],
         [
           ['Rundgang Pausenhof', server[serverwahl]+ Gang + 'XXXXX', 0, 2, "XXXXX", 0, true, false],
           ['EG', server[serverwahl]+ Gang + 'EG_1.mp4', 7, 9, IdEG1, 0, true, false],
@@ -147,6 +152,7 @@
           ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 13, 16, IdEG1, 14, true, false]
         ],
         [// Video OG1
+          ['Banner',  , 4, 5],
           ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 21, true, false], // Video OG1
           ['Mathe', server[serverwahl]+ Raum + 'EG_1.mp4', 12, 14, "XXXXXX", 1, true, false],
           ['Zum E-Gebäude', server[serverwahl]+ Gang + 'XXXXXXX', 15, 17, "XXXXXX", 45, true, false],
@@ -275,7 +281,7 @@
             console.log("currentTime_reverse" + control);
             console.log("currentTime" + p.getCurrentTime());
             console.log("Ende" + LabelEnd);*/
-            if (p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd ){
+            if ((p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd ) && array[videoId][i][0] != 'Banner'){
               currentLable = i;
               setLableText(array[videoId][currentLable][0]);
               array[videoId][i][7] = true;
@@ -285,7 +291,7 @@
                   changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
                 }
               }
-            }else if ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) {
+            }else if ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd  && array[videoId][i][0] != 'Banner') {
               currentLable = i;
               setLable(currentLable);
               array[videoId][i][7] = true;
@@ -358,7 +364,14 @@
         startInfo(InfoVideos[array[videoId][0][9]]);
       }
       if (e.code == "KeyT"){
-        startInfoBanner();
+        for(var i = 0; i<array[videoId].length;i++){
+          console.log(i);
+          var LabelStart = array[videoId][i][2];
+          var LabelEnd = array[videoId][i][3];
+          if(array[videoId][i][0]=="Banner" && array && ((p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd) || ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) )) {
+            startInfoBanner();
+          }
+        }
       }
       if (e.code == "KeyO") {
           endInfo();
@@ -409,7 +422,7 @@
 
     function endInfoBanner() {
       document.querySelector("#InfoBanner").style.zIndex = -10;
-      document.querySelector("#player").style.zIndex = 8;
+      document.querySelector("#player").style.zIndex = 6;
       Walkable = bannerSafe;
       bannerSafeLock = false;
     }
@@ -487,7 +500,7 @@
     document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);});
     document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);});
 
-    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+'/res/THG/THG_Aalen_Eisenbahn.mp4')});
+    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+ Raum + 'THG_Aalen_Eisenbahn.mp4')});
     document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");});
     document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");});
     document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");});
