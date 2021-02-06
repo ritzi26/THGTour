@@ -113,6 +113,14 @@ h3 {
 	display: none;
 }
 
+#schnitt {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100vh;
+	z-index: -1;
+
+}
+
 /* Wieder Main*/
 
 #player {
