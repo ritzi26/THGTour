@@ -1,3 +1,7 @@
+:root {
+  --blue: #00afd7;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -11,7 +15,7 @@ body{
 }
 
 h1 {
-	color: #00afd7;
+	color: var(--blue);
 	cursor: pointer;
 }
 
@@ -22,6 +26,15 @@ h1, h5 {
 
 p {
 	font-family: Roboto, Arial, sans-serif;
+	cursor: pointer;
+}
+
+#bannerText {
+	cursor: default;
+}
+
+.navSecContainer h1, .navSecContainer p {
+	color: white;
 }
 
 /* Einschub welcome.html*/
@@ -171,7 +184,7 @@ h5 {
 	height: auto;
 	width: auto;
 	color: green;
-	border: 4px solid #00afd7;
+	border: 4px solid var(--blue);
 	padding: 10px;
 	cursor: pointer;
 	visibility: collapse;
@@ -229,7 +242,7 @@ h5 {
 }
 
 .hiddenIcon {
-	background-color: grey;
+	background-color: var(--blue);
 	margin-left: 0;
 	padding-left: 0.1em;
 }
@@ -251,15 +264,15 @@ h5 {
 }
 
 #closeIconFloor {
-	background-color: grey;
+	background-color: var(--blue);
 }
 
 #closeIconVideo {
-	background-color: grey;
+	background-color: var(--blue);
 }
 
 .navSecContainer {
-	background-color: grey;
+	background-color: var(--blue);
 	padding: 1em;
 }
 
