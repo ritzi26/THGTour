@@ -34,6 +34,7 @@
       <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon" title="Startseite">logout</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Stockwerke">room</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Videos">movie</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="creditsIcon" title="Credits">supervisor_account</span>
     </div>
     <div class="secondLayer" id="floorWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
@@ -606,6 +607,12 @@
 
     document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
       document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)"
+    });
+
+    document.querySelector("#creditsIcon").addEventListener("click", (e) => {
+      startInfoBanner("Credits", "Entwickelt von:<br><br> Moritz Eisert<br>Max Balle <a href='https://maxballe.github.io'>Website</a><br>Jakob Eichholz");
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+
     });
 
     document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 0, IdEG1);menuCollapseFromFloors();});
