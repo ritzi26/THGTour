@@ -43,13 +43,21 @@ p {
 
 #creditBannerContent {
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-evenly;
 }
 
 #creditBannerContent div {
-	width: 108px;
 	text-align: center;
-	border: solid 1px red;
+}
+
+#creditBannerContent img {
+	width: 50%;
+  border-radius: 50%;
+}
+
+#creditBannerContent p {
+	font-size: 1.5em;
+  cursor: default;
 }
 
 /* Einschub welcome.html*/
