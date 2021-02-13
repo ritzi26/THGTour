@@ -1,0 +1,770 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel="icon" href="favicon.ico" type="image/ico"/>
+  <meta charset="utf-8">
+  <title>THG Tour</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="player"></div>
+    <div id="InfoPlayer"></div>
+    <div id="InfoBanner">
+      <div id="BannerWrapper">
+        <h5 id="bannerTitle">Banner</h5>
+        <div id="normalBannerContent">
+          <p id="bannerText">Sample banner text. If you see this, something went wrong<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div id="creditBannerContent">
+          <div id="moritz">
+            <img src="res/Moritz.jpg" alt="Bild Moritz">
+            <p>Moritz Eisert</p>
+          </div>
+          <div id="max">
+            <a href="https://maxballe.github.io" target="_blank"><img src="res/max.jpg" alt="Bild Max"></a>
+            <p>Max Balle</p>
+          </div>
+          <div id="jakob">
+            <img src="res/JakobEichholz.jpg" alt="Bild Jakob">
+            <p>Jakob Eichholz</p>
+          </div>
+        </div>
+        <span class="material-icons" id="bannerCloseIcon">close</span>
+      </div>
+    </div>
+  <div class="wrapper">
+    <div class="buttonDiv">
+      <h1>Wechseln</h1>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="material-icons icon forward">keyboard_arrow_up</span>
+    <span class="material-icons icon backward">keyboard_arrow_down</span>
+  </div>
+  <div class="nav">
+    <span class="material-icons icon menu-icon" id="openIcon">menu</span>
+    <div id="menuIconWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIcon">close</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon" title="Startseite">logout</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Stockwerke">room</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Fachräume">movie</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="creditsIcon" title="Credits">supervisor_account</span>
+    </div>
+    <div class="secondLayer" id="floorWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
+      <div class="navSecContainer">
+        <h1>Stockwerke</h1><br>
+        <p id="EG">Ergeschoss</p>
+        <p id="S1">1. Stock</p>
+        <p id="S2">2. Stock</p>
+        <p id="S3">3. Stock</p>
+      </div>
+    </div>
+    <div class="secondLayer" id="videoWrapper">
+      <span class="material-icons icon menu-icon hiddenIcon" id="closeIconVideo">close</span>
+      <div class="navSecContainer">
+        <h1>Fachräume</h1><br>
+        <p id="V1">Aula</p>
+        <p id="V2">Deutsch</p>
+        <p id="V3">Mathe</p>
+        <p id="V4">Englisch</p>
+        <p id="V5">Physik 1</p>
+        <p id="V5">Physik 2</p>
+        <p id="V6">Chemie</p>
+        <p id="V7">Biologie 1</p>
+        <p id="V8">Biologie 2</p>
+        <p id="V8">Informatik</p>
+        <p id="V9">Französisch</p>
+        <p id="V10">Latein</p>
+        <p id="V11">Spanisch</p>
+        <p id="V12">Erdkunde</p>
+        <p id="V13">Kunst</p>
+        <p id="V14">Musik</p>
+        <p id="V15">Religion</p>
+        <p id="V16">Bibliothek</p>
+        <p id="V17">EDV</p>
+        <p id="V18">3D-Druck</p>
+        <p id="V19">Hausaufgaben</p>
+        <p id="V20">UNESCO</p>
+        <p id="V21">Werkstatt</p>
+        <p id="V23">THG-Halle</p>
+        <p id="V24">Karl-Weiland-Halle</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
+  <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
+  <script type="text/javascript" charset="utf-8">
+
+
+                  // online ,           localer pi            , relative
+    let server = ['http://93.90.200.83','http://192.168.0.89','.'];   //neu Art den res Server zu wählen
+    var serverwahl = 0;       //diese Zahl ändern um Manuel anderen Server zu wählen
+    var Gang = "/res/THG/Gang/";
+    var Raum = "/res/THG/Raum/";
+    var info = '/res/THG/info/';
+
+
+    var playbackRate = 2;
+
+    var beginVideoUrl ; // das erste Video das geladen wird
+
+
+    var Rundgang = 0; //352
+
+    var IdTrepOst = 1;  //91
+    var IdEG1 = 2;    //84                 //Video Id's
+    var IdEG2 = 3;    //33s                 // bestimmt durch die Reinfolge der array
+    var Id1OG = 4;    //86s
+    var Id2OG = 5;    //89s
+    var Id3OG = 6;    //79s
+
+    var IdEGB = 7;    //79
+    var IdGang = 8;
+
+    var IdRosaV = 9; //100s
+
+    var IdAula = 10;
+    var Id3 = 11;
+    var Id6 = 12;
+    var Id10 = 13;
+
+    var Id117 = 14;
+    var IdObers = 15;
+
+    var Id228 = 16;
+    var IdBio1 = 17;
+    var IdBio2 = 18;
+    var IdEnglisch = 19;
+    var IdLatein = 20;
+    var Id227 = 21;
+    var Id229 = 22;
+
+    var IdChemie = 23;
+    var IdInfo = 24;
+    var IdKunst = 25;
+    var IdPhysikObel = 26;
+    var Id339 = 27;
+
+    var Id3D = 28;
+    var IdBib = 29;
+    var IdEDV = 30;
+    var IdHausaufgaben = 31;
+    var IdWerkstatt = 32;
+
+    var IdKWH = 33;
+    var IdTHGHalle = 34;
+
+
+    var IdAGeb = 35;   // Zum Abend Gymnasium
+    var IdPark = 36;   // Zum Stadtpark   75s
+
+
+    var IdFranz = 37;
+    var IdSpan = 38;
+    var IdReli = 39;
+    var IdA1 = 40;
+    var IdA2 = 41;
+
+
+    var InfoRunning = false;
+
+    let array ;
+    let InfoVideos;
+
+    var dir = true;
+    var forwardAllowed = true;
+    var backwardAllowed = false;
+    var barrier = 0.5;
+
+    var justStarted = true;
+    var firstWalk = true;
+
+    var NewTime;
+    var videoId_old;
+    var videoId = IdEG1;
+    var currentLable_old;
+    var currentLable = 0; // 0 = kein Lable ist gesetzt, zahl entspricht sonst array
+    var Walkable = true;
+    var changed = false;
+
+    var bannerSafe = true;
+    var bannerSafeLock = false;
+
+    var creditBannerActive = false;
+
+    /*
+    [Videos
+      [Stellen
+        [ButtonName, SourceLink, StartTime, EndTime, NewVideoId, NewTime, Walkable, LabelSet, autoJump, infovideo ID]
+      ]
+    ]
+    */
+      beginVideoUrl = server[serverwahl]+ Gang + 'EG_1.mp4' ;
+      var beginZeit = 0; // noch nicht berücksichtigt
+      //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
+
+      array = [
+        [
+          // Video draußen Rundgang
+            ['Zum THG', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 3, Rundgang, 175, true, false, false],
+            ['KWH - Halle', server[serverwahl]+ Raum + 'KWH.mp4', 9, 14, IdKWH, 1, false, false],
+            ['THG - Halle', server[serverwahl]+ Raum + 'THG-Halle.mp4', 38, 42, IdTHGHalle, 1, false, false],
+            ['Eingang', server[serverwahl]+ Gang + 'EG_1.mp4', 60, 65, IdEG1, 29, true, false],
+            ['Zum Abendgymnasium', server[serverwahl]+ Gang + 'A-HGeb.mp4', 73, 75, IdAGeb, 16, true, false],
+            ['Zur Rosavilla', server[serverwahl]+ Gang + 'Rosavilla.mp4', 118, 121, IdRosaV, 0, true, false],
+            ['Banner',  , 120, 130,'Fahrradparkplatz','Das THG verfügt über zwei große Fahrradabstellmöglichkeiten. Ein überdachter Stellplatz drausen und zusätzlich einen Fahrradkeller.<br>Wir haben eine Auszeichnung als "Fahrradfreundliche Schule" und machen bei Aktionen wie dem Stadtradeln mit.'],
+
+            ['Eingang', server[serverwahl]+ Gang + 'TrepOst.mp4', 125, 128, IdTrepOst, 0, true, false],
+            ['Zum EG', server[serverwahl]+ Gang + 'EG_1.mp4', 153, 156, IdEG1, 17, true, false],
+            ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 160, 164, IdEGB, 0, true, false],
+            ['Zu den Sporhallen', server[serverwahl]+ Gang + 'Draussen.mp4', 174, 177, Rundgang, 3, true, false, false],
+        ],
+        [   //Video Treppe ost
+          ['Rundgang Pausenhof', server[serverwahl]+ Gang + 'Draussen.mp4' , 0, 2, Rundgang, 126, true, false],
+          ['EG', server[serverwahl]+ Gang + 'EG_1.mp4', 7, 9, IdEG1, 0, true, false],
+          ['1.OG', server[serverwahl]+ Gang+ '1OG.mp4', 20, 22, Id1OG, 0, true, false],
+          ['2.OG', server[serverwahl]+ Gang+ '2OG.mp4', 33, 35, Id2OG, 0, true, false],
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 43, 47, Id3OG, 0, true, false],
+        ],
+        [//Video EG-1 (rechts)
+          ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 8, true, false],
+          ['Musik', server[serverwahl]+ Raum + 'Raum6.mp4', 6, 8, Id6, 1, false, false],
+          ['2-EG', server[serverwahl]+ Gang + 'EG_2.mp4', 13, 15, IdEG2, 15, true, false],
+          ['Zum E-Gebäude', server[serverwahl]+ Gang + 'Draussen.mp4', 16, 18, Rundgang, 155, true, false],
+          ['Bühne', server[serverwahl]+ Raum + 'Raum10.mp4', 18, 20, Id10, 1, false, false],
+          ['Banner',  , 2, 3,'Schließfächer','XXXXX <br> XXXXXX!'],
+          ['Aula', server[serverwahl]+ Raum + 'Aula.mp4', 25, 27, IdAula, 1, false, false],
+          ['Banner',  , 25, 129,'Wasserspender','Wir haben einen Wasserspender, bei dem man sich jederzeit seine Trinkflasche auffüllen kann.'],
+          ['Zum Haupteingang', server[serverwahl]+ Gang + 'Draussen.mp4', 28, 30, Rundgang, 62, true, false],
+          ['2-EG', server[serverwahl]+ Gang + 'EG_2.mp4', 30, 32, IdEG2, 0, true, false],
+          ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 40, 43, Id1OG, 19, true, false, false],  //autoJump enable pos 8
+        ],
+        [ //Video EG-2 (links)
+          ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 1, 2, IdEG1, 31, true, false],
+          ['Deutsch', server[serverwahl]+ Raum + 'Raum3.mp4', 4, 6, Id3, 1, false, false],
+          ['Banner',  , 0, 5,'Schließfächer','Die Schließfächer kann man sich mieten, um z.B. Schulsachen oder Sportsachen einzuschließen. <br> Der Schulranzen kann so deutlich leichter werden!'],
+          ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 13, 17, IdEG1, 14, true, false],
+        ],
+        [// Video OG1
+          ['Banner',  , 4, 5,'Test','Beispieltext muss hier rein; <br> If you see this something went horribly wrong!'],
+          ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 21, true, false], // Video OG1
+          ['Mathe', server[serverwahl]+ Raum + 'Raum117.mp4', 12, 14, Id117, 1, true, false],
+          ['Zum E-Gebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 15, 17, IdGang, 2, true, false],
+          ['Treppe', server[serverwahl]+ Gang + 'EG_1.mp4', 18, 20, IdEG1, 42, true, false],
+          //['Oberstufe', server[serverwahl]+ Raum + 'Oberstufe.mp4', 33, 35, IdObers , 1, false, false],
+          ['Banner',  , 0, 5,'Sekreteriat','XXXXX <br> XXXXXX!'],
+          ['Banner',  , 5, 10,'Oberstufenzimmer','XXXXX <br> XXXXXX!'],
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 43, 45, Id2OG, 20, true, false, false],  //autoJump enable pos 8 = true
+        ],
+        [//Video OG 2
+
+          ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 2, IdTrepOst, 34, true, false],  //Video OG 2
+          ['Biologie 1', server[serverwahl]+ Raum + 'Bio-1.mp4', 2, 4, IdBio1 , 1, false, false],
+          ['Biologie 2', server[serverwahl]+ Raum + 'Bio-2.mp4', 5, 7, IdBio2 , 1, false, false],
+          ['Englisch 1', server[serverwahl]+ Raum + 'VID_229.mp4', 13, 15, Id229 , 1, false, false],
+          ['Englisch 2', server[serverwahl]+ Raum + 'Englisch.mp4', 16, 18, IdEnglisch , 1, false, false],
+          ['Treppe', server[serverwahl]+ Gang + '1OG.mp4', 19, 21, Id1OG, 44, true, false],
+          ['Erdkunde 1', server[serverwahl]+ Raum + 'VID_227.mp4', 26, 28, Id227 , 1, false, false],
+          ['Erdkunde 2', server[serverwahl]+ Raum + '228.mp4', 29, 31, Id228 , 1, false, false],
+          ['Latein', server[serverwahl]+ Raum + 'Latein.mp4', 32, 34, IdLatein , 1, false, false],
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 43, 45, Id3OG, 17, true, false, false],    //autoJump enable pos 8
+        ],
+        [ //Video OG 3
+
+          ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 2, IdTrepOst, 46, true, false],
+          ['Chemie', server[serverwahl]+ Raum + 'Chemie.mp4', 3, 4, IdChemie , 1, false, false],
+          ['Bildene Kunst', server[serverwahl]+ Raum + 'Kunst.mp4', 11, 13, IdKunst , 1, false, false],
+          ['Treppe', server[serverwahl]+ Gang + '2OG.mp4', 16, 18, Id2OG, 44, true, false],
+          ['Informatik', server[serverwahl]+ Raum + 'Info.mp4', 23, 25, IdInfo , 1, false, false],
+          ['Physik 1', server[serverwahl]+ Raum + 'Physik-Obele.mp4', 27, 29, IdPhysikObel , 1, false, false],
+          ['Physik 2', server[serverwahl]+ Raum + 'VID_339.mp4', 29, 31, Id339 , 1, false, false],
+        ],
+
+        [//Video Egebäude
+          ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 3, Rundgang, 162, true, false],
+          ['Zum Hauptgebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 18, 20, IdGang, 32, true, false],
+          ['Spanisch', server[serverwahl]+ Raum + 'Spanisch.mp4', 33, 35, IdSpan , 1, false, false],
+          ['Religion', server[serverwahl]+ Raum + 'Religion.mp4', 38, 40, IdReli , 1, false, false],
+        ],
+        [//Video Gang
+          ['OG 1', server[serverwahl]+ Gang + '1OG.mp4', 0, 2, Id1OG, 16, true, false],
+          ['Französisch', server[serverwahl]+ Raum + 'Französisch.mp4', 26, 28, IdFranz , 1, false, false],
+          ['Treppe', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 31, 33, IdEGB, 19, true, false],
+        ],
+
+        [//Video  Rosavilla
+
+          ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 120, true, false],
+
+          [' Zum Stadtpark', server[serverwahl]+ Gang + 'Stadtpark.mp4', 11, 13, IdPark, 0, true, false],
+          [' Zur Werkstatt', server[serverwahl]+ Raum + 'Werkstatt.mp4', 21, 23, IdWerkstatt , 1, false, false],
+          ['Hausaufgabenbetreuung', server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 40, 42, IdHausaufgaben , 1, false, false],
+          ['Informatik', server[serverwahl]+ Raum + '3D-Druck.mp4', 42, 44, Id3D , 1, false, false],
+          ['Bibliotheks AG', server[serverwahl]+ Raum + 'BIB.mp4', 44, 46, IdBib , 1, false, false],
+          ['Computerraum', server[serverwahl]+ Raum + 'EDV.mp4', 48, 50, IdEDV , 1, false, false],
+
+
+
+        ],
+
+        [// Bild Aula
+          ['EG', server[serverwahl]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 26, true, false, false, 0],
+        ],
+        [//Biöd Raum3
+          ['EG', server[serverwahl]+ Gang + 'EG_2.mp4', 0, 5, IdEG2, 5, true, false, false, 0],
+        ],
+        [//Bild Raum 6
+          ['EG', server[serverwahl]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 7, true, false, false, 0], //
+        ],
+        [//Bild Raum 10
+          ['1.OG', server[serverwahl]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 19, true, false, false, 0],
+        ],
+
+        [//Raum 117
+          ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 0, 5, Id1OG, 13, true, false, false, 0],
+        ],
+        [
+          ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 0, 5, Id1OG, 34, true, false, false, 0] ,  //BILD Oberstufenzimmer; autoJump disabled pos 8 = false; infovideo ID = pos 9
+        ],
+
+
+        [//Bild Raum Id228
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 30, true, false, false, 1],
+        ],
+        [//Bild Raum Bio1
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 3, true, false, false, 1],
+        ],
+        [//Bild Raum Bio2
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 6, true, false, false, 1],
+        ],
+        [//Bild Raum Englisch
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 17, true, false, false, 1],
+        ],
+        [//Bild Raum Latein
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 33, true, false, false, 1],
+        ],
+        [
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 27, true, false, false, 1],   //BILD Erdkunde 227
+        ],
+        [
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 14, true, false, false, 1],   //BILD Erdkunde 229
+        ],
+
+
+        [//Bild Raum Chemie
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 4, true, false, false, 1],
+        ],
+        [//Bild Raum Info / SIA
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 24, true, false, false, 1],
+        ],
+        [//Bild Raum Kunst
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 12, true, false, false, 1],
+        ],
+        [//Bild Raum Physik Obele ! schattenseite des THG's
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 28, true, false, false, 1],
+        ],
+        [
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 30, true, false, false, 1],   //BILD Physik 339 sonnen Seite!
+        ],
+
+        [//Bild 3D- Druck AG
+          ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 43, true, false, false, 1],
+          ['Banner',  , 0, 5,'3D Druck AG','XXXXX <br> XXXXXX!'],
+        ],
+        [//Bild Bild Bibliothek
+            ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 45, true, false, false, 1],
+            ['Banner',  , 0, 5,'Bibliotheks AG','XXXXX <br> XXXXXX!'],
+        ],
+        [//Bild Raum EDV
+            ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 49, true, false, false, 1],
+        ],
+        [//Bild Raum Hausaufgaben AG
+            ['RosaVilla', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 41, true, false, false, 1],
+
+        ],
+        [//Bild Raum IdWerkstatt
+            ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 22, true, false, false, 1],
+            ['Banner',  , 0, 5,'Werkraum','XXXXX <br> XXXXXX!'],
+        ],
+
+        [// Bild KWH - Halle
+          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 5, Rundgang, 12, true, false, false,1],
+        ],
+        [ // THG Halle
+          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 5, Rundgang, 40, true, false, false,1],
+          ['Banner',  , 0, 5,'THG Sporhallen','XXXXX <br> XXXXXX!'],
+        ],
+
+        [//Video Abendgymnasium
+
+          ['A 1', server[serverwahl]+ Raum + 'A1.mp4', 0, 1, IdA1, 1, false, false],
+          ['A 2', server[serverwahl]+ Raum + 'A2.mp4', 1, 2, IdA2 , 1, false, false],
+          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 15, 17, Rundgang, 74, true, false],
+        ],
+        [//Video Stadpark
+          ['Zur Zum THG', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 2, IdRosaV, 12, true, false],
+        ],
+
+
+        [ // Franz
+          ['E-Gebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 0, 5, IdGang, 27, true, false, false,1],
+        ],
+
+        [ // Spanisch
+          ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, 5, IdEGB, 34, true, false, false,1],
+        ],
+
+        [ // Religion
+          ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, 5, IdEGB, 39, true, false, false,1],
+        ],
+        [ // A1
+          ['Zurück', server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 0, true, false, false,1],
+          ['Banner',  , 0, 5,'Digitalisirung im THG','XXXXX <br> XXXXXX!'],
+        ],
+        [ // A2
+          ['Zurück', server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 1, true, false, false,1],
+          ['Banner',  , 0, 5,'Digitalisirung im THG','XXXXX <br> XXXXXX!'],
+        ],
+
+      ];
+
+      InfoVideos = [server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',
+      server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',
+      server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',
+      server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',
+      server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4'];
+        // sources der Infovideos abhängig von dem Aktiven 360 Zimmer bild
+
+    console.log(array[0][0][0]);
+
+    var p = new Clappr.Player({
+      poster: "./res/THG-outside.png",
+      source: beginVideoUrl,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      preload: 'auto',
+      chromeless: true,
+      mute: true,
+      plugins: [Video360],
+      parentId: '#player',
+      events: {onPlay: function (){
+        if (justStarted){
+          if (changed){
+            p.seek(NewTime);
+            p.play();
+            changed = false;
+            Walkable = array[videoId_old][currentLable_old][6];
+          }
+          p.pause();
+          justStarted = false;
+        }
+      }
+    },
+  });
+    p.getPlugin('click_to_pause').disable();
+    p.core.activeContainer.on(Clappr.Events.CONTAINER_STATE_BUFFERING, function() {console.log("Buffered");if(firstWalk){setTimeout(function() {console.log("play");p.play();setTimeout(function() {p.pause();},100);}, 1000);}});
+
+    p.core.activePlayback.el.playbackRate = playbackRate;
+
+    p.play();
+    //var startTimer = setTimeout(() => {p.pause();}, 1000);
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+
+    if (isFirefox){
+      setInterval(()=> {if(firstWalk){p.play();p.pause(); console.log();}},100);
+    }
+
+    setInterval(() =>{
+      if(justStarted){
+        p.play();
+        console.log("starting");
+      }
+    }, 100);
+
+    setInterval(() => {
+      if (Walkable){
+        if (dir && (p.getCurrentTime() >  (p.getDuration()/2)-barrier)) {
+          p.pause();
+          forwardAllowed = false;
+        } else if (!dir && (p.getCurrentTime() > p.getDuration()-barrier)) {
+          p.pause();
+          backwardAllowed = false;
+        } else {
+          forwardAllowed = true;
+          backwardAllowed = true;
+        }
+      }
+    }, 100);
+
+    // controll Intervall für Labels
+    setInterval(() => {
+        for(var i =0; i< array[videoId].length; i++ ){
+          try {
+            var LabelStart = array[videoId][i][2];
+            var LabelEnd = array[videoId][i][3];
+            var LabelSet = array[videoId][i][7];
+            /*console.log("Start" + LabelStart);
+            var control = p.getDuration() - p.getCurrentTime();
+            console.log("currentTime_reverse" + control);
+            console.log("currentTime" + p.getCurrentTime());
+            console.log("Ende" + LabelEnd);*/
+            if ((p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd ) && array[videoId][i][0] != 'Banner'){
+              currentLable = i;
+              setLableText(array[videoId][currentLable][0]);
+              array[videoId][i][7] = true;
+
+              if (array[videoId][currentLable][8] == true){
+                if(p.getCurrentTime() > (LabelStart+1) && p.getCurrentTime() < LabelEnd){
+                  changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+                }
+              }
+            }else if ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd  && array[videoId][i][0] != 'Banner') {
+              currentLable = i;
+              setLable(currentLable);
+              array[videoId][i][7] = true;
+
+              if (array[videoId][currentLable][8] == true){
+                if(p.getDuration()-p.getCurrentTime() > (LabelStart+1) && (p.getDuration() - p.getCurrentTime()) < LabelEnd){
+                  changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+                }
+              }
+            }else if (LabelSet){
+              array[videoId][i][7] = false;
+              hideLable();
+              currentLable = 0;
+            }
+        }catch (e) {
+          console.log("Video Id: " + videoId);
+          console.log("label check: " + i);
+          console.log(e);
+        }
+      }
+    },100);
+
+    setInterval(() => {p.resize({height: window.innerHeight, width: window.innerWidth});
+      //document.getElementById("InfoPlayer").style.height = window.innerHeight;
+      //document.getElementById("InfoPlayer").style.width = window.innerWidth;
+    }, 1000);
+
+    function setLable(label) {
+      document.querySelector(".buttonDiv h1").innerHTML = array[videoId][label][0];
+      document.querySelector(".buttonDiv").style.visibility = "visible"
+    };
+
+    function setLableText(Textset) {
+      document.querySelector(".buttonDiv h1").innerHTML = Textset;
+      document.querySelector(".buttonDiv").style.visibility = "visible"
+    };
+
+    function hideLable() {
+      document.querySelector(".buttonDiv").style.visibility = "collapse"
+    };
+
+    function walkForward() {
+      firstWalk = false;
+      if (p.getCurrentTime() > (p.getDuration()/2)) {p.seek(p.getDuration()-p.getCurrentTime());}
+      dir = true;
+      backwardAllowed = true;
+        p.play();
+    }
+
+    function walkBackward() {
+      firstWalk = false;
+      if (p.getCurrentTime() < (p.getDuration()/2)) {p.seek(p.getDuration()-p.getCurrentTime());}
+      dir = false;
+      forwardAllowed = true;
+      p.play();
+    }
+
+    document.onkeydown = function(e) {
+      if (Walkable){
+        if ((e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") && forwardAllowed) {
+          if(Walkable){
+            walkForward();
+          }
+        }else if ((e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") && backwardAllowed) {
+          if(Walkable){
+            walkBackward();
+          }
+        }
+      }else if (e.code == "KeyI"){
+        startInfo(InfoVideos[array[videoId][0][9]]);
+      }
+      if (e.code == "KeyT"){
+        for(var i = 0; i<array[videoId].length;i++){
+          console.log(i);
+          var LabelStart = array[videoId][i][2];
+          var LabelEnd = array[videoId][i][3];
+          if(array[videoId][i][0]=="Banner" && array && ((p.getCurrentTime() > LabelStart && p.getCurrentTime() < LabelEnd) || ((p.getDuration()-p.getCurrentTime()) > LabelStart && (p.getDuration() - p.getCurrentTime()) < LabelEnd ) )) {
+            startInfoBanner(array[videoId][i][4], array[videoId][i][5]);
+          }
+        }
+      }
+      if (e.code == "Escape") {
+          endInfo();
+      }
+    };
+
+    function startInfo (source){
+      if(!InfoRunning){
+        InfoRunning = true;
+        Walkable = false;
+        var c = document.getElementById("InfoPlayer");
+        var v = document.createElement("video");
+        v.setAttribute("id", "D2Player")
+        v.Type = "video/mp4";
+        v.src = source;
+        v.controls = true;
+        c.style.zIndex = 7;
+        document.getElementById('player').style.zIndex = -10 ;
+        c.appendChild(v);
+        v.play();
+      }
+    }
+
+    function endInfo(){
+      if(InfoRunning){
+        try{
+          Walkable = true;
+          var v = document.getElementById('D2Player');
+          v.remove();
+          document.getElementById("InfoPlayer").style.zIndex = -10;
+          document.getElementById('player').style.zIndex = 6 ;
+          InfoRunning = false;
+        }catch(e){
+          console.log("kein 2D Player" + e);
+        }
+      }
+    }
+
+    function startInfoBanner(Überschrift, Content) {
+      document.getElementById('bannerTitle').innerHTML = Überschrift;
+      document.getElementById('bannerText').innerHTML = Content;
+      if (creditBannerActive) {
+        document.querySelector("#normalBannerContent").style.display = "none";
+        document.querySelector("#creditBannerContent").style.display = "flex";
+      } else {
+        document.querySelector("#normalBannerContent").style.display = "flex";
+        document.querySelector("#creditBannerContent").style.display = "none";
+      }
+      document.querySelector("#InfoBanner").style.zIndex = 8;
+      document.querySelector("#player").style.zIndex = -10 ;
+      if (!bannerSafeLock) {
+        bannerSafe = Walkable;
+        bannerSafeLock = true;
+        Walkable = false;
+      }
+    }
+
+    function endInfoBanner() {
+      document.querySelector("#InfoBanner").style.zIndex = -10;
+      document.querySelector("#player").style.zIndex = 6;
+      Walkable = bannerSafe;
+      bannerSafeLock = false;
+      creditBannerActive = false;
+    }
+
+    document.onkeyup = function(e) {
+      if (e.code == "ArrowUp" || e.code == "ArrowRight" || e.code == "KeyW" || e.code == "KeyD") {
+        p.pause();
+      } else if (e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "KeyA" || e.code == "KeyS") {
+        p.pause();
+      }
+    };
+
+    document.querySelector(".buttonDiv").addEventListener("click", (e) => {
+
+      changeVideo(array[videoId][currentLable][1], array[videoId][currentLable][5], array[videoId][currentLable][4]);
+
+    });
+
+    function changeVideo(source, time, nVideoId ){
+      Walkable = false;
+      array[videoId][currentLable][7] = false;
+      var new_source = source; //
+      changed = true;
+      hideLable();
+      NewTime = time; //
+      videoId_old = videoId;
+      currentLable_old = currentLable;
+      videoId = nVideoId;
+      currentLable = 0;
+      justStarted = true;
+      forwardAllowed = true;
+      firstWalk = true;
+      p.load(new_source);
+      p.core.activePlayback.el.playbackRate = playbackRate;
+    }
+
+
+    window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+
+    document.querySelector(".forward").addEventListener("touchstart", (e) => {walkForward();console.log("Start");});
+    document.querySelector(".forward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
+    document.querySelector(".backward").addEventListener("touchstart", (e) => {walkBackward();console.log("Start");});
+    document.querySelector(".backward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
+
+    document.querySelector("#openIcon").addEventListener("click", (e) => {
+      document.querySelector("#menuIconWrapper").style.transform = "translate(4.4em, 0)";
+    });
+
+    document.querySelector("#closeIcon").addEventListener("click", (e) => {
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    });
+
+    document.querySelector("#homeIcon").addEventListener("click", (e) => {
+      //window.location.href = "http://www.thgaalen.de";
+      window.history.go(-2);
+    });
+
+    document.querySelector("#floorIcon").addEventListener("click", (e) => {
+      document.querySelector("#floorWrapper").style.transform = "translate(16em, 0)";
+    });
+
+    document.querySelector("#closeIconFloor").addEventListener("click", (e) => {
+      document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)"
+    });
+
+    document.querySelector("#videosIcon").addEventListener("click", (e) => {
+      document.querySelector("#videoWrapper").style.transform = "translate(16em, 0)";
+    });
+
+    document.querySelector("#closeIconVideo").addEventListener("click", (e) => {
+      document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)"
+    });
+
+    document.querySelector("#creditsIcon").addEventListener("click", (e) => {
+      creditBannerActive = true;
+      startInfoBanner("Credits", "Error");
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    });
+
+    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 0, IdEG1);menuCollapseFromFloors();});
+    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '1OG.mp4', 0, Id1OG);menuCollapseFromFloors();});
+    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);menuCollapseFromFloors();});
+    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);menuCollapseFromFloors();});
+
+    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+ info +'THG_Aalen_Eisenbahn.mp4');menuCollapseFromVideos();});
+    document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");menuCollapseFromVideos();});
+    document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");menuCollapseFromVideos();});
+    document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");menuCollapseFromVideos();});
+
+    function menuCollapseFromFloors() {
+      document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)"
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    }
+
+    function menuCollapseFromVideos() {
+      document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)"
+      document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    }
+
+    document.querySelector("#bannerCloseIcon").addEventListener("click", (e) => {endInfoBanner();});
+  </script>
+</body>
+</html>
