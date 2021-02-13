@@ -304,6 +304,15 @@ h5 {
 	padding: 1em;
 }
 
+.secondLayer p {
+  padding-bottom: 0.2em;
+}
+
+.secondLayer p:hover {
+  color: black;
+}
+
+
 @media (pointer: coarse) {
 	.icon {
 		visibility: visible;
