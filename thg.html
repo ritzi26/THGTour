@@ -242,7 +242,7 @@
           ['2-EG', server[serverwahl]+ Gang + 'EG_2.mp4', 13, 15, IdEG2, 15, true, false],
           ['Zum E-Gebäude', server[serverwahl]+ Gang + 'Draussen.mp4', 16, 18, Rundgang, 155, true, false],
           ['Bühne', server[serverwahl]+ Raum + 'Raum10.mp4', 18, 20, Id10, 1, false, false],
-          ['Banner',  , 2, 3,'Schließfächer','XXXXX <br> XXXXXX!'],
+          ['Banner',  , 0, 5,'Schließfächer','Die Schließfächer kann man sich mieten, um z.B. Schulsachen oder Sportsachen einzuschließen. <br> Der Schulranzen kann so deutlich leichter werden!'],
           ['Aula', server[serverwahl]+ Raum + 'Aula.mp4', 25, 27, IdAula, 1, false, false],
           ['Banner',  , 25, 129,'Wasserspender','Wir haben einen Wasserspender, bei dem man sich jederzeit seine Trinkflasche auffüllen kann.'],
           ['Zum Haupteingang', server[serverwahl]+ Gang + 'Draussen.mp4', 28, 30, Rundgang, 62, true, false],
@@ -252,7 +252,7 @@
         [ //Video EG-2 (links)
           ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 1, 2, IdEG1, 31, true, false],
           ['Deutsch', server[serverwahl]+ Raum + 'Raum3.mp4', 4, 6, Id3, 1, false, false],
-          ['Banner',  , 0, 5,'Schließfächer','XXXXX <br> XXXXXX!'],
+          ['Banner',  , 0, 5,'Schließfächer','Die Schließfächer kann man sich mieten, um z.B. Schulsachen oder Sportsachen einzuschließen. <br> Der Schulranzen kann so deutlich leichter werden!'],
           ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 13, 17, IdEG1, 14, true, false],
         ],
         [// Video OG1
@@ -262,7 +262,7 @@
           ['Zum E-Gebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 15, 17, IdGang, 2, true, false],
           ['Treppe', server[serverwahl]+ Gang + 'EG_1.mp4', 18, 20, IdEG1, 42, true, false],
           //['Oberstufe', server[serverwahl]+ Raum + 'Oberstufe.mp4', 33, 35, IdObers , 1, false, false],
-          ['Banner',  , 0, 5,'Sekreteriat','XXXXX <br> XXXXXX!'],
+          ['Banner',  , 0, 5,'Sekreteriat','Hier ist das Sekreteriat. Eine Anlaufstelle für die meisten Fragen, mit immer einer Hielfreichen auskunft! <br> XXXXXX!'],
           ['Banner',  , 5, 10,'Oberstufenzimmer','XXXXX <br> XXXXXX!'],
           ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 43, 45, Id2OG, 20, true, false, false],  //autoJump enable pos 8 = true
         ],
@@ -379,11 +379,11 @@
 
         [//Bild 3D- Druck AG
           ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 43, true, false, false, 1],
-          ['Banner',  , 0, 5,'3D Druck AG','XXXXX <br> XXXXXX!'],
+          ['Banner',  , 0, 5,'3D Druck AG','Die 3D Druck AG is eine von vielen AGs am THG. Hier lernt man unteranderem, wie 3D Modelle gestaltet werden und wie man diese anschließend Ausdrucken kann. <br> Als Zeichenprogramm verwenden wir Fusion 360'],
         ],
         [//Bild Bild Bibliothek
             ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 45, true, false, false, 1],
-            ['Banner',  , 0, 5,'Bibliotheks AG','XXXXX <br> XXXXXX!'],
+            ['Banner',  , 0, 5,'Bibliotheks AG','Die Bibliotheks AG verwaltet unsere kleine eigene Bibliothek, die viele Sachbücher aber auch Romane umfasst.  <br> Weitere Informationen zu AGs finden sie a href=“index.hml“> hier </a'],
         ],
         [//Bild Raum EDV
             ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 49, true, false, false, 1],
@@ -789,7 +789,7 @@
     function menuCollapseFromFloors() {
       document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)";
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
-    } 
+    }
 
     function menuCollapseFromVideos() {
       document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)";
