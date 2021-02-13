@@ -302,6 +302,7 @@ h5 {
 .navSecContainer {
 	background-color: var(--blue);
 	padding: 1em;
+  min-width: 150px;
 }
 
 .secondLayer p {

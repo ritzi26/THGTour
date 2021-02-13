@@ -49,18 +49,22 @@
     <div id="menuIconWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIcon">close</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon" title="Startseite">logout</span>
-      <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Stockwerke">room</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Orte">room</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Fachräume">sensor_door</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="creditsIcon" title="Credits">supervisor_account</span>
     </div>
     <div class="secondLayer" id="floorWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
       <div class="navSecContainer">
-        <h1>Stockwerke</h1><br>
+        <h1>Orte</h1><br>
+        <p id="RG">Rundgang</p>
         <p id="EG">Ergeschoss</p>
         <p id="S1">1. Stock</p>
         <p id="S2">2. Stock</p>
         <p id="S3">3. Stock</p>
+        <p id="EGe">E-Gebäude</p>
+        <p id="RV">Rosa Villa</p>
+        <p id="SP">Stadtpark</p>
       </div>
     </div>
     <div class="secondLayer" id="videoWrapper">
@@ -736,6 +740,11 @@
     document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '1OG.mp4', 0, Id1OG);menuCollapseFromFloors();});
     document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);menuCollapseFromFloors();});
     document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);menuCollapseFromFloors();});
+    document.querySelector("#RG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Draussen.mp4', 0, Rundgang);menuCollapseFromFloors();});
+    document.querySelector("#SP").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Stadtpark.mp4', 0, IdPark);menuCollapseFromFloors();});
+    document.querySelector("#RV").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, IdRosaV);menuCollapseFromFloors();});
+    document.querySelector("#EGB").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, IdEGB);menuCollapseFromFloors();});
+    document.querySelector("#AG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, IdAGeb);menuCollapseFromFloors();});
 
     document.querySelector("#V1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Aula.mp4', 2, IdAula);menuCollapseFromVideos();});
     document.querySelector("#V2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum3.mp4', 2, Id3);menuCollapseFromVideos();});
