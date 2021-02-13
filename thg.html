@@ -76,22 +76,23 @@
         <p id="V6">Chemie</p>
         <p id="V7">Biologie 1</p>
         <p id="V8">Biologie 2</p>
-        <p id="V8">Informatik</p>
-        <p id="V9">Französisch</p>
-        <p id="V10">Latein</p>
-        <p id="V11">Spanisch</p>
-        <p id="V12">Erdkunde</p>
-        <p id="V13">Kunst</p>
-        <p id="V14">Musik</p>
-        <p id="V15">Religion</p>
-        <p id="V16">Bibliothek</p>
-        <p id="V17">EDV</p>
-        <p id="V18">3D-Druck</p>
-        <p id="V19">Hausaufgaben</p>
-        <p id="V20">UNESCO</p>
-        <p id="V21">Werkstatt</p>
-        <p id="V23">THG-Halle</p>
-        <p id="V24">Karl-Weiland-Halle</p>
+        <p id="V9">Informatik</p>
+        <p id="V10">Französisch</p>
+        <p id="V11">Latein</p>
+        <p id="V12">Spanisch</p>
+        <p id="V13">Erdkunde</p>
+        <p id="V14">Kunst</p>
+        <p id="V15">Musik</p>
+        <p id="V16">Religion</p>
+        <p id="V17">Bibliothek</p>
+        <p id="V18">EDV</p>
+        <p id="V19">3D-Druck</p>
+        <p id="V20">Hausaufgaben</p>
+        <p id="V21">UNESCO</p>
+        <p id="V22">Werkstatt</p>
+        <p id="V23">Abendgymnasium</p>
+        <p id="V24">THG-Halle</p>
+        <p id="V25">Karl-Weiland-Halle</p>
       </div>
     </div>
   </div>
@@ -729,10 +730,31 @@
     document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);menuCollapseFromFloors();});
     document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);menuCollapseFromFloors();});
 
-    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+ info +'THG_Aalen_Eisenbahn.mp4');menuCollapseFromVideos();});
-    document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");menuCollapseFromVideos();});
-    document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");menuCollapseFromVideos();});
-    document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");menuCollapseFromVideos();});
+    document.querySelector("#V1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Aula.mp4', 2, IdAula);menuCollapseFromFloors();});
+    document.querySelector("#V2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum3.mp4', 2, Id3);menuCollapseFromFloors();});
+    document.querySelector("#V3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum117.mp4', 2, Id117);menuCollapseFromFloors();});
+    document.querySelector("#V4").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Englisch.mp4', 2, IdEnglisch);menuCollapseFromFloors();});
+    document.querySelector("#V5").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Physik-Obele.mp4', 2, IdPhysikObel);menuCollapseFromFloors();});
+    document.querySelector("#V6").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum339.mp4', 2, Id339);menuCollapseFromFloors();});
+    document.querySelector("#V7").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Chemie.mp4', 2, IdChemie);menuCollapseFromFloors();});
+    document.querySelector("#V8").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Bio-1.mp4', 2, IdBio1);menuCollapseFromFloors();});
+    document.querySelector("#V9").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Bio-2.mp4', 2, IdBio2);menuCollapseFromFloors();});
+    document.querySelector("#V10").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Info.mp4', 2, IdInfo);menuCollapseFromFloors();});
+    document.querySelector("#V11").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Französisch.mp4', 2, IdFranz);menuCollapseFromFloors();});
+    document.querySelector("#V12").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Latein.mp4', 2, IdLatein);menuCollapseFromFloors();});
+    document.querySelector("#V13").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Spanisch.mp4', 2, IdSpan);menuCollapseFromFloors();});
+    document.querySelector("#V14").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum227.mp4', 2, Id227);menuCollapseFromFloors();});
+    document.querySelector("#V15").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum6.mp4', 2, Id6);menuCollapseFromFloors();});
+    document.querySelector("#V16").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Religion.mp4', 2, IdReli);menuCollapseFromFloors();});
+    document.querySelector("#V17").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'BIB.mp4', 2, IdBib);menuCollapseFromFloors();});
+    document.querySelector("#V18").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'EDV.mp4', 2, IdEDV);menuCollapseFromFloors();});
+    document.querySelector("#V19").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + '3D-Druck.mp4', 2, Id3D);menuCollapseFromFloors();});
+    document.querySelector("#V20").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 2, IdHausaufgaben);menuCollapseFromFloors();});
+    document.querySelector("#V21").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'UNESCO.mp4', 2, Id);menuCollapseFromFloors();});
+    document.querySelector("#V22").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Werkstatt.mp4', 2, IdWerkstatt);menuCollapseFromFloors();});
+    document.querySelector("#V23").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'A2.mp4', 2, Id);menuCollapseFromFloors();});
+    document.querySelector("#V24").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'THG-Halle.mp4', 2, IdTHGHalle);menuCollapseFromFloors();});
+    document.querySelector("#V25").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'KWH.mp4', 2, IdKWH);menuCollapseFromFloors();});
 
     function menuCollapseFromFloors() {
       document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)"
