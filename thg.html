@@ -160,12 +160,16 @@
     var IdKWH = 33;
     var IdTHGHalle = 34;
 
-    var IdPark = 35;   // Zum Stadtpark
-    var IdAGeb = 36;   // Zum Abend Gymnasium
+
+    var IdAGeb = 35;   // Zum Abend Gymnasium
+    var IdPark = 36;   // Zum Stadtpark   75s
+
 
     var IdFranz = 37;
     var IdSpan = 38;
     var IdReli = 39;
+    var IdA1 = 40;
+    var IdA2 = 41;
 
 
     var InfoRunning = false;
@@ -183,7 +187,7 @@
 
     var NewTime;
     var videoId_old;
-    var videoId = IdAGeb;
+    var videoId = IdRosaV;
     var currentLable_old;
     var currentLable = 0; // 0 = kein Lable ist gesetzt, zahl entspricht sonst array
     var Walkable = true;
@@ -201,7 +205,7 @@
       ]
     ]
     */
-      beginVideoUrl = server[serverwahl]+ Gang + 'A-HGeb.mp4' ;
+      beginVideoUrl = server[serverwahl]+ Gang + 'Rosavilla.mp4' ;
       var beginZeit = 0; // noch nicht berücksichtigt
       //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
 
@@ -212,7 +216,7 @@
             ['KWH - Halle', server[serverwahl]+ Raum + 'KWH.mp4', 9, 14, IdKWH, 1, false, false],
             ['THG - Halle', server[serverwahl]+ Raum + 'THG-Halle.mp4', 38, 42, IdTHGHalle, 1, false, false],
             ['Eingang', server[serverwahl]+ Gang + 'EG_1.mp4', 60, 65, IdEG1, 29, true, false],
-            ['Zum Abendgymnasium', server[serverwahl]+ Gang + 'A-HGeb.mp4', 67, 69, IdAGeb, 16, true, false],
+            ['Zum Abendgymnasium', server[serverwahl]+ Gang + 'A-HGeb.mp4', 73, 75, IdAGeb, 16, true, false],
             ['Zur Rosavilla', server[serverwahl]+ Gang + 'Rosavilla.mp4', 118, 121, IdRosaV, 0, true, false],
             ['Eingang', server[serverwahl]+ Gang + 'TrepOst.mp4', 125, 128, IdTrepOst, 0, true, false],
             ['Zum EG', server[serverwahl]+ Gang + 'EG_1.mp4', 153, 156, IdEG1, 17, true, false],
@@ -292,7 +296,7 @@
 
           ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 120, true, false],
 
-
+          [' Zum Stadtpark', server[serverwahl]+ Gang + 'Stadtpark.mp4', 11, 13, IdPark, 0, true, false],
           [' Zur Werkstatt', server[serverwahl]+ Raum + 'Werkstatt.mp4', 21, 23, IdWerkstatt , 1, false, false],
           ['Hausaufgabenbetreuung', server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 40, 42, IdHausaufgaben , 1, false, false],
           ['Informatik', server[serverwahl]+ Raum + '3D-Druck.mp4', 42, 44, Id3D , 1, false, false],
@@ -388,29 +392,32 @@
 
         [//Video Abendgymnasium
 
-          ['A 2', server[serverwahl]+ Raum + 'XXXXXXXXXXX', 0, 1, 'XXXXXXXXXXXXX' , 1, false, false],
-          ['A 1', server[serverwahl]+ Raum + 'XXXXXXXXXXX', 1, 3, 'XXXXXXXXXXXXX' , 1, false, false],
-          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 15, 17, Rundgang, 16, true, false],
+          ['A 1', server[serverwahl]+ Raum + 'A1.mp4', 0, 1, IdA1, 1, false, false],
+          ['A 2', server[serverwahl]+ Raum + 'A2.mp4', 1, 2, IdA2 , 1, false, false],
+          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 15, 17, Rundgang, 74, true, false],
         ],
         [//Video Stadpark
-          ['OG 1', server[serverwahl]+ Gang + '1OG.mp4', 0, 2, Id1OG, 16, true, false],
-          ['Französisch', server[serverwahl]+ Raum + 'XXXXXXXXXXX', 26, 28, 'XXXXXXXXXXXXX' , 1, false, false],
-          ['Treppe', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 31, 33, IdEGB, 19, true, false]
+          ['Zur Zum THG', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 2, IdRosaV, 12, true, false],
         ],
 
 
         [ // Franz
-          ['Zum Rundgang', server[serverwahl]+ Gang + 'XXXXXXXXX', 0, 5, Rundgang, 40, true, false, false,1],
+          ['E- Gebäude', server[serverwahl]+ Gang + 'Französisch.mp4', 0, 5, IdGang, 40, true, false, false,1],
         ],
 
         [ // Spanisch
-          ['Zum Rundgang', server[serverwahl]+ Gang + 'XXXXXX', 0, 5, Rundgang, 40, true, false, false,1],
+          ['E- Gebäude', server[serverwahl]+ Gang + 'Spanisch.mp4', 0, 5, IdEGB, 40, true, false, false,1],
         ],
 
         [ // Religion
-          ['Zum Rundgang', server[serverwahl]+ Gang + 'XXXXXXXX', 0, 5, Rundgang, 40, true, false, false,1],
+          ['E- Gebäude', server[serverwahl]+ Gang + 'Religion.mp4', 0, 5, IdAGeb, 40, true, false, false,1],
         ],
-
+        [ // A1
+          ['Zurück', server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 0, true, false, false,1],
+        ],
+        [ // A2
+          ['Zurück', server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 1, true, false, false,1],
+        ],
 
       ];
 
