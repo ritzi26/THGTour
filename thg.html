@@ -49,18 +49,22 @@
     <div id="menuIconWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIcon">close</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon" title="Startseite">logout</span>
-      <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Stockwerke">room</span>
-      <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Fachräume">movie</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Orte">room</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Fachräume">sensor_door</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="creditsIcon" title="Credits">supervisor_account</span>
     </div>
     <div class="secondLayer" id="floorWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
       <div class="navSecContainer">
-        <h1>Stockwerke</h1><br>
+        <h1>Orte</h1><br>
+        <p id="RG">Rundgang</p>
         <p id="EG">Ergeschoss</p>
         <p id="S1">1. Stock</p>
         <p id="S2">2. Stock</p>
         <p id="S3">3. Stock</p>
+        <p id="EGe">E-Gebäude</p>
+        <p id="RV">Rosa Villa</p>
+        <p id="SP">Stadtpark</p>
       </div>
     </div>
     <div class="secondLayer" id="videoWrapper">
@@ -72,26 +76,27 @@
         <p id="V3">Mathe</p>
         <p id="V4">Englisch</p>
         <p id="V5">Physik 1</p>
-        <p id="V5">Physik 2</p>
-        <p id="V6">Chemie</p>
-        <p id="V7">Biologie 1</p>
-        <p id="V8">Biologie 2</p>
-        <p id="V8">Informatik</p>
-        <p id="V9">Französisch</p>
-        <p id="V10">Latein</p>
-        <p id="V11">Spanisch</p>
-        <p id="V12">Erdkunde</p>
-        <p id="V13">Kunst</p>
-        <p id="V14">Musik</p>
-        <p id="V15">Religion</p>
-        <p id="V16">Bibliothek</p>
-        <p id="V17">EDV</p>
-        <p id="V18">3D-Druck</p>
-        <p id="V19">Hausaufgaben</p>
-        <p id="V20">UNESCO</p>
-        <p id="V21">Werkstatt</p>
-        <p id="V23">THG-Halle</p>
-        <p id="V24">Karl-Weiland-Halle</p>
+        <p id="V6">Physik 2</p>
+        <p id="V7">Chemie</p>
+        <p id="V8">Biologie 1</p>
+        <p id="V9">Biologie 2</p>
+        <p id="V10">Informatik</p>
+        <p id="V11">Französisch</p>
+        <p id="V12">Latein</p>
+        <p id="V13">Spanisch</p>
+        <p id="V14">Erdkunde</p>
+        <p id="V15">Kunst</p>
+        <p id="V16">Musik</p>
+        <p id="V17">Religion</p>
+        <p id="V18">Bibliothek</p>
+        <p id="V19">EDV</p>
+        <p id="V20">3D-Druck</p>
+        <p id="V21">Hausaufgaben</p>
+        <p id="V22">UNESCO</p>
+        <p id="V23">Werkstatt</p>
+        <p id="V24">Abendgymnasium</p>
+        <p id="V25">THG-Halle</p>
+        <p id="V26">Karl-Weiland-Halle</p>
       </div>
     </div>
   </div>
@@ -748,19 +753,46 @@
     document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '1OG.mp4', 0, Id1OG);menuCollapseFromFloors();});
     document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);menuCollapseFromFloors();});
     document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);menuCollapseFromFloors();});
+    document.querySelector("#RG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Draussen.mp4', 0, Rundgang);menuCollapseFromFloors();});
+    document.querySelector("#SP").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Stadtpark.mp4', 0, IdPark);menuCollapseFromFloors();});
+    document.querySelector("#RV").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, IdRosaV);menuCollapseFromFloors();});
+    document.querySelector("#EGB").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, IdEGB);menuCollapseFromFloors();});
+    document.querySelector("#AG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, IdAGeb);menuCollapseFromFloors();});
 
-    document.querySelector("#V1").addEventListener("click", (e) => {startInfo(server[serverwahl]+ info +'THG_Aalen_Eisenbahn.mp4');menuCollapseFromVideos();});
-    document.querySelector("#V2").addEventListener("click", (e) => {console.log("V2");menuCollapseFromVideos();});
-    document.querySelector("#V3").addEventListener("click", (e) => {console.log("V3");menuCollapseFromVideos();});
-    document.querySelector("#V4").addEventListener("click", (e) => {console.log("V4");menuCollapseFromVideos();});
+    document.querySelector("#V1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Aula.mp4', 2, IdAula);menuCollapseFromVideos();});
+    document.querySelector("#V2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum3.mp4', 2, Id3);menuCollapseFromVideos();});
+    document.querySelector("#V3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum117.mp4', 2, Id117);menuCollapseFromVideos();});
+    document.querySelector("#V4").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Englisch.mp4', 2, IdEnglisch);menuCollapseFromVideos();});
+    document.querySelector("#V5").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Physik-Obele.mp4', 2, IdPhysikObel);menuCollapseFromVideos();});
+    document.querySelector("#V6").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'VID_339.mp4', 2, Id339);menuCollapseFromVideos();});
+    document.querySelector("#V7").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Chemie.mp4', 2, IdChemie);menuCollapseFromVideos();});
+    document.querySelector("#V8").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Bio-1.mp4', 2, IdBio1);menuCollapseFromVideos();});
+    document.querySelector("#V9").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Bio-2.mp4', 2, IdBio2);menuCollapseFromVideos();});
+    document.querySelector("#V10").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Info.mp4', 2, IdInfo);menuCollapseFromVideos();});
+    document.querySelector("#V11").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Französisch.mp4', 2, IdFranz);menuCollapseFromVideos();});
+    document.querySelector("#V12").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Latein.mp4', 2, IdLatein);menuCollapseFromVideos();});
+    document.querySelector("#V13").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Spanisch.mp4', 2, IdSpan);menuCollapseFromVideos();});
+    document.querySelector("#V14").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'VID_227.mp4', 2, Id227);menuCollapseFromVideos();});
+    document.querySelector("#V15").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Kunst.mp4', 2, IdKunst);menuCollapseFromVideos();});
+    document.querySelector("#V16").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum6.mp4', 2, Id6);menuCollapseFromVideos();});
+    document.querySelector("#V17").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Religion.mp4', 2, IdReli);menuCollapseFromVideos();});
+    document.querySelector("#V18").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'BIB.mp4', 2, IdBib);menuCollapseFromVideos();});
+    document.querySelector("#V19").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'EDV.mp4', 2, IdEDV);menuCollapseFromVideos();});
+    document.querySelector("#V20").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + '3D-Druck.mp4', 2, Id3D);menuCollapseFromVideos();});
+    document.querySelector("#V21").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 2, IdHausaufgaben);menuCollapseFromVideos();});
+    document.querySelector("#V22").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'UNESCO.mp4', 2, Id);menuCollapseFromVideos();});
+    document.querySelector("#V23").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Werkstatt.mp4', 2, IdWerkstatt);menuCollapseFromVideos();});
+    document.querySelector("#V24").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'A2.mp4', 2, IdA2);menuCollapseFromVideos();});
+    document.querySelector("#V25").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'THG-Halle.mp4', 2, IdTHGHalle);menuCollapseFromVideos();});
+    document.querySelector("#V26").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'KWH.mp4', 2, IdKWH);menuCollapseFromVideos();});
 
     function menuCollapseFromFloors() {
-      document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)"
+      document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)";
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
     }
 
     function menuCollapseFromVideos() {
-      document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)"
+      document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)";
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
     }
 
