@@ -50,11 +50,12 @@ Liste banner:
 Lehrerzimmern
 A-Gebäude mit technik
 Bibliotheks AG
-Sporthalle -> THG/ oder KWH
+3D Druck AG
+Sporthalle -> THG
 Sekre
 Sitzgelegenheiten 2.OG 3.OG
 Oberstufenzimmer
-Schleißfächer
+Schließfächer
 Wasserspender
 Stadtpark oder laske video
 Pausenhof
