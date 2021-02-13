@@ -42,3 +42,20 @@ Räume (anpassbar nach folgendem Schema
 
 
 die Download server sind in der Array server[serverwahl] veränderbar und durch serverwahl auswählbar.
+
+
+
+Liste banner:
+
+Lehrerzimmern
+A-Gebäude mit technik
+Bibliotheks AG
+Sporthalle -> THG/ oder KWH
+Sekre
+Sitzgelegenheiten 2.OG 3.OG
+Oberstufenzimmer
+Schleißfächer
+Wasserspender
+Stadtpark oder laske video
+Pausenhof
+Fahrradparkplatz => Hinweis Fahrradkeller
