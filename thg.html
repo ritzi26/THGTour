@@ -272,8 +272,8 @@
           ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 2, IdTrepOst, 34, true, false],  //Video OG 2
           ['Biologie 1', server[serverwahl]+ Raum + 'Bio-1.mp4', 2, 4, IdBio1 , 1, false, false],
           ['Biologie 2', server[serverwahl]+ Raum + 'Bio-2.mp4', 5, 7, IdBio2 , 1, false, false],
-          ['Englisch 1', server[serverwahl]+ Raum + 'VID_229.mp4', 13, 15, Id229 , 1, false, false],
-          ['Englisch 2', server[serverwahl]+ Raum + 'Englisch.mp4', 16, 18, IdEnglisch , 1, false, false],
+          ['Englisch / UNESCO', server[serverwahl]+ Raum + 'VID_229.mp4', 13, 15, Id229 , 1, false, false],
+          ['Englisch', server[serverwahl]+ Raum + 'Englisch.mp4', 16, 18, IdEnglisch , 1, false, false],
           ['Treppe', server[serverwahl]+ Gang + '1OG.mp4', 19, 21, Id1OG, 44, true, false],
           ['Erdkunde 1', server[serverwahl]+ Raum + 'VID_227.mp4', 26, 28, Id227 , 1, false, false],
           ['Erdkunde 2', server[serverwahl]+ Raum + '228.mp4', 29, 31, Id228 , 1, false, false],
@@ -343,13 +343,13 @@
           ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 30, true, false, false, 1],
         ],
         [//Bild Raum Bio1
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 3, true, false, false, 1],
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 3, true, false, false, 4],
         ],
         [//Bild Raum Bio2
           ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 6, true, false, false, 1],
         ],
         [//Bild Raum Englisch
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 17, true, false, false, 1],
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 17, true, false, false, 3],
         ],
         [//Bild Raum Latein
           ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 33, true, false, false, 1],
@@ -358,7 +358,7 @@
           ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 27, true, false, false, 1],   //BILD Erdkunde 227
         ],
         [
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 14, true, false, false, 1],   //BILD Erdkunde 229
+          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 14, true, false, false, 2],   //BILD Erdkunde 229
         ],
 
 
@@ -418,11 +418,11 @@
 
 
         [ // Franz
-          ['E-Gebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 0, 5, IdGang, 27, true, false, false,1],
+          ['E-Gebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 0, 5, IdGang, 27, true, false, false,3],
         ],
 
         [ // Spanisch
-          ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, 5, IdEGB, 34, true, false, false,1],
+          ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, 5, IdEGB, 34, true, false, false,3],
         ],
 
         [ // Religion
@@ -441,9 +441,9 @@
 
       InfoVideos = [server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',
       server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',
-      server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',
-      server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',
-      server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4'];
+      'https://thgaalen.de/info/TdoT/videos/unesco-ag.mp4',
+      'https://thgaalen.de/info/TdoT/videos/sprachen2.mp4',
+      'https://thgaalen.de/info/TdoT/videos/bnt.mp4'];
         // sources der Infovideos abhängig von dem Aktiven 360 Zimmer bild
 
     console.log(array[0][0][0]);
@@ -781,7 +781,7 @@
     document.querySelector("#V19").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'EDV.mp4', 2, IdEDV);menuCollapseFromVideos();});
     document.querySelector("#V20").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + '3D-Druck.mp4', 2, Id3D);menuCollapseFromVideos();});
     document.querySelector("#V21").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 2, IdHausaufgaben);menuCollapseFromVideos();});
-    document.querySelector("#V22").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'UNESCO.mp4', 2, Id);menuCollapseFromVideos();});
+    document.querySelector("#V22").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'VID_229.mp4', 2, Id229);menuCollapseFromVideos();});
     document.querySelector("#V23").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Werkstatt.mp4', 2, IdWerkstatt);menuCollapseFromVideos();});
     document.querySelector("#V24").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'A2.mp4', 2, IdA2);menuCollapseFromVideos();});
     document.querySelector("#V25").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'THG-Halle.mp4', 2, IdTHGHalle);menuCollapseFromVideos();});
