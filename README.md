@@ -54,10 +54,11 @@ Bibliotheks AG
 Sporthalle -> THG
 Sekre
 Sitzgelegenheiten 2.OG 3.OG
-Oberstufenzimmer
 Schließfächer
 Wasserspender
 Stadtpark oder laske video
 Pausenhof
 Fahrradparkplatz => Hinweis Fahrradkeller
 SIA/Jia
+
+Aula
