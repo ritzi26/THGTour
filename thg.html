@@ -175,6 +175,7 @@
     var IdReli = 39;
     var IdA1 = 40;
     var IdA2 = 41;
+    var IdSMV = 42;
 
 
     var InfoRunning = false;
@@ -313,7 +314,7 @@
         [//Video  Rosavilla
 
           ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 120, true, false],
-
+          [' Zum SMV Raum', server[serverwahl]+ Raum + 'SMV.mp4', 21, 23, IdSMV , 1, false, false],
           [' Zum Stadtpark', server[serverwahl]+ Gang + 'Stadtpark.mp4', 11, 13, IdPark, 0, true, false],
           [' Zur Werkstatt', server[serverwahl]+ Raum + 'Werkstatt.mp4', 21, 23, IdWerkstatt , 1, false, false],
           ['Hausaufgabenbetreuung', server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 40, 42, IdHausaufgaben , 1, false, false],
@@ -403,7 +404,7 @@
         ],
         [//Bild Raum IdWerkstatt
             ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 22, true, false, false, 1],
-            ['Banner',  , 0, 5,'Werkraum','Dies ist der Werkraum des THGs. Er wird von unteschiedlichsten Klassenstufen und AGs genutzt. Dabei lernt man grundlegende Ketnnisser der Holzbearbeitung und vieles mehr. <br> Ein Video eines MINT-Preises finden sie<a href="http://93.90.200.83/res/THG/info/THG_Aalen_Eisenbahn.mp4" target="_blank"> hier. </a>'],
+            ['Banner',  , 0, 5,'Werkraum','Dies ist der Werkraum des THGs. Er wird von unteschiedlichsten Klassenstufen und AGs genutzt. Dabei lernt man grundlegende Ketnnisser der Holzbearbeitung und vieles mehr. <br> Ein Video eines MINT-Preises finden sie <a href="http://93.90.200.83/res/THG/info/THG_Aalen_Eisenbahn.mp4" target="_blank"> hier. </a>'],
         ],
 
         [// Bild KWH - Halle
@@ -443,6 +444,10 @@
         [ // A2
           ['Zurück', server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 1, true, false, false,1],
           ['Banner',  , 0, 5,'Digitalisirung im THG','XXXXXX'],
+        ],
+        [ // SMV / Billjard
+          ['Zurück', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 1, true, false, false,1],
+          ['Banner',  , 0, 5,'SMV','SMV steht für "Schüler mit Verwaltung". In diesem Raum, können Aktionen der Schüler geplant, oder auch nur zeit verbracht werden ;) <br> Weitere Informationen über die SMV finden sie <a href="https://thgaalen.de/info/smv/smv.php" target="_blank"> hier. </a>'],
         ],
 
       ];
