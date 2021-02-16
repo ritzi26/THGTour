@@ -313,6 +313,14 @@ h5 {
   color: black;
 }
 
+#vidCloser {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: var(--blue);
+  display: none;
+  z-index: 20;
+}
 
 @media (pointer: coarse) {
 	.icon {

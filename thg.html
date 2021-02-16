@@ -101,6 +101,7 @@
       </div>
     </div>
   </div>
+  <span class="material-icons icon menu-icon" id="vidCloser">close</span>
 
   <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"> </script>
   <script type="text/javascript" charset="utf-8" src="dist/clappr-video360.min.js"></script>
@@ -656,6 +657,8 @@
         c.appendChild(v);
         v.play();
         document.querySelector("#openIcon").style.display = "none";
+        document.querySelector("#vidCloser").style.display = "inline-block";
+        menuCollapseFromInfo();
       }
     }
 
@@ -672,6 +675,7 @@
           console.log("kein 2D Player" + e);
         }
         document.querySelector("#openIcon").style.display = "inline-block";
+        document.querySelector("#vidCloser").style.display = "none";
       }
     }
 
@@ -814,6 +818,8 @@
     document.querySelector("#V25").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'THG-Halle.mp4', 2, IdTHGHalle);menuCollapseFromVideos();});
     document.querySelector("#V26").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'KWH.mp4', 2, IdKWH);menuCollapseFromVideos();});
 
+    document.querySelector("#vidCloser").addEventListener("click", (e) => {endInfo();});
+
     function menuCollapseFromFloors() {
       document.querySelector("#floorWrapper").style.transform = "translate(-16em, 0)";
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
@@ -822,6 +828,10 @@
     function menuCollapseFromVideos() {
       document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)";
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
+    }
+
+    function menuCollapseFromInfo() {
+
     }
 
     document.querySelector("#bannerCloseIcon").addEventListener("click", (e) => {endInfoBanner();});
