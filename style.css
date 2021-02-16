@@ -27,6 +27,7 @@ h1, h5 {
 h4{
   padding-top: 1.5em;
   font-size: 1.5em;
+  font-family: Roboto, Arial, sans-serif;
 
 
 }
@@ -327,12 +328,6 @@ h5 {
   color: var(--blue);
   display: none;
   z-index: 20;
-}
-
-#openIcon {
-  background-color: var(--blue);
-  margin-left: 0;
-  padding-left: 0.1em;
 }
 
 @media (pointer: coarse) {
