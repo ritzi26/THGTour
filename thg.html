@@ -51,7 +51,7 @@
       <span class="material-icons icon menu-icon hiddenIcon" id="homeIcon" title="Startseite">logout</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="floorIcon" title="Orte">room</span>
       <span class="material-icons icon menu-icon hiddenIcon" id="videosIcon" title="Fachräume">sensor_door</span>
-      <span class="material-icons icon menu-icon hiddenIcon" id="creditsIcon" title="Credits">supervisor_account</span>
+      <span class="material-icons icon menu-icon hiddenIcon" id="creditsIcon" title="Impressum">supervisor_account</span>
     </div>
     <div class="secondLayer" id="floorWrapper">
       <span class="material-icons icon menu-icon hiddenIcon" id="closeIconFloor">close</span>
@@ -376,7 +376,7 @@
           //['Banner',  , 0, 5,'SIA und JIA','XXXXX']
         ],
         [//Bild Raum Kunst
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 12, true, false, false, 8],
+          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 12, true, false, false, 7],
         ],
         [//Bild Raum Physik Obele ! schattenseite des THG's
           ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 28, true, false, false, -1],
@@ -467,7 +467,7 @@
       'https://thgaalen.de/info/TdoT/videos/theaterag.mp4', // Bühne
       'https://thgaalen.de/info/TdoT/videos/sani2.mp4', //nicht verwendet _Raum filmen?
       'https://thgaalen.de/info/TdoT/videos/fuenfer.mp4', //Hausaufgaben betreuung;
-      'https://thgaalen.de/info/TdoT/videos/G9.mp4' // NNicht verwendet
+      'https://thgaalen.de/info/TdoT/videos/G9.mp4' // Nicht verwendet
     ];
         // sources der Infovideos abhängig von dem Aktiven 360 Zimmer bild
 
@@ -776,7 +776,7 @@
 
     document.querySelector("#creditsIcon").addEventListener("click", (e) => {
       creditBannerActive = true;
-      startInfoBanner("Credits", "Error");
+      startInfoBanner("Impressum <h6>Erstellt von Schülern der Jahrgangsstufe 2:</h6>", "Error");
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
     });
 
