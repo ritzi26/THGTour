@@ -116,7 +116,7 @@
     var info = '/res/THG/info/';
 
 
-    var playbackRate = 2;
+    var playbackRate = 1.5;
 
     var beginVideoUrl ; // das erste Video das geladen wird
 
@@ -194,7 +194,7 @@
 
     var NewTime;
     var videoId_old;
-    var videoId = IdEG1;
+    var videoId = Rundgang;
     var currentLable_old;
     var currentLable = 0; // 0 = kein Lable ist gesetzt, zahl entspricht sonst array
     var Walkable = true;
@@ -212,8 +212,8 @@
       ]
     ]
     */
-      beginVideoUrl = server[serverwahl]+ Gang + 'EG_1.mp4' ;
-      var beginZeit = 0; // noch nicht berücksichtigt
+      beginVideoUrl = server[serverwahl]+ Gang + 'Draussen.mp4' ;
+      var beginZeit = 90; // noch nicht berücksichtigt
       //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
 
       array = [
@@ -497,6 +497,7 @@
       }
     },
   });
+  p.seek(90);
     p.getPlugin('click_to_pause').disable();
     p.core.activeContainer.on(Clappr.Events.CONTAINER_STATE_BUFFERING, function() {console.log("Buffered");if(firstWalk){setTimeout(function() {console.log("play");p.play();setTimeout(function() {p.pause();},100);}, 1000);}});
 
