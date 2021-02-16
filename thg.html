@@ -420,7 +420,7 @@
         ],
         [//Video Stadpark
           ['Zum THG', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 2, IdRosaV, 12, true, false, false, -1],
-          ['Banner',  , 0, 5,'Stadtpark','Der Stadtpark gehört auch zum Pausenhof des THGs. Er bietet viele Möglichkeiten sich in den Pausen auszutoben und ganze Mittagspausen am Kocher zu verbringen. '],
+          ['Banner',  , 23, 40,'Stadtpark','Der Stadtpark gehört auch zum Pausenhof des THGs. Er bietet viele Möglichkeiten sich in den Pausen auszutoben und ganze Mittagspausen am Kocher zu verbringen. '],
         ],
 
 
@@ -775,15 +775,15 @@
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
     });
 
-    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 0, IdEG1);menuCollapseFromFloors();});
-    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '1OG.mp4', 0, Id1OG);menuCollapseFromFloors();});
-    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 0, Id2OG);menuCollapseFromFloors();});
-    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 0, Id3OG);menuCollapseFromFloors();});
+    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 2, IdEG1);menuCollapseFromFloors();});
+    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '1OG.mp4', 2, Id1OG);menuCollapseFromFloors();});
+    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 2, Id2OG);menuCollapseFromFloors();});
+    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 2, Id3OG);menuCollapseFromFloors();});
     document.querySelector("#RG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Draussen.mp4', 100, Rundgang);menuCollapseFromFloors();});
-    document.querySelector("#SP").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Stadtpark.mp4', 0, IdPark);menuCollapseFromFloors();});
-    document.querySelector("#RV").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, IdRosaV);menuCollapseFromFloors();});
-    document.querySelector("#EGB").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, IdEGB);menuCollapseFromFloors();});
-    document.querySelector("#AG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, IdAGeb);menuCollapseFromFloors();});
+    document.querySelector("#SP").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Stadtpark.mp4', 30, IdPark);menuCollapseFromFloors();});
+    document.querySelector("#RV").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Rosavilla.mp4', 2, IdRosaV);menuCollapseFromFloors();});
+    document.querySelector("#EGB").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'E-Gebäude.mp4', 2, IdEGB);menuCollapseFromFloors();});
+    document.querySelector("#AG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'A-HGeb.mp4', 10, IdAGeb);menuCollapseFromFloors();});
 
     document.querySelector("#V1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Aula.mp4', 2, IdAula);menuCollapseFromVideos();});
     document.querySelector("#V2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum3.mp4', 2, Id3);menuCollapseFromVideos();});
