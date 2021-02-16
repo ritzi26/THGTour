@@ -655,6 +655,7 @@
         document.getElementById('player').style.zIndex = -10 ;
         c.appendChild(v);
         v.play();
+        document.querySelector("#openIcon").style.display = "none";
       }
     }
 
@@ -670,6 +671,7 @@
         }catch(e){
           console.log("kein 2D Player" + e);
         }
+        document.querySelector("#openIcon").style.display = "inline-block";
       }
     }
 
