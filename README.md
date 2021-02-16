@@ -47,18 +47,18 @@ die Download server sind in der Array server[serverwahl] veränderbar und durch 
 
 Liste banner:
 
-Lehrerzimmern
+Lehrerzimmern X
 A-Gebäude mit technik
 Bibliotheks AG
 3D Druck AG
 Sporthalle -> THG
-Sekre
-Sitzgelegenheiten 2.OG 3.OG
-Schließfächer
-Wasserspender
-Stadtpark oder laske video
-Pausenhof
-Fahrradparkplatz => Hinweis Fahrradkeller
+Sekre X
+Sitzgelegenheiten 2.OG 3.OG X
+Schließfächer X
+Wasserspender X
+Stadtpark oder laske video X
+Pausenhof  X
+Fahrradparkplatz => Hinweis FahrradkellerX
 SIA/Jia
 
 Aula
