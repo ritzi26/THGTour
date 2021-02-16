@@ -652,13 +652,12 @@
         v.Type = "video/mp4";
         v.src = source;
         v.controls = true;
-        c.style.zIndex = 7;
+        c.style.zIndex = 9;
         document.getElementById('player').style.zIndex = -10 ;
         c.appendChild(v);
         v.play();
         document.querySelector("#openIcon").style.display = "none";
         document.querySelector("#vidCloser").style.display = "inline-block";
-        menuCollapseFromInfo();
       }
     }
 
@@ -828,10 +827,6 @@
     function menuCollapseFromVideos() {
       document.querySelector("#videoWrapper").style.transform = "translate(-16em, 0)";
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
-    }
-
-    function menuCollapseFromInfo() {
-
     }
 
     document.querySelector("#bannerCloseIcon").addEventListener("click", (e) => {endInfoBanner();});
