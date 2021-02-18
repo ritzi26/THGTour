@@ -117,9 +117,10 @@
   <script type="text/javascript" charset="utf-8">
 
 
-                  // online ,           localer pi            , relative
-    let server = ['http://93.90.200.83','http://192.168.0.89','.'];   //neu Art den res Server zu wählen
-    var serverwahl = 0;       //diese Zahl ändern um Manuel anderen Server zu wählen
+                  // online ,                2.server                      localer pi            , relative
+    let server = ['http://93.90.200.83','http://217.160.42.146:8080/','http://192.168.0.89','.'];   //neu Art den res Server zu wählen
+    var serverwahl1 = 3;       //diese Zahl ändern um Manuel anderen Server zu wählen
+    var serverwahl2 = 1;
     var Gang = "/res/THG/Gang/";
     var Raum = "/res/THG/Raum/";
     var info = '/res/THG/info/';
@@ -221,248 +222,248 @@
       ]
     ]
     */
-      beginVideoUrl = server[serverwahl]+ Gang + 'Draussen.mp4' ;
+      beginVideoUrl = server[serverwahl1]+ Gang + 'Draussen.mp4' ;
       var beginZeit = 90; // noch nicht berücksichtigt
-      //beginVideoUrl = server[serverwahl]+'/res/THG/Vid_Oberstufe.mp4'
+      //beginVideoUrl = server[serverwahl1]+'/res/THG/Vid_Oberstufe.mp4'
 
       array = [
         [
           // Video draußen Rundgang
-            ['Zum THG', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 3, Rundgang, 175, true, false, false],
-            ['KWH - Halle', server[serverwahl]+ Raum + 'KWH.mp4', 9, 14, IdKWH, 1, false, false],
-            ['THG - Halle', server[serverwahl]+ Raum + 'THG-Halle.mp4', 38, 42, IdTHGHalle, 1, false, false],
-            ['Eingang', server[serverwahl]+ Gang + 'EG_1.mp4', 60, 65, IdEG1, 29, true, false],
-            ['Zum Abendgymnasium', server[serverwahl]+ Gang + 'A-HGeb.mp4', 73, 75, IdAGeb, 16, true, false],
-            ['Zur Rosavilla', server[serverwahl]+ Gang + 'Rosavilla.mp4', 118, 121, IdRosaV, 0, true, false],
+            ['Zum THG', server[serverwahl1]+ Gang + 'Draussen.mp4', 0, 3, Rundgang, 175, true, false, false],
+            ['KWH - Halle', server[serverwahl1]+ Raum + 'KWH.mp4', 9, 14, IdKWH, 1, false, false],
+            ['THG - Halle', server[serverwahl1]+ Raum + 'THG-Halle.mp4', 38, 42, IdTHGHalle, 1, false, false],
+            ['Eingang', server[serverwahl1]+ Gang + 'EG_1.mp4', 60, 65, IdEG1, 29, true, false],
+            ['Zum Abendgymnasium', server[serverwahl1]+ Gang + 'A-HGeb.mp4', 73, 75, IdAGeb, 16, true, false],
+            ['Zur Rosavilla', server[serverwahl1]+ Gang + 'Rosavilla.mp4', 118, 121, IdRosaV, 0, true, false],
             ['Banner',  , 120, 130,'Fahrradparkplatz','Das THG verfügt über zwei große Fahrradabstellmöglichkeiten: <br> Einen überdachten Stellplatz draußen und zusätzlich einen Fahrradkeller.<br>Wir haben eine Auszeichnung als "Fahrradfreundliche Schule" und machen bei Aktionen wie dem Stadtradeln mit. <br><br> <img src="https://thgaalen.de/bilder/LOGO_FFS.jpg" width = "40%">'],
             ['Banner',  , 87, 96,'Pausenhof','Der Pausenhof des THGs wurde 2017 erneuert. Dabei wurde auf schöne Sitzmöglichkeiten geachtet. Auch 3 Tischtennisplatten sorgen für genügend Spaß in den Pausen.'],
-            ['Eingang', server[serverwahl]+ Gang + 'TrepOst.mp4', 125, 128, IdTrepOst, 0, true, false],
-            ['Zum EG', server[serverwahl]+ Gang + 'EG_1.mp4', 153, 156, IdEG1, 17, true, false],
-            ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 160, 164, IdEGB, 0, true, false],
-            ['Zu den Sporhallen', server[serverwahl]+ Gang + 'Draussen.mp4', 174, 177, Rundgang, 3, true, false, false],
+            ['Eingang', server[serverwahl1]+ Gang + 'TrepOst.mp4', 125, 128, IdTrepOst, 0, true, false],
+            ['Zum EG', server[serverwahl1]+ Gang + 'EG_1.mp4', 153, 156, IdEG1, 17, true, false],
+            ['E-Gebäude', server[serverwahl1]+ Gang + 'E-Gebäude.mp4', 160, 164, IdEGB, 0, true, false],
+            ['Zu den Sporhallen', server[serverwahl1]+ Gang + 'Draussen.mp4', 174, 177, Rundgang, 3, true, false, false],
         ],
         [   //Video Treppe ost
-          ['Rundgang Pausenhof', server[serverwahl]+ Gang + 'Draussen.mp4' , 0, 2, Rundgang, 126, true, false],
-          ['EG', server[serverwahl]+ Gang + 'EG_1.mp4', 7, 9, IdEG1, 0, true, false],
-          ['1.OG', server[serverwahl]+ Gang+ '1OG.mp4', 20, 22, Id1OG, 0, true, false],
-          ['2.OG', server[serverwahl]+ Gang+ '2OG.mp4', 33, 35, Id2OG, 0, true, false],
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 43, 47, Id3OG, 0, true, false],
+          ['Rundgang Pausenhof', server[serverwahl1]+ Gang + 'Draussen.mp4' , 0, 2, Rundgang, 126, true, false],
+          ['EG', server[serverwahl1]+ Gang + 'EG_1.mp4', 7, 9, IdEG1, 0, true, false],
+          ['1.OG', server[serverwahl1]+ Gang+ '1OG.mp4', 20, 22, Id1OG, 0, true, false],
+          ['2.OG', server[serverwahl1]+ Gang+ '2OG.mp4', 33, 35, Id2OG, 0, true, false],
+          ['3.OG', server[serverwahl1]+ Gang + '3OG.mp4', 43, 47, Id3OG, 0, true, false],
         ],
         [//Video EG-1 (rechts)
-          ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 8, true, false],
-          ['Musik', server[serverwahl]+ Raum + 'Raum6.mp4', 6, 8, Id6, 1, false, false],
-          ['2-EG', server[serverwahl]+ Gang + 'EG_2.mp4', 13, 15, IdEG2, 15, true, false],
-          ['Zum E-Gebäude', server[serverwahl]+ Gang + 'Draussen.mp4', 15, 17, Rundgang, 155, true, false],
-          ['Bühne', server[serverwahl]+ Raum + 'Raum10.mp4', 18, 20, Id10, 1, false, false],
+          ['Treppe', server[serverwahl1]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 8, true, false],
+          ['Musik', server[serverwahl1]+ Raum + 'Raum6.mp4', 6, 8, Id6, 1, false, false],
+          ['2-EG', server[serverwahl1]+ Gang + 'EG_2.mp4', 13, 15, IdEG2, 15, true, false],
+          ['Zum E-Gebäude', server[serverwahl1]+ Gang + 'Draussen.mp4', 15, 17, Rundgang, 155, true, false],
+          ['Bühne', server[serverwahl1]+ Raum + 'Raum10.mp4', 18, 20, Id10, 1, false, false],
           ['Banner',  , 17, 20,'Schließfächer','Die Schließfächer kann man sich mieten, um z.B. Schulsachen oder Sportsachen einzuschließen. <br> Der Schulranzen kann so  leichter werden! <br> Weiter Informationen finden sie <a href="https://thgaalen.de/info/schliessfach/schliessfach.php" target="_blank"> hier. </a> '],
-          ['Aula', server[serverwahl]+ Raum + 'Aula.mp4', 25, 27, IdAula, 1, false, false],
+          ['Aula', server[serverwahl1]+ Raum + 'Aula.mp4', 25, 27, IdAula, 1, false, false],
           ['Banner',  , 26, 29,'Wasserspender','Wir haben einen Wasserspender, bei dem man sich jederzeit seine Trinkflasche auffüllen kann.'],
-          ['Zum Haupteingang', server[serverwahl]+ Gang + 'Draussen.mp4', 28, 30, Rundgang, 62, true, false],
-          ['2-EG', server[serverwahl]+ Gang + 'EG_2.mp4', 30, 32, IdEG2, 0, true, false],
-          ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 40, 43, Id1OG, 19, true, false, false],  //autoJump enable pos 8
+          ['Zum Haupteingang', server[serverwahl1]+ Gang + 'Draussen.mp4', 28, 30, Rundgang, 62, true, false],
+          ['2-EG', server[serverwahl1]+ Gang + 'EG_2.mp4', 30, 32, IdEG2, 0, true, false],
+          ['1.OG', server[serverwahl2]+ Gang + '1OG.mp4', 40, 43, Id1OG, 19, true, false, false],  //autoJump enable pos 8
         ],
         [ //Video EG-2 (links)
-          ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 0, 2, IdEG1, 31, true, false],
-          ['Deutsch', server[serverwahl]+ Raum + 'Raum3.mp4', 4, 6, Id3, 1, false, false],
+          ['1-EG', server[serverwahl2]+ Gang + 'EG_1.mp4', 0, 2, IdEG1, 31, true, false],
+          ['Deutsch', server[serverwahl2]+ Raum + 'Raum3.mp4', 4, 6, Id3, 1, false, false],
           ['Banner',  , 10, 13,'Schließfächer','Die Schließfächer kann man sich mieten, um z.B. Schulsachen oder Sportsachen einzuschließen. <br> Der Schulranzen kann so deutlich leichter werden! <br> Weiter Informationen finden sie <a href="https://thgaalen.de/info/schliessfach/schliessfach.php" target="_blank"> hier. </a>'],
-          ['1-EG', server[serverwahl]+ Gang + 'EG_1.mp4', 13, 17, IdEG1, 14, true, false],
+          ['1-EG', server[serverwahl2]+ Gang + 'EG_1.mp4', 13, 17, IdEG1, 14, true, false],
         ],
         [// Video OG1
           ['Banner',  , 1, 5,'Lehrerzimmer','Hier befindet sich das Lehrerzimmer. Ein Coronakomformes Bild aller Lehrer finden sie <a href="https://thgaalen.de/ueber/kollegium.php" target="_blank"> hier. </a> ;)'],
-          ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 21, true, false], // Video OG1
-          ['Mathe', server[serverwahl]+ Raum + 'Raum117.mp4', 10, 12, Id117, 1, true, false],
-          ['Zum E-Gebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 15, 17, IdGang, 2, true, false],
-          ['Treppe', server[serverwahl]+ Gang + 'EG_1.mp4', 18, 20, IdEG1, 42, true, false],
-          //['Oberstufe', server[serverwahl]+ Raum + 'Oberstufe.mp4', 33, 35, IdObers , 1, false, false],
+          ['Treppe', server[serverwahl2]+ Gang + 'TrepOst.mp4', 0, 3, IdTrepOst, 21, true, false], // Video OG1
+          ['Mathe', server[serverwahl2]+ Raum + 'Raum117.mp4', 10, 12, Id117, 1, true, false],
+          ['Zum E-Gebäude', server[serverwahl2]+ Gang + 'HG-EG.mp4', 15, 17, IdGang, 2, true, false],
+          ['Treppe', server[serverwahl2]+ Gang + 'EG_1.mp4', 18, 20, IdEG1, 42, true, false],
+          //['Oberstufe', server[serverwahl2]+ Raum + 'Oberstufe.mp4', 33, 35, IdObers , 1, false, false],
           ['Banner',  , 26, 31,'Sekreteriat','Hier ist das Sekreteriat. Eine Anlaufstelle für die meisten Fragen, mit immer einer hilfreichen Auskunft! <br> Herzlichen Dank an Frau Blum und Frau Kunz von der Schülerschaft.'],
         //  ['Banner',  , 5, 10,'Oberstufenzimmer','XXXXX <br> XXXXXX!'],
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 43, 45, Id2OG, 20, true, false, false],  //autoJump enable pos 8 = true
+          ['2.OG', server[serverwahl2]+ Gang + '2OG.mp4', 43, 45, Id2OG, 20, true, false, false],  //autoJump enable pos 8 = true
         ],
         [//Video OG 2
 
-          ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 2, IdTrepOst, 34, true, false],  //Video OG 2
-          ['Biologie 1', server[serverwahl]+ Raum + 'Bio-1.mp4', 2, 4, IdBio1 , 1, false, false],
-          ['Biologie 2', server[serverwahl]+ Raum + 'Bio-2.mp4', 5, 7, IdBio2 , 1, false, false],
-          ['Englisch / UNESCO', server[serverwahl]+ Raum + 'VID_229.mp4', 13, 15, Id229 , 1, false, false],
-          ['Englisch', server[serverwahl]+ Raum + 'Englisch.mp4', 16, 18, IdEnglisch , 1, false, false],
+          ['Treppe', server[serverwahl2]+ Gang + 'TrepOst.mp4', 0, 2, IdTrepOst, 34, true, false],  //Video OG 2
+          ['Biologie 1', server[serverwahl2]+ Raum + 'Bio-1.mp4', 2, 4, IdBio1 , 1, false, false],
+          ['Biologie 2', server[serverwahl2]+ Raum + 'Bio-2.mp4', 5, 7, IdBio2 , 1, false, false],
+          ['Englisch / UNESCO', server[serverwahl2]+ Raum + 'VID_229.mp4', 13, 15, Id229 , 1, false, false],
+          ['Englisch', server[serverwahl2]+ Raum + 'Englisch.mp4', 16, 18, IdEnglisch , 1, false, false],
           ['Banner',  , 14, 18,'Sitzecken','Im ganzen THG gibt es viele Sitzecken, die zum Lernen genutzt werden können, wie auch für Mittagspausen.'],
-          ['Treppe', server[serverwahl]+ Gang + '1OG.mp4', 19, 21, Id1OG, 44, true, false],
-          ['Erdkunde 1', server[serverwahl]+ Raum + 'VID_227.mp4', 26, 28, Id227 , 1, false, false],
-          ['Erdkunde 2', server[serverwahl]+ Raum + '228.mp4', 29, 31, Id228 , 1, false, false],
-          ['Latein', server[serverwahl]+ Raum + 'Latein.mp4', 32, 34, IdLatein , 1, false, false],
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 43, 45, Id3OG, 17, true, false, false],    //autoJump enable pos 8
+          ['Treppe', server[serverwahl2]+ Gang + '1OG.mp4', 19, 21, Id1OG, 44, true, false],
+          ['Erdkunde 1', server[serverwahl2]+ Raum + 'VID_227.mp4', 26, 28, Id227 , 1, false, false],
+          ['Erdkunde 2', server[serverwahl2]+ Raum + '228.mp4', 29, 31, Id228 , 1, false, false],
+          ['Latein', server[serverwahl2]+ Raum + 'Latein.mp4', 32, 34, IdLatein , 1, false, false],
+          ['3.OG', server[serverwahl2]+ Gang + '3OG.mp4', 43, 45, Id3OG, 17, true, false, false],    //autoJump enable pos 8
         ],
         [ //Video OG 3
 
-          ['Treppe', server[serverwahl]+ Gang + 'TrepOst.mp4', 0, 2, IdTrepOst, 46, true, false],
-          ['Chemie', server[serverwahl]+ Raum + 'Chemie.mp4', 3, 4, IdChemie , 1, false, false],
-          ['Bildene Kunst', server[serverwahl]+ Raum + 'Kunst.mp4', 11, 13, IdKunst , 1, false, false],
-          ['Treppe', server[serverwahl]+ Gang + '2OG.mp4', 16, 18, Id2OG, 44, true, false],
-          ['MINT (JIA/SIA)', server[serverwahl]+ Raum + 'Info.mp4', 23, 25, IdInfo , 1, false, false],
-          ['Physik 1', server[serverwahl]+ Raum + 'Physik-Obele.mp4', 27, 29, IdPhysikObel , 1, false, false],
-          ['Physik 2', server[serverwahl]+ Raum + 'VID_339.mp4', 29, 31, Id339 , 1, false, false],
+          ['Treppe', server[serverwahl2]+ Gang + 'TrepOst.mp4', 0, 2, IdTrepOst, 46, true, false],
+          ['Chemie', server[serverwahl2]+ Raum + 'Chemie.mp4', 3, 4, IdChemie , 1, false, false],
+          ['Bildene Kunst', server[serverwahl2]+ Raum + 'Kunst.mp4', 11, 13, IdKunst , 1, false, false],
+          ['Treppe', server[serverwahl2]+ Gang + '2OG.mp4', 16, 18, Id2OG, 44, true, false],
+          ['MINT (JIA/SIA)', server[serverwahl2]+ Raum + 'Info.mp4', 23, 25, IdInfo , 1, false, false],
+          ['Physik 1', server[serverwahl2]+ Raum + 'Physik-Obele.mp4', 27, 29, IdPhysikObel , 1, false, false],
+          ['Physik 2', server[serverwahl2]+ Raum + 'VID_339.mp4', 29, 31, Id339 , 1, false, false],
           ['Banner',  , 4, 8,'Sitzecken','Im ganzen THG gibt es viele Sitzecken, die zum Lernen genutzt werden können, wie auch für Mittagspausen.'],
         ],
 
         [//Video Egebäude
-          ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 3, Rundgang, 162, true, false],
-          ['Zum Hauptgebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 18, 20, IdGang, 32, true, false],
-          ['Spanisch', server[serverwahl]+ Raum + 'Spanisch.mp4', 33, 35, IdSpan , 1, false, false],
-          ['Religion', server[serverwahl]+ Raum + 'Religion.mp4', 38, 40, IdReli , 1, false, false],
+          ['Pausenhof Rundgang', server[serverwahl2]+ Gang + 'Draussen.mp4', 0, 3, Rundgang, 162, true, false],
+          ['Zum Hauptgebäude', server[serverwahl1]+ Gang + 'HG-EG.mp4', 18, 20, IdGang, 32, true, false],
+          ['Spanisch', server[serverwahl1]+ Raum + 'Spanisch.mp4', 33, 35, IdSpan , 1, false, false],
+          ['Religion', server[serverwahl1]+ Raum + 'Religion.mp4', 38, 40, IdReli , 1, false, false],
         ],
         [//Video Gang
-          ['OG 1', server[serverwahl]+ Gang + '1OG.mp4', 0, 2, Id1OG, 16, true, false],
-          ['Französisch', server[serverwahl]+ Raum + 'Französisch.mp4', 26, 28, IdFranz , 1, false, false],
-          ['Treppe', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 31, 33, IdEGB, 19, true, false],
+          ['OG 1', server[serverwahl1]+ Gang + '1OG.mp4', 0, 2, Id1OG, 16, true, false],
+          ['Französisch', server[serverwahl1]+ Raum + 'Französisch.mp4', 26, 28, IdFranz , 1, false, false],
+          ['Treppe', server[serverwahl1]+ Gang + 'E-Gebäude.mp4', 31, 33, IdEGB, 19, true, false],
         ],
 
         [//Video  Rosavilla
 
-          ['Pausenhof Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 120, true, false],
-          [' Zum SMV Raum', server[serverwahl]+ Raum + 'SMV.mp4', 26, 29, IdSMV , 1, false, false],
-          [' Zum Stadtpark', server[serverwahl]+ Gang + 'Stadtpark.mp4', 11, 13, IdPark, 0, true, false],
-          [' Zur Werkstatt', server[serverwahl]+ Raum + 'Werkstatt.mp4', 21, 23, IdWerkstatt , 1, false, false],
-          ['Hausaufgabenbetreuung', server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 40, 42, IdHausaufgaben , 1, false, false],
-          ['Informatik', server[serverwahl]+ Raum + '3D-Druck.mp4', 42, 44, Id3D , 1, false, false],
-          ['Bibliotheks AG', server[serverwahl]+ Raum + 'BIB.mp4', 44, 46, IdBib , 1, false, false],
-          ['Computerraum', server[serverwahl]+ Raum + 'EDV.mp4', 48, 50, IdEDV , 1, false, false],
+          ['Pausenhof Rundgang', server[serverwahl1]+ Gang + 'Draussen.mp4', 0, 2, Rundgang, 120, true, false],
+          [' Zum SMV Raum', server[serverwahl1]+ Raum + 'SMV.mp4', 26, 29, IdSMV , 1, false, false],
+          [' Zum Stadtpark', server[serverwahl1]+ Gang + 'Stadtpark.mp4', 11, 13, IdPark, 0, true, false],
+          [' Zur Werkstatt', server[serverwahl1]+ Raum + 'Werkstatt.mp4', 21, 23, IdWerkstatt , 1, false, false],
+          ['Hausaufgabenbetreuung', server[serverwahl1]+ Raum + 'Hausaufgaben.mp4', 40, 42, IdHausaufgaben , 1, false, false],
+          ['Informatik', server[serverwahl1]+ Raum + '3D-Druck.mp4', 42, 44, Id3D , 1, false, false],
+          ['Bibliotheks AG', server[serverwahl1]+ Raum + 'BIB.mp4', 44, 46, IdBib , 1, false, false],
+          ['Computerraum', server[serverwahl2]+ Raum + 'EDV.mp4', 48, 50, IdEDV , 1, false, false],
 
 
 
         ],
 
         [// Bild Aula
-          ['EG', server[serverwahl]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 26, true, false, false, -1],
+          ['EG', server[serverwahl2]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 26, true, false, false, -1],
           ['Banner',  , 0, 5,'Aula','Dies ist die Aula. Aktuell werden hier Klausuren geschrieben, um diese Coronakomform durchführen zu können. Normalerweise wird die Aula unter anderm für Vorstellungen, Konzerte sowie Vorträge genutzt.'],
         ],
         [//Biöd Raum3
-          ['EG', server[serverwahl]+ Gang + 'EG_2.mp4', 0, 5, IdEG2, 5, true, false, false, -1],
+          ['EG', server[serverwahl2]+ Gang + 'EG_2.mp4', 0, 5, IdEG2, 5, true, false, false, -1],
         ],
         [//Bild Raum 6
-          ['EG', server[serverwahl]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 7, true, false, false, 6], //
+          ['EG', server[serverwahl2]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 7, true, false, false, 6], //
         ],
         [//Bild Raum 10
-          ['EG', server[serverwahl]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 19, true, false, false, 11],
+          ['EG', server[serverwahl2]+ Gang + 'EG_1.mp4', 0, 5, IdEG1, 19, true, false, false, 11],
         ],
 
         [//Raum 117
-          ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 0, 5, Id1OG, 11, true, false, false, -1],
+          ['1.OG', server[serverwahl2]+ Gang + '1OG.mp4', 0, 5, Id1OG, 11, true, false, false, -1],
         ],
         [
-          ['1.OG', server[serverwahl]+ Gang + '1OG.mp4', 0, 5, Id1OG, 34, true, false, false, -1] ,  //BILD Oberstufenzimmer; autoJump disabled pos 8 = false; infovideo ID = pos 9
+          ['1.OG', server[serverwahl2]+ Gang + '1OG.mp4', 0, 5, Id1OG, 34, true, false, false, -1] ,  //BILD Oberstufenzimmer; autoJump disabled pos 8 = false; infovideo ID = pos 9
         ],
 
 
         [//Bild Raum Id228
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 30, true, false, false, -1],
+          ['2.OG', server[serverwahl2]+ Gang + '2OG.mp4', 0, 5, Id2OG, 30, true, false, false, -1],
         ],
         [//Bild Raum Bio1
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 3, true, false, false, 4],
+          ['2.OG', server[serverwahl2]+ Gang + '2OG.mp4', 0, 5, Id2OG, 3, true, false, false, 4],
         ],
         [//Bild Raum Bio2
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 6, true, false, false, 10],
+          ['2.OG', server[serverwahl2]+ Gang + '2OG.mp4', 0, 5, Id2OG, 6, true, false, false, 10],
         ],
         [//Bild Raum Englisch
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 17, true, false, false, 3],
+          ['2.OG', server[serverwahl2]+ Gang + '2OG.mp4', 0, 5, Id2OG, 17, true, false, false, 3],
         ],
         [//Bild Raum Latein
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 33, true, false, false, 3],
+          ['2.OG', server[serverwahl2]+ Gang + '2OG.mp4', 0, 5, Id2OG, 33, true, false, false, 3],
         ],
         [
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 27, true, false, false, -1],   //BILD Erdkunde 227
+          ['2.OG', server[serverwahl2]+ Gang + '2OG.mp4', 0, 5, Id2OG, 27, true, false, false, -1],   //BILD Erdkunde 227
         ],
         [
-          ['2.OG', server[serverwahl]+ Gang + '2OG.mp4', 0, 5, Id2OG, 14, true, false, false, 2],   //BILD Erdkunde 229
+          ['2.OG', server[serverwahl2]+ Gang + '2OG.mp4', 0, 5, Id2OG, 14, true, false, false, 2],   //BILD Erdkunde 229
         ],
 
 
         [//Bild Raum Chemie
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 4, true, false, false, -1],
+          ['3.OG', server[serverwahl2]+ Gang + '3OG.mp4', 0, 5, Id3OG, 4, true, false, false, -1],
           ['Banner',  , 0, 5,'Moderner Chemieraum','Dies ist einer der modernst ausgestattenten Chemieräume aller Aalener Schulen. Jeder einzelne Arbeitsplatz verfügt über einen eigenen Anschluss an das Gasnetz und somit kann von jedem Schüler ein Bunsenbrenner bedient werden, um Experimente durchzuführen.']
         ],
         [//Bild Raum Info / SIA
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 24, true, false, false, 1],
+          ['3.OG', server[serverwahl2]+ Gang + '3OG.mp4', 0, 5, Id3OG, 24, true, false, false, 1],
           //['Banner',  , 0, 5,'SIA und JIA','XXXXX']
         ],
         [//Bild Raum Kunst
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 12, true, false, false, 7],
+          ['3.OG', server[serverwahl2]+ Gang + '3OG.mp4', 0, 5, Id3OG, 12, true, false, false, 7],
         ],
         [//Bild Raum Physik Obele ! schattenseite des THG's
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 28, true, false, false, -1],
+          ['3.OG', server[serverwahl2]+ Gang + '3OG.mp4', 0, 5, Id3OG, 28, true, false, false, -1],
         ],
         [
-          ['3.OG', server[serverwahl]+ Gang + '3OG.mp4', 0, 5, Id3OG, 30, true, false, false, -1],   //BILD Physik 339 sonnen Seite!
+          ['3.OG', server[serverwahl2]+ Gang + '3OG.mp4', 0, 5, Id3OG, 30, true, false, false, -1],   //BILD Physik 339 sonnen Seite!
         ],
 
         [//Bild 3D- Druck AG
-          ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 43, true, false, false, -1],
+          ['Rosa Villa', server[serverwahl2]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 43, true, false, false, -1],
           ['Banner',  , 0, 5,'3D Druck AG','Die 3D Druck AG ist eine von vielen AGs am THG. Hier lernt man, wie 3D Modelle gestaltet werden und wie man diese anschließend ausdrucken kann. <br> Als Zeichenprogramm verwenden wir Fusion 360. <br> Weitere Informationen zu AGs finden sie <a href="https://thgaalen.de/info/AG/ag.php" target="_blank"> hier. </a>'],
         ],
         [//Bild Bild Bibliothek
-            ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 45, true, false, false, -1],
+            ['Rosa Villa', server[serverwahl2]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 45, true, false, false, -1],
             ['Banner',  , 0, 5,'Bibliotheks AG','Die Bibliotheks AG verwaltet unsere kleine eigene Bibliothek, die viele Sachbücher, aber auch Romane umfasst.  <br> Weitere Informationen zu AGs finden sie <a href="https://thgaalen.de/info/AG/ag.php" target="_blank"> hier. </a>'],
         ],
         [//Bild Raum EDV
-            ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 49, true, false, false, 5],
+            ['Rosa Villa', server[serverwahl2]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 49, true, false, false, 5],
         ],
         [//Bild Raum Hausaufgaben AG
-            ['RosaVilla', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 41, true, false, false, 13],
+            ['RosaVilla', server[serverwahl1]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 41, true, false, false, 13],
 
         ],
         [//Bild Raum IdWerkstatt
-            ['Rosa Villa', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 22, true, false, false, -1],
+            ['Rosa Villa', server[serverwahl2]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 22, true, false, false, -1],
             ['Banner',  , 0, 5,'Werkraum','Dies ist der Werkraum des THGs. Er wird von unteschiedlichsten Klassenstufen und AGs genutzt. Dabei lernt man grundlegende Kentnisse der Holzbearbeitung und vieles mehr. <br> Dabei ist besonders die SIA und JIA zu erwähnen, welche hier ihre Projektarbeiten erstellt. So ist hier im Schuljahr 2018/19 ein <a href="https://thgaalen.de/berichte/2019/sia2019/bericht.php" target="_blank"> Elektroauto </a> entstanden. <br> Weitere Informationen zur SIA finden sie <a href="http://sia.thgaalen.de/index.htm" target="_blank"> hier. </a>'],
         ],
 
         [// Bild KWH - Halle
-          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 5, Rundgang, 12, true, false, false,8],
+          ['Zum Rundgang', server[serverwahl1]+ Gang + 'Draussen.mp4', 0, 5, Rundgang, 12, true, false, false,8],
         ],
         [ // THG Halle
-          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 0, 5, Rundgang, 40, true, false, false,9],
+          ['Zum Rundgang', server[serverwahl2]+ Gang + 'Draussen.mp4', 0, 5, Rundgang, 40, true, false, false,9],
           //['Banner',  , 0, 5,'THG Sporhallen','Dies ist unsere eigene Sporthalle, die komplett neu renoviert wurde! <br> Ein kleines Viedeo über die Sportmöglichkeiten am THG finden sie in der Karl Weiland Halle.'],
         ],
 
         [//Video Abendgymnasium
 
-          ['A 2', server[serverwahl]+ Raum + 'A1.mp4', 0, 1, IdA1, 1, true, false],
-          ['A 1', server[serverwahl]+ Raum + 'A2.mp4', 1, 2, IdA2 , 1, true, false],
-          ['Zum Rundgang', server[serverwahl]+ Gang + 'Draussen.mp4', 15, 17, Rundgang, 74, true, false],
+          ['A 2', server[serverwahl2]+ Raum + 'A1.mp4', 0, 1, IdA1, 1, true, false],
+          ['A 1', server[serverwahl1]+ Raum + 'A2.mp4', 1, 2, IdA2 , 1, true, false],
+          ['Zum Rundgang', server[serverwahl2]+ Gang + 'Draussen.mp4', 15, 17, Rundgang, 74, true, false],
         ],
         [//Video Stadpark
-          ['Zum THG', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 2, IdRosaV, 12, true, false, false, -1],
+          ['Zum THG', server[serverwahl1]+ Gang + 'Rosavilla.mp4', 0, 2, IdRosaV, 12, true, false, false, -1],
           ['Banner',  , 23, 40,'Stadtpark','Der Stadtpark gehört auch zum Pausenhof des THGs. Er bietet viele Möglichkeiten, sich in den Pausen auszutoben und ganze Mittagspausen am Kocher zu verbringen. '],
         ],
 
 
         [ // Franz
-          ['E-Gebäude', server[serverwahl]+ Gang + 'HG-EG.mp4', 0, 5, IdGang, 27, true, false, false,3],
+          ['E-Gebäude', server[serverwahl2]+ Gang + 'HG-EG.mp4', 0, 5, IdGang, 27, true, false, false,3],
         ],
 
         [ // Spanisch
-          ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, 5, IdEGB, 34, true, false, false,3],
+          ['E-Gebäude', server[serverwahl1]+ Gang + 'E-Gebäude.mp4', 0, 5, IdEGB, 34, true, false, false,3],
         ],
 
         [ // Religion
-          ['E-Gebäude', server[serverwahl]+ Gang + 'E-Gebäude.mp4', 0, 5, IdEGB, 39, true, false, false, -1],
+          ['E-Gebäude', server[serverwahl1]+ Gang + 'E-Gebäude.mp4', 0, 5, IdEGB, 39, true, false, false, -1],
         ],
         [ // A1
-          ['Zurück', server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 1, true, false, false,-1],
+          ['Zurück', server[serverwahl2]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 1, true, false, false,-1],
           ['Banner',  , 0, 5,'Digitalisirung im THG','Dieser Klassenraum ist mit modernster Technik ausgestattet. Ein digitales Whiteboard unterstützt den Lehrer und die Schüler beim digitalen Bearbeiten von Dokumenten. <br>Desweiteren bieten Apple TVs den Lehrkräften, die Möglichkeit sich mittels des ausgegeben IPads mit diesem zu verbinden. Dadurch entstehen umfassende Möglichkeiten u.a. im Bereich des digtalen Unterrichts.'],
 
         ],
         [ // A2
-          ['Zurück', server[serverwahl]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 2, true, false, false,-1],
+          ['Zurück', server[serverwahl2]+ Gang + 'A-HGeb.mp4', 0, 5, IdAGeb, 2, true, false, false,-1],
           ['Banner',  , 0, 5,'Digitalisirung im THG','Dieser Klassenraum ist mit modernster Technik ausgestattet. Ein digitales Whiteboard unterstützt den Lehrer und die Schüler beim digitalen Bearbeiten von Dokumenten. <br>Desweiteren bieten Apple TVs den Lehrkräften, die Möglichkeit sich mittels des ausgegeben IPads mit diesem zu verbinden. Dadurch entstehen umfassende Möglichkeiten u.a. im Bereich des digtalen Unterrichts.'],
         ],
         [ // SMV / Billjard
-          ['Zurück', server[serverwahl]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 27, true, false, false, -1],
+          ['Zurück', server[serverwahl2]+ Gang + 'Rosavilla.mp4', 0, 5, IdRosaV, 27, true, false, false, -1],
           ['Banner',  , 0, 5,'SMV','SMV steht für "Schüler Mitverwaltung". In diesem Raum können Aktionen der Schüler geplant oder auch nur Zeit verbracht werden ;) <br> Weitere Informationen über die SMV finden sie <a href="https://thgaalen.de/info/smv/smv.php" target="_blank"> hier. </a>'],
         ],
 
       ];
 
       InfoVideos = [
-      server[serverwahl]+ info + 'THG_Aalen_Eisenbahn.mp4',   //Werkstatt
+      server[serverwahl1]+ info + 'THG_Aalen_Eisenbahn.mp4',   //Werkstatt
       'https://thgaalen.de/profil/bilder/thgfilm_full.mp4',  //Naturwissenschaften
       'https://thgaalen.de/info/TdoT/videos/unesco-ag.mp4',  // Video id 229 -> Unseco lable
       'https://thgaalen.de/info/TdoT/videos/sprachen2.mp4',  //Englisch Französisch Latein und Spanisch
@@ -480,7 +481,7 @@
     ];
         // sources der Infovideos abhängig von dem Aktiven 360 Zimmer bild
 
-    console.log(array[0][0][0]);
+
 
     var p = new Clappr.Player({
       poster: "./res/THG-outside.png",
@@ -508,7 +509,7 @@
   });
   p.seek(90);
     p.getPlugin('click_to_pause').disable();
-    p.core.activeContainer.on(Clappr.Events.CONTAINER_STATE_BUFFERING, function() {console.log("Buffered");if(firstWalk){setTimeout(function() {console.log("play");p.play();setTimeout(function() {p.pause();},100);}, 1000);}});
+    p.core.activeContainer.on(Clappr.Events.CONTAINER_STATE_BUFFERING, function() {/*console.log("Buffered");*/if(firstWalk){setTimeout(function() {/*console.log("play");*/p.play();setTimeout(function() {p.pause();},100);}, 1000);}});
 
     p.core.activePlayback.el.playbackRate = playbackRate;
 
@@ -517,13 +518,13 @@
     var isFirefox = typeof InstallTrigger !== 'undefined';
 
     if (isFirefox){
-      setInterval(()=> {if(firstWalk){p.play();p.pause(); console.log();}},100);
+      setInterval(()=> {if(firstWalk){p.play();p.pause();/*console.log();*/}},100);
     }
 
     setInterval(() =>{
       if(justStarted){
         p.play();
-        console.log("starting");
+        //console.log("starting");
       }
     }, 100);
 
@@ -580,8 +581,8 @@
               currentLable = 0;
             }
         }catch (e) {
-          console.log("Video Id: " + videoId);
-          console.log("label check: " + i);
+          //console.log("Video Id: " + videoId);
+          //console.log("label check: " + i);
           console.log(e);
         }
       }
@@ -750,10 +751,10 @@
 
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
 
-    document.querySelector(".forward").addEventListener("touchstart", (e) => {walkForward();console.log("Start");});
-    document.querySelector(".forward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
-    document.querySelector(".backward").addEventListener("touchstart", (e) => {walkBackward();console.log("Start");});
-    document.querySelector(".backward").addEventListener("touchend", (e) => {p.pause();console.log("End");});
+    document.querySelector(".forward").addEventListener("touchstart", (e) => {walkForward();/*console.log("Start");*/});
+    document.querySelector(".forward").addEventListener("touchend", (e) => {p.pause();/*console.log("End");*/});
+    document.querySelector(".backward").addEventListener("touchstart", (e) => {walkBackward();/*console.log("Start");*/});
+    document.querySelector(".backward").addEventListener("touchend", (e) => {p.pause();/*console.log("End");*/});
 
     document.querySelector("#openIcon").addEventListener("click", (e) => {
       document.querySelector("#menuIconWrapper").style.transform = "translate(4.4em, 0)";
@@ -790,42 +791,42 @@
       document.querySelector("#menuIconWrapper").style.transform = "translate(-4.4em, 0)"
     });
 
-    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'EG_1.mp4', 2, IdEG1);menuCollapseFromFloors();});
-    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '1OG.mp4', 2, Id1OG);menuCollapseFromFloors();});
-    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '2OG.mp4', 2, Id2OG);menuCollapseFromFloors();});
-    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + '3OG.mp4', 2, Id3OG);menuCollapseFromFloors();});
-    document.querySelector("#RG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Draussen.mp4', 100, Rundgang);menuCollapseFromFloors();});
-    document.querySelector("#SP").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Stadtpark.mp4', 30, IdPark);menuCollapseFromFloors();});
-    document.querySelector("#RV").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'Rosavilla.mp4', 2, IdRosaV);menuCollapseFromFloors();});
-    document.querySelector("#EGB").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'E-Gebäude.mp4', 2, IdEGB);menuCollapseFromFloors();});
-    document.querySelector("#AG").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Gang + 'A-HGeb.mp4', 10, IdAGeb);menuCollapseFromFloors();});
+    document.querySelector("#EG").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Gang + 'EG_1.mp4', 2, IdEG1);menuCollapseFromFloors();});
+    document.querySelector("#S1").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Gang + '1OG.mp4', 2, Id1OG);menuCollapseFromFloors();});
+    document.querySelector("#S2").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Gang + '2OG.mp4', 2, Id2OG);menuCollapseFromFloors();});
+    document.querySelector("#S3").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Gang + '3OG.mp4', 2, Id3OG);menuCollapseFromFloors();});
+    document.querySelector("#RG").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Gang + 'Draussen.mp4', 100, Rundgang);menuCollapseFromFloors();});
+    document.querySelector("#SP").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Gang + 'Stadtpark.mp4', 30, IdPark);menuCollapseFromFloors();});
+    document.querySelector("#RV").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Gang + 'Rosavilla.mp4', 2, IdRosaV);menuCollapseFromFloors();});
+    document.querySelector("#EGB").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Gang + 'E-Gebäude.mp4', 2, IdEGB);menuCollapseFromFloors();});
+    document.querySelector("#AG").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Gang + 'A-HGeb.mp4', 10, IdAGeb);menuCollapseFromFloors();});
 
-    document.querySelector("#V1").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Aula.mp4', 2, IdAula);menuCollapseFromVideos();});
-    document.querySelector("#V2").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum3.mp4', 2, Id3);menuCollapseFromVideos();});
-    document.querySelector("#V3").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum117.mp4', 2, Id117);menuCollapseFromVideos();});
-    document.querySelector("#V4").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Englisch.mp4', 2, IdEnglisch);menuCollapseFromVideos();});
-    document.querySelector("#V5").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Physik-Obele.mp4', 2, IdPhysikObel);menuCollapseFromVideos();});
-    document.querySelector("#V6").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'VID_339.mp4', 2, Id339);menuCollapseFromVideos();});
-    document.querySelector("#V7").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Chemie.mp4', 2, IdChemie);menuCollapseFromVideos();});
-    document.querySelector("#V8").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Bio-1.mp4', 2, IdBio1);menuCollapseFromVideos();});
-    document.querySelector("#V9").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Bio-2.mp4', 2, IdBio2);menuCollapseFromVideos();});
-    document.querySelector("#V10").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Info.mp4', 2, IdInfo);menuCollapseFromVideos();});
-    document.querySelector("#V11").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Französisch.mp4', 2, IdFranz);menuCollapseFromVideos();});
-    document.querySelector("#V12").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Latein.mp4', 2, IdLatein);menuCollapseFromVideos();});
-    document.querySelector("#V13").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Spanisch.mp4', 2, IdSpan);menuCollapseFromVideos();});
-    document.querySelector("#V14").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'VID_227.mp4', 2, Id227);menuCollapseFromVideos();});
-    document.querySelector("#V15").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Kunst.mp4', 2, IdKunst);menuCollapseFromVideos();});
-    document.querySelector("#V16").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Raum6.mp4', 2, Id6);menuCollapseFromVideos();});
-    document.querySelector("#V17").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Religion.mp4', 2, IdReli);menuCollapseFromVideos();});
-    document.querySelector("#V18").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'BIB.mp4', 2, IdBib);menuCollapseFromVideos();});
-    document.querySelector("#V19").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'EDV.mp4', 2, IdEDV);menuCollapseFromVideos();});
-    document.querySelector("#V20").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + '3D-Druck.mp4', 2, Id3D);menuCollapseFromVideos();});
-    document.querySelector("#V21").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Hausaufgaben.mp4', 2, IdHausaufgaben);menuCollapseFromVideos();});
-    document.querySelector("#V22").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'VID_229.mp4', 2, Id229);menuCollapseFromVideos();});
-    document.querySelector("#V23").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'Werkstatt.mp4', 2, IdWerkstatt);menuCollapseFromVideos();});
-    document.querySelector("#V24").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'A2.mp4', 2, IdA2);menuCollapseFromVideos();});
-    document.querySelector("#V25").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'THG-Halle.mp4', 2, IdTHGHalle);menuCollapseFromVideos();});
-    document.querySelector("#V26").addEventListener("click", (e) => {changeVideo(server[serverwahl]+ Raum + 'KWH.mp4', 2, IdKWH);menuCollapseFromVideos();});
+    document.querySelector("#V1").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Aula.mp4', 2, IdAula);menuCollapseFromVideos();});
+    document.querySelector("#V2").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Raum3.mp4', 2, Id3);menuCollapseFromVideos();});
+    document.querySelector("#V3").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Raum117.mp4', 2, Id117);menuCollapseFromVideos();});
+    document.querySelector("#V4").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Englisch.mp4', 2, IdEnglisch);menuCollapseFromVideos();});
+    document.querySelector("#V5").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Physik-Obele.mp4', 2, IdPhysikObel);menuCollapseFromVideos();});
+    document.querySelector("#V6").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'VID_339.mp4', 2, Id339);menuCollapseFromVideos();});
+    document.querySelector("#V7").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Chemie.mp4', 2, IdChemie);menuCollapseFromVideos();});
+    document.querySelector("#V8").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Bio-1.mp4', 2, IdBio1);menuCollapseFromVideos();});
+    document.querySelector("#V9").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Bio-2.mp4', 2, IdBio2);menuCollapseFromVideos();});
+    document.querySelector("#V10").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Info.mp4', 2, IdInfo);menuCollapseFromVideos();});
+    document.querySelector("#V11").addEventListener("click", (e) => {changeVideo(server[serverwahl2]+ Raum + 'Französisch.mp4', 2, IdFranz);menuCollapseFromVideos();});
+    document.querySelector("#V12").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'Latein.mp4', 2, IdLatein);menuCollapseFromVideos();});
+    document.querySelector("#V13").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'Spanisch.mp4', 2, IdSpan);menuCollapseFromVideos();});
+    document.querySelector("#V14").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'VID_227.mp4', 2, Id227);menuCollapseFromVideos();});
+    document.querySelector("#V15").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'Kunst.mp4', 2, IdKunst);menuCollapseFromVideos();});
+    document.querySelector("#V16").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'Raum6.mp4', 2, Id6);menuCollapseFromVideos();});
+    document.querySelector("#V17").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'Religion.mp4', 2, IdReli);menuCollapseFromVideos();});
+    document.querySelector("#V18").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'BIB.mp4', 2, IdBib);menuCollapseFromVideos();});
+    document.querySelector("#V19").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'EDV.mp4', 2, IdEDV);menuCollapseFromVideos();});
+    document.querySelector("#V20").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + '3D-Druck.mp4', 2, Id3D);menuCollapseFromVideos();});
+    document.querySelector("#V21").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'Hausaufgaben.mp4', 2, IdHausaufgaben);menuCollapseFromVideos();});
+    document.querySelector("#V22").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'VID_229.mp4', 2, Id229);menuCollapseFromVideos();});
+    document.querySelector("#V23").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'Werkstatt.mp4', 2, IdWerkstatt);menuCollapseFromVideos();});
+    document.querySelector("#V24").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'A2.mp4', 2, IdA2);menuCollapseFromVideos();});
+    document.querySelector("#V25").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'THG-Halle.mp4', 2, IdTHGHalle);menuCollapseFromVideos();});
+    document.querySelector("#V26").addEventListener("click", (e) => {changeVideo(server[serverwahl1]+ Raum + 'KWH.mp4', 2, IdKWH);menuCollapseFromVideos();});
 
     document.querySelector("#vidCloser").addEventListener("click", (e) => {endInfo();});
 
